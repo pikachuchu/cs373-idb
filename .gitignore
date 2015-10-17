@@ -1,0 +1,6 @@
+# http://git-scm.com/docs/gitignore/
+
+.coverage
+*.pyc
+.idea
+.coverage
