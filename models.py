@@ -1,4 +1,5 @@
 import os
+import sys
  
 from sqlalchemy import Column, DateTime, String, Integer, ForeignKey, func
 from sqlalchemy.orm import relationship, backref
@@ -6,31 +7,51 @@ from sqlalchemy.ext.declarative import declarative_base
  
  
 Base = declarative_base()
+make_searchable()
  
  
- 
-class Department(Base):
-    __tablename__ = 'department'
+class rep(Base):
+    __tablename__ = 'rep'
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    employees = relationship(
-        'Employee',
-        secondary='department_employee_link'
+    chamber = Column(String)
+    gender = Column(String)
+    age = Column(Integer)
+    party = Column(String)
+    state = Column(String)
+    twitter_link = Column(String)
+    committees = relationship("committee")
+
+    search_vector = Column(TSVectorType('name', 'chamber', 'party', 'state'))
     )
- 
- 
-class Employee(Base):
-    __tablename__ = 'employee'
+
+class committee(Base):
+    __tablename__ = 'committee'
     id = Column(Integer, primary_key=True)
     name = Column(String)
-    hired_on = Column(DateTime, default=func.now())
-    departments = relationship(
-        Department,
-        secondary='department_employee_link'
+    chamber = Column(String)
+    website = Column(String)
+    description = Column(Text)
+    fk_chair = Column(Integer, ForeignKey("rep.id"))
+
+    search_vector = Column(TSVectorType('name', 'chamber'))
     )
- 
- 
-class DepartmentEmployeeLink(Base):
-    __tablename__ = 'department_employee_link'
-    department_id = Column(Integer, ForeignKey('department.id'), primary_key=True)
-    employee_id = Column(Integer, ForeignKey('employee.id'), primary_key=True)
+
+class bill(Base):
+    __tablename__ = 'bill'
+    id = Column(Integer, primary_key=True)
+    name = Column(String)
+    year = Column(Integer)
+    result = Column(String)
+    fk_committee = Column(Integer, ForeignKey("committee.id"))
+    fk_sponsor = Column(Integer, ForeignKey("rep.id"))
+
+    search_vector = Column(TSVectorType('name', 'year', 'result'))
+    )
+
+class Association(Base):
+    __tablename__ = 'association'
+    left_id = Column(Integer, ForeignKey('left.id'), primary_key=True)
+    right_id = Column(Integer, ForeignKey('right.id'), primary_key=True)
+    extra_data = Column(String(50))
+    child = relationship("Child")
