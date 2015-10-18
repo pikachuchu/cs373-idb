@@ -20,7 +20,7 @@ class rep(Base):
     party = Column(String)
     state = Column(String)
     twitter_link = Column(String)
-    committees = relationship("committee")
+    committees = relationship("committee", secondary=rep_committee_table)
 
     search_vector = Column(TSVectorType('name', 'chamber', 'party', 'state'))
     )
@@ -49,9 +49,7 @@ class bill(Base):
     search_vector = Column(TSVectorType('name', 'year', 'result'))
     )
 
-class Association(Base):
-    __tablename__ = 'association'
-    left_id = Column(Integer, ForeignKey('left.id'), primary_key=True)
-    right_id = Column(Integer, ForeignKey('right.id'), primary_key=True)
-    extra_data = Column(String(50))
-    child = relationship("Child")
+rep_committee_table = Table('association', Base.metadata,
+    Column('rep_id', Integer, ForeignKey('rep.id')),
+    Column('committee_id', Integer, ForeignKey('committee.id'))
+)
