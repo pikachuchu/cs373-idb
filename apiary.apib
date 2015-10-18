@@ -1,0 +1,95 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# Politician Hub
+
+Politican Hub is an API for receiving information on the people serving in Congress, Congressional committees, and recent bills that have been introduced.
+
+## Representatives [/reps]
+
+### List All Representatives [GET]
+
++ Response 200 (application/json)
+
+        [
+            {
+                "id": 1,
+                "name": "Darin LaHood",
+                "chamber": "house",
+                "gender": "M",
+                "age": 47,
+                "party": "Republican",
+                "state": "IL",
+                "twitter": null,
+                "committees": []
+            },
+            {
+                "id": 2,
+                "name": "Trent Kelly",
+                "chamber": "house",
+                "gender": "M",
+                "age": 49,
+                "party": "Republican",
+                "state": "MS",
+                "twitter": "reptrentkelly",
+                "committees": []
+            }
+        ]
+
+## Representative [/reps/{rep_id}]
+
+### Get a Single Representative [GET]
+
++ Response 200 (application/json)
+
+        {
+                "id": 2,
+                "name": "Trent Kelly",
+                "chamber": "house",
+                "gender": "M",
+                "age": 49,
+                "party": "Republican",
+                "state": "MS",
+                "twitter": "reptrentkelly",
+                "committees": []
+        }
+
+## Committees [/committees]
+
+### List All Committees [GET]
+
++ Response 200 (application/json)
+        
+        [
+
+        ]
+
+## Committee [/committee/{committee_id}]
+
+### Get a Single Committee [GET]
+
++ Response 200 (application/json)
+
+        {
+        
+        }
+
+## Bills [/bills]
+
+### List All Bills [GET]
+
++ Response 200 (application/json)
+
+        [
+        
+        ]
+
+## Bill [/bill]
+
+### Get a Single Bill [GET]
+
++ Response 200 (application/json)
+
+        {
+        
+        }
