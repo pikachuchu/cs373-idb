@@ -23,5 +23,9 @@ def committees():
 def bills():
     return render_template('bills.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
 if __name__ == '__main__':
     app.run()
