@@ -2,8 +2,6 @@ FILES :=                     \
     .gitignore               \
     makefile                 \
     apiary.apib              \
-    IDB1.log                 \
-    model.html               \
     models.py                \
     tests.py                 \
     UML.pdf
