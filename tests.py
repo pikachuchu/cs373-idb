@@ -38,7 +38,7 @@ class tests(TestCase):
         query = rep.query.all()
         startSize = len(query)
 
-        db.session.add(rep(name = "TESTWRITE", party="TEST"))
+        db.session.add(rep(first_name = "TESTWRITE", party="TEST"))
         db.session.commit()
         query = rep.query.all()
 
@@ -49,27 +49,27 @@ class tests(TestCase):
     #Test that the table rep is readable
     def test_read_rep(self):
 
-        db.session.add(rep(name = "TESTREAD", party="TEST"))
+        db.session.add(rep(first_name = "TESTREAD", party="TEST"))
         db.session.commit()
 
         query = rep.query.all()
         found = False
 
         for x in query:
-            if(x.name == "TESTREAD"):
+            if(x.first_name == "TESTREAD"):
                 found = True
 
         assert(found)
 
     def test_read_rep_attribute(self):
 
-        db.session.add(rep(name = "TESTATTR", party = "Republican"))
+        db.session.add(rep(last_name = "TESTATTR", party = "Republican"))
         db.session.commit()
 
-        query = db.session.query(rep).filter(rep.name == "TESTATTR").first()
+        query = db.session.query(rep).filter(rep.last_name == "TESTATTR").first()
 
         assert (query is not None)
-        assert (query.description == "Republican")
+        assert (query.party == "Republican")
         
 
 
@@ -78,17 +78,17 @@ class tests(TestCase):
     def test_delete_rep_row(self):
         
 
-        db.session.add(rep(name = "delete"))
+        db.session.add(rep(last_name = "delete"))
         db.session.commit()
 
-        query = db.session.query(rep).filter(rep.name == "delete").first()
+        query = db.session.query(rep).filter(rep.last_name == "delete").first()
 
         assert(query != None)
 
         db.session.delete(query);
         db.session.commit()
 
-        toRemove = db.session.query(rep).filter(rep.name == "delete").first()
+        toRemove = db.session.query(rep).filter(rep.last_name == "delete").first()
         assert(toRemove == None)
 
        
@@ -125,13 +125,13 @@ class tests(TestCase):
 
     def test_read_committee_attribute(self):
 
-        db.session.add(committee(name = "Ways and Means", description = "Budget"))
+        db.session.add(committee(name = "Ways and Means", chamber = "house"))
         db.session.commit()
 
         query = db.session.query(committee).filter(committee.name == "Ways and Means").first()
 
         assert (query is not None)
-        assert (query.description == "Budget")
+        assert (query.chamber == "House")
         
     
     #Test deletion of a row in committee
@@ -185,13 +185,13 @@ class tests(TestCase):
 
     def test_read_bill_attribute(self):
 
-        db.session.add(bill(name = "Test", result = "Passed"))
+        db.session.add(bill(name = "Test", status = "Passed"))
         db.session.commit()
 
         query = db.session.query(bill).filter_by(name = "Test").first()
        
         assert (query is not None)
-        assert (query.result == "Passed")
+        assert (query.status == "Passed")
         
 
     
