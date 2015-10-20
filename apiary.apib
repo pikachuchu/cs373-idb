@@ -14,25 +14,33 @@ Politican Hub is an API for receiving information on the people serving in Congr
         [
             {
                 "id": 1,
-                "name": "Darin LaHood",
+                "first_name": "Darin",
+                "last_name": "LaHood",
                 "chamber": "house",
                 "gender": "M",
                 "age": 47,
                 "party": "Republican",
                 "state": "IL",
                 "twitter": null,
-                "committees": [4,10]
+                "youtube": null
+                "website": "https://lahood.house.gov/",
+                "email": "Rep.Lahood@opencongress.org"
+                "committees": ["HSII24"]
             },
             {
                 "id": 2,
-                "name": "Trent Kelly",
+                "first_name": "Trent",
+                "last_name": "Kelly",
                 "chamber": "house",
                 "gender": "M",
                 "age": 49,
                 "party": "Republican",
                 "state": "MS",
                 "twitter": "reptrentkelly",
-                "committees": [11,72]
+                "youtube": ""
+                "website": "http://franks.house.gov",
+                "email": null,
+                "committees": ["HSIF","HSIF03"]
             }
         ]
 
@@ -44,14 +52,18 @@ Politican Hub is an API for receiving information on the people serving in Congr
 
         {
                 "id": 2,
-                "name": "Trent Kelly",
+                "first_name": "Trent",
+                "last_name": "Kelly",
                 "chamber": "house",
                 "gender": "M",
                 "age": 49,
                 "party": "Republican",
                 "state": "MS",
                 "twitter": "reptrentkelly",
-                "committees": [11,72]
+                "youtube": ""
+                "website": "http://franks.house.gov",
+                "email": null,
+                "committees": ["HSIF","HSIF03"]
         }
 
 ## Committees [/committees]
@@ -66,6 +78,7 @@ Politican Hub is an API for receiving information on the people serving in Congr
                 "name": "Federal Spending Oversight and Emergency Management",
                 "chamber": "senate",
                 "website": "http://hsgac.senate.gov/",
+                "phone": "123-456-7890",
                 "chair": "Rand Paul",
                 "chair_id": 3
             },
@@ -74,6 +87,7 @@ Politican Hub is an API for receiving information on the people serving in Congr
                 "name": "Federal Lands",
                 "chamber": "house",
                 "website": "http://naturalresources.house.gov/",
+                "phone": "123-456-7891",
                 "chair": "Tom McClintock",
                 "chair_id": 4
             }
@@ -90,9 +104,10 @@ Politican Hub is an API for receiving information on the people serving in Congr
             "name": "Federal Spending Oversight and Emergency Management",
             "chamber": "senate",
             "website": "http://hsgac.senate.gov/",
+            "phone": "123-456-7890",
             "chair": "Rand Paul",
             "chair_id": 3
-        }
+        },
 
 ## Bills [/bills]
 
@@ -108,7 +123,7 @@ Politican Hub is an API for receiving information on the people serving in Congr
                 "committees": ["HSIF","HSIF03","HSFA","HSFA18","SSBK"],
                 "sponsor": "Joe Barton",
                 "sponsor_id": 10
-                "result": "pending"
+                "status": "pending"
             },
             {
                 "id": 2,
@@ -117,7 +132,7 @@ Politican Hub is an API for receiving information on the people serving in Congr
                 "committees": ["HSII","HSII06","HSII24","SLIA"],
                 "sponsor": "Don Young",
                 "sponsor_id": 15
-                "result": "pending"
+                "status": "pending"
             }
         ]
 
@@ -134,5 +149,5 @@ Politican Hub is an API for receiving information on the people serving in Congr
             "committees": ["HSIF","HSIF03","HSFA","HSFA18","SSBK"],
             "sponsor": "Joe Barton",
             "sponsor_id": 10
-            "result": "pending"
+            "status": "pending"
         }
