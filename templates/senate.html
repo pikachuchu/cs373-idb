@@ -11,27 +11,41 @@
       <tr>
         <th>Firstname</th>
         <th>Lastname</th>
-        <th>Email</th>
+        <th>Age</th>
+        <th>Party</th>
+        <th>State</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
+      <tr class='clickable-row' data-href='/senator/id/1'>
+        <td>Lamar</td>
+        <td>Alexander</td>
+        <td>75</td>
+        <td>Republican</td>
+        <td>Tennessee (Sr.)</td>
       </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
+      <tr class='clickable-row' data-href='/senator/id/2'>
+        <td>Kelly</td>
+        <td>Ayotte</td>
+        <td>47</td>
+        <td>Republican</td>
+        <td>New Hampshire (Jr.)</td>
       </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
+      <tr class='clickable-row' data-href='/senator/id/3'>
+        <td>Tammy</td>
+        <td>Baldwin</td>
+        <td>53</td>
+        <td>Democrat</td>
+        <td>Wisconsin (Jr.)</td>
       </tr>
     </tbody>
 </table>
 </div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
 {% endblock %}
-

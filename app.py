@@ -27,5 +27,9 @@ def bills():
 def about():
     return render_template('about.html')
 
+@app.route('/senator/id/<int:sen_id>')
+def senator(sen_id):
+    return render_template('senator.html', sen_id = sen_id)
+
 if __name__ == '__main__':
     app.run()
