@@ -43,5 +43,17 @@ def senator2():
 def senator3():
     return render_template('senator3.html')
 
+@app.route('/representative/id/1')
+def representative1():
+    return render_template('representative1.html')
+
+@app.route('/representative/id/2')
+def representative2():
+    return render_template('representative2.html')
+
+@app.route('/representative/id/3')
+def representative3():
+    return render_template('representative3.html')
+
 if __name__ == '__main__':
     app.run()
