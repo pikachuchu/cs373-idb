@@ -8,6 +8,12 @@
     z-index: -100;
 }
 
+.person-text {
+    float: left;
+    position: relative;
+    left: 2em;
+}
+
 .fullscreen-bg__video {
     position: absolute;
     top: 0;
@@ -18,5 +24,9 @@
 
 .container {
     background: lightgrey;
+}
+
+#person-picture {
+    float: left;
 }
 
