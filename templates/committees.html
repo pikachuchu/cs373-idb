@@ -6,33 +6,74 @@
 
 {% block body %}
 <h1>Committees</h1>
-<div class="container">
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>John</td>
-        <td>Doe</td>
-        <td>john@example.com</td>
-      </tr>
-      <tr>
-        <td>Mary</td>
-        <td>Moe</td>
-        <td>mary@example.com</td>
-      </tr>
-      <tr>
-        <td>July</td>
-        <td>Dooley</td>
-        <td>july@example.com</td>
-      </tr>
-    </tbody>
-</table>
-</div>
+<div id="other" class="container"></div>
+
+<script type="text/babel">
+
+var cols = [
+    { key: 'firstName', label: 'Name' },
+    { key: 'lastName', label: 'Last Name' },
+    { key: 'website', label: 'Website' },
+    { key: 'description', label: 'Description' },
+    { key: 'chair', label: 'Chair' }
+];
+
+var data = [
+    { id: 1, firstName: 'John', lastName: 'Doe', website: 'www.google.com', description: 'sadfasad', chair: 'asdf' },
+    { id: 2, firstName: 'John', lastName: 'Doe', website: 'www.google.com', description: 'sadfasad', chair: 'asdf' }
+];
+
+var Table = React.createClass({
+
+    render: function() {
+        var headerComponents = this.generateHeaders(),
+            rowComponents = this.generateRows();
+
+        return (
+            <table className="table table-striped">
+                <thead> {headerComponents} </thead>
+                <tbody> {rowComponents} </tbody>
+            </table>
+        );
+    },
+
+    generateHeaders: function() {
+        var cols = this.props.cols;  // [{key, label}]
+
+        // generate our header (th) cell components
+        return cols.map(function(colData) {
+            return <th key={colData.key}> {colData.label} </th>;
+        });
+    },
+
+    generateRows: function() {
+        var cols = this.props.cols,  // [{key, label}]
+            data = this.props.data;
+
+        return data.map(function(item) {
+            // handle the column data within each row
+            var cells = cols.map(function(colData) {
+
+                // colData.key might be "firstName"
+                return <td> {item[colData.key]} </td>;
+            });
+            return <tr key={item.id}> {cells} </tr>;
+        });
+    }
+});
+
+React.render(<Table cols={cols} data={data}/>, document.getElementById('other'));
+
+// var our_rows = [
+//   {
+//     name: 'john',
+//     chamber: 'house',
+//     website: 'www',
+//     description: 'desc',
+//     chair: 'chair'
+//   }
+// ];
+// ReactDOM.render(<Table rows=our_rows/>, document.getElementById("other"));
+</script>
 {% endblock %}
 
