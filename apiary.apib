@@ -24,8 +24,14 @@ Politican Hub is an API for receiving information on the people serving in Congr
                 "twitter": null,
                 "youtube": null
                 "website": "https://lahood.house.gov/",
-                "contact_form": "http://contact-me.gov"
-                "committees": ["HSII24"]
+                "contact_form": "http://contact-me.gov",
+                "committees": [
+                    {
+                        "id": "HSII24",
+                        "name": "Some Committee Name"
+                    }
+                ],
+                "image_url": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000014.jpg"
             },
             {
                 "id": 2,
@@ -33,14 +39,20 @@ Politican Hub is an API for receiving information on the people serving in Congr
                 "last_name": "Kelly",
                 "chamber": "house",
                 "gender": "M",
-                "age": "1973-02-08",
+                "birthday": "1973-02-08",
                 "party": "Republican",
                 "state": "MS",
                 "twitter": "reptrentkelly",
                 "youtube": ""
                 "website": "http://franks.house.gov",
                 "contact_form": "http://contact-reptrentkelly.gov",
-                "committees": ["HSIF","HSIF03"]
+                 "committees": [
+                    {
+                        "id": "HSIF",
+                        "name": "Other Committee Name"
+                    }
+                ],
+                "image_url": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000012.jpg"
             }
         ]
 
@@ -51,19 +63,25 @@ Politican Hub is an API for receiving information on the people serving in Congr
 + Response 200 (application/json)
 
         {
-                "id": 2,
-                "first_name": "Trent",
-                "last_name": "Kelly",
-                "chamber": "house",
-                "gender": "M",
-                "age": "1973-02-08",
-                "party": "Republican",
-                "state": "MS",
-                "twitter": "reptrentkelly",
-                "youtube": ""
-                "website": "http://franks.house.gov",
-                "contact_form": "http://contact-reptrentkelly.gov",
-                "committees": ["HSIF","HSIF03"]
+            "id": 2,
+            "first_name": "Trent",
+            "last_name": "Kelly",
+            "chamber": "house",
+            "gender": "M",
+            "birthday": "1973-02-08",
+            "party": "Republican",
+            "state": "MS",
+            "twitter": "reptrentkelly",
+            "youtube": ""
+            "website": "http://franks.house.gov",
+            "contact_form": "http://contact-reptrentkelly.gov",
+            "committees": [
+                {
+                    "id": "HSIF",
+                    "name": "Other Committee Name"
+                }
+            ],
+            "image_url": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000012.jpg"
         }
 
 ## Committees [/committees]
@@ -78,18 +96,22 @@ Politican Hub is an API for receiving information on the people serving in Congr
                 "name": "Federal Spending Oversight and Emergency Management",
                 "chamber": "senate",
                 "website": "http://hsgac.senate.gov/",
-                "phone": "123-456-7890",
-                "chair": "Rand Paul",
-                "chair_id": 3
+                "jurisdiction": "The Federal Spending Oversight and Emergency Management is responsible for...",
+                "chair": {
+                    "name": "Rand Paul",
+                    "id": 3
+                }
             },
             {
                 "id": "HSII10",
                 "name": "Federal Lands",
                 "chamber": "house",
                 "website": "http://naturalresources.house.gov/",
-                "phone": "123-456-7891",
-                "chair": "Tom McClintock",
-                "chair_id": 4
+                "jurisdiction": "The Federal Lands Committee is responsible for...",
+                "chair": {
+                    "name": "Trent Kelly",
+                    "id": 2
+                }
             }
         ]
 
@@ -104,10 +126,12 @@ Politican Hub is an API for receiving information on the people serving in Congr
             "name": "Federal Spending Oversight and Emergency Management",
             "chamber": "senate",
             "website": "http://hsgac.senate.gov/",
-            "phone": "123-456-7890",
-            "chair": "Rand Paul",
-            "chair_id": 3
-        },
+            "jurisdiction": "The Federal Spending Oversight and Emergency Management is responsible for...",
+            "chair": {
+                "name": "Rand Paul",
+                "id": 3
+            }
+        }
 
 ## Bills [/bills]
 
@@ -117,22 +141,28 @@ Politican Hub is an API for receiving information on the people serving in Congr
 
         [
             {
-                "id": 1,
+                "id": "s1482-114",
                 "name": "To adapt to changing crude oil market conditions.",
                 "date_introduced": "2015-02-04",
                 "committees": ["HSIF","HSIF03","HSFA","HSFA18","SSBK"],
-                "sponsor": "Joe Barton",
-                "sponsor_id": 10
-                "status": "pending"
+                "sponsor": {
+                    "name": "Joe Barton",
+                    "id": 10
+                },
+                "house_status": "pass",
+                "senate_status": "pass"
             },
             {
-                "id": 2,
+                "id": "s994-114",
                 "name": "Native American Energy Act",
                 "date_introduced": "2015-01-26",
                 "committees": ["HSII","HSII06","HSII24","SLIA"],
-                "sponsor": "Don Young",
-                "sponsor_id": 15
-                "status": "pending"
+                "sponsor": {
+                    "name": "Don Young",
+                    "id": 15
+                },
+                "house_status": "pass",
+                "senate_status": "fail"
             }
         ]
 
@@ -143,11 +173,14 @@ Politican Hub is an API for receiving information on the people serving in Congr
 + Response 200 (application/json)
 
         {
-            "id": 1,
-            "name": "To adapt to changing crude oil market conditions.",
-            "date_introduced": "2015-02-04",
-            "committees": ["HSIF","HSIF03","HSFA","HSFA18","SSBK"],
-            "sponsor": "Joe Barton",
-            "sponsor_id": 10
-            "status": "pending"
+            "id": "s994-114",
+            "name": "Native American Energy Act",
+            "date_introduced": "2015-01-26",
+            "committees": ["HSII","HSII06","HSII24","SLIA"],
+            "sponsor": {
+                "name": "Don Young",
+                "id": 15
+            },
+            "house_status": "pass",
+            "senate_status": "fail"
         }
