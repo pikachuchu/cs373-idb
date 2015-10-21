@@ -21,15 +21,14 @@ for v in committees:
     }
 
     sunlight_url = 'http://congress.api.sunlightfoundation.com/committees?apikey=' + apikey + '&committee_id=' + curr['code'] + '&fields=members'
-    members = requests.get(sunlight_url).json()['results']
+    members = requests.get(sunlight_url).json()['results'][0]['members']
     chairperson = members[0]
-    if 'title' in chairperson:
-        if chairperson['title'] == 'Chairman':
-            chair = chairperson['legislator']
-            obj['chair'] = {
-                'name': chair['first_name'] + ' ' + chair['last_name'],
-                'id': chair['govtrack_id']
-            }
+    if chairperson['title'] == 'Chairman':
+        chair = chairperson['legislator']
+        obj['chair'] = {
+            'name': chair['first_name'] + ' ' + chair['last_name'],
+            'id': chair['govtrack_id']
+        }
     formatted[curr['code']] = obj
 
 with open('committee_data.json', 'w') as outfile:
