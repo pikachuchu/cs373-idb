@@ -24,6 +24,7 @@ class rep(Base):
     youtube = Column(String)
     website = Column(String)
     contact_form = Column(String)
+    image = Column(String)
     committees = relationship("committee", secondary=rep_committee_table)
 
     search_vector = Column(TSVectorType('first_name', 'last_name', 'chamber', 'party', 'state'))
@@ -35,7 +36,7 @@ class committee(Base):
     name = Column(String)
     chamber = Column(String)
     website = Column(String)
-    phone = Column(String)
+    jurisdiction = Column(Text)
     fk_chair = Column(Integer, ForeignKey("rep.id"))
 
     search_vector = Column(TSVectorType('name', 'chamber', 'chair'))
@@ -43,10 +44,11 @@ class committee(Base):
 
 class bill(Base):
     __tablename__ = 'bill'
-    id = Column(Integer, primary_key=True)
+    id = Column(String, primary_key=True)
     name = Column(String)
     date_intro = Column(String)
-    status = Column(String)
+    house_status = Column(String)
+    senate_status = Column(String)
     fk_sponsor = Column(Integer, ForeignKey("rep.id"))
     committees = relationship("committee", secondary=bill_committee_table)
 
