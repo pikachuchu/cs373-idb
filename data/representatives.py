@@ -3,11 +3,12 @@ import requests
 import os
 import json
 
-apikey = os.environ.get('SUNLIGHT_API_KEY')
+apikey = 'fbfbbe39530a41b6b585bd5d34fdc5d3'#os.environ.get('SUNLIGHT_API_KEY')
 
 ## id, first_name, last_name, chamber, gender, birthday, party, state, twitter, youtube, website, contact_form, committees
 govtrack_url = 'https://www.govtrack.us/api/v2/role?current=true&limit=543'
 govtrack_result = requests.get(govtrack_url).json()['objects']
+base_image_url = 'https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/'
 
 formatted_result = {}
 for v in govtrack_result:
@@ -33,6 +34,15 @@ for v in govtrack_result:
         "website": v['website'],
         "contact_form": contact_form
     }
+
+    # get image url
+    image_id = person['bioguideid']
+    image_url = base_image_url + image_id + '.jpg'
+    image_req = requests.get(image_url)
+    if image_req.status_code == 200:
+        obj['image_jpg'] = image_url
+    else:
+        print(person['firstname'] + ' ' + person['lastname'])
 
     # sunlight committee stuff
     sunlight_url = 'http://congress.api.sunlightfoundation.com/legislators?apikey=' + apikey + '&last_name=' + person['lastname']
