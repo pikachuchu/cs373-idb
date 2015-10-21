@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            	<section>
+	                <h1>Sen. Tammy Baldwin </h1>
+	                <hr />
+	                <img class="img-responsive" id="person-picture" src="https://theunitedstates.io/images/congress/original/B001230.jpg" alt="" style="float:left;margin-right:2em;width:250px" />
+	                <div class="person-text" style="float:left;">
+	                	<p class="lead"><b>Fullname:</b> Tammy Baldwin</p>
+	                	<p class="lead"><b>Birthday:</b> 1962-02-11 (Age: 53)</p>
+	                	<p class="lead"><b>Gender  :</b> Female</p>
+	                	<p class="lead"><b>Chamber :</b> Senate (Jr.)</p>
+	                	<p class="lead"><b>State   :</b> Wisconsin</p>
+	                	<p class="lead"><b>Party   :</b> Democratic</p> 
+	                	<p class="lead"><a href= "http://www.baldwin.senate.gov/"><b>Website</b></a></p>
+	                </div>
+                </section>
+                <!-- Post Content -->
+                <div id="committee-list" style="clear:both">
+                	<br />
+                	<hr />
+                	<h2>Committee Membership</h2>
+                	<p>Senate Committee on Appropriations</p>
+                	<ul>
+						<li>Member, Subcommittee on Agriculture, Rural Development, Food and Drug Administration, and Related Agencies</li>
+						<li>Member, Subcommittee on Commerce, Justice, Science, and Related Agencies</li>
+						<li>Member, Subcommittee on Department of Homeland Security</li>
+						<li>Member, Subcommittee on Departments of Labor, Health and Human Services, and Education, and Related Agencies</li>
+						<li>Member, Subcommittee on Military Construction and Veterans Affairs, and Related Agencies</li>
+					</ul>
+					<p>Senate Committee on the Budget</p>
+					<p>Senate Committee on Health, Education, Labor, and Pensions</p>
+					<ul>
+						<li>Member, Subcommittee on Employment and Workplace Safety</li>
+						<li>Member, Subcommittee on Primary Health and Retirement Security</li>
+					</ul>
+					<p>Senate Committee on Homeland Security and Governmental Affairs</p>
+					<ul>
+						<li>Ranking Member, Subcommittee on Federal Spending Oversight and Emergency Management</li>
+						<li>Member, Subcommittee on Permanent Subcommittee on Investigations</li>
+					</ul>
+                	<hr />      
+                </div>
+                <div class="twitter">
+                	<a class="twitter-timeline" href="https://twitter.com/SenatorBaldwin" data-widget-id="656644768630374400">Tweets by @SenatorBaldwin</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+					</script>
+                </div>
+                <hr />
+                <div class="youtube">
+
+                </div>
+            </div>
+        </div>                
+	</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+{% endblock %}

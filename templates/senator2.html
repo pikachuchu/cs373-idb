@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            	<section>
+	                <h1>Sen. Kelly Ayotte </h1>
+	                <hr />
+	                <img class="img-responsive" id="person-picture" src="https://theunitedstates.io/images/congress/450x550/A000368.jpg" alt="" style="float:left;margin-right:2em;width:250px"; />
+	                <div class="person-text" style="float:left;">
+	                	<p class="lead"><b>Fullname:</b> Kelly Ayotte</p>
+	                	<p class="lead"><b>Birthday:</b> 1968-06-27 (Age: 47)</p>
+	                	<p class="lead"><b>Gender  :</b> Female</p>
+	                	<p class="lead"><b>Chamber :</b> Senate (Jr.)</p>
+	                	<p class="lead"><b>State   :</b> New Hampshire</p>
+	                	<p class="lead"><b>Party   :</b> Republican</p> 
+	                	<p class="lead"><a href= "http://www.ayotte.senate.gov/"><b>Website</b></a></p>
+	                </div>
+                </section>
+                <!-- Post Content -->
+                <div id="committee-list" style="clear:both">
+                	<br />
+                	<hr />
+                	<h2>Committee Membership</h2>
+                	<p>Senate Committee on Armed Services</p>
+                	<ul>
+						<li>Chairman, Subcommittee on Readiness and Management Support</li>
+						<li>Member, Subcommittee on Emerging Threats and Capabilities</li>
+						<li>Member, Subcommittee on SeaPower</li>
+					</ul>
+					<p>Senate Committee on Commerce, Science, and Transportation</p>
+					<ul>
+						<li>Chairman, Subcommittee on Aviation Operations, Safety, and Security</li>
+						<li>Member, Subcommittee on Communications, Technology, Innovation, and the Internet</li>
+						<li>Member, Subcommittee on Oceans, Atmosphere, Fisheries, and Coast Guard</li>
+						<li>Member, Subcommittee on Surface Transportation and Merchant Marine Infrastructure, Safety and Security</li>
+					</ul>
+					<p>Senate Committee on the Budget</p>
+					<p>Senate Committee on Homeland Security and Governmental Affairs</p>
+					<ul>
+						<li>Member, Subcommittee on Federal Spending Oversight and Emergency Management</li>
+						<li>Member, Subcommittee on Permanent Subcommittee on Investigations</li>
+					</ul>
+					<p>Senate Committee on Small Business and Entrepreneurship</p>            
+                	<hr />      
+                </div>
+                <!-- <div class="twitter">
+                	<a class="twitter-timeline" href="https://twitter.com/SenAlexander" data-widget-id="656630196540301312">Tweets by @SenAlexander</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+					</script>
+                </div> -->
+                <hr />
+                <div class="youtube">
+
+                </div>
+            </div>
+        </div>                
+	</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+{% endblock %}
