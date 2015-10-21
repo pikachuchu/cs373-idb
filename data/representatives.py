@@ -3,7 +3,7 @@ import requests
 import os
 import json
 
-apikey = 'fbfbbe39530a41b6b585bd5d34fdc5d3'#os.environ.get('SUNLIGHT_API_KEY')
+apikey = os.environ.get('SUNLIGHT_API_KEY')
 
 ## id, first_name, last_name, chamber, gender, birthday, party, state, twitter, youtube, website, contact_form, committees
 govtrack_url = 'https://www.govtrack.us/api/v2/role?current=true&limit=543'
