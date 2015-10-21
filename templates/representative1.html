@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            	<section>
+	                <h1>Rep. Bill Shuster </h1>
+	                <hr />
+	                <img class="img-responsive" id="person-picture" src="https://theunitedstates.io/images/congress/original/S001154.jpg" alt="" style="float:left;margin-right:2em;width:250px" />
+	                <div class="person-text" style="float:left;">
+	                	<p class="lead"><b>Fullname:</b> Bill Shuster</p>
+	                	<p class="lead"><b>Birthday:</b> 1961-01-10 (Age: 54)</p>
+	                	<p class="lead"><b>Gender  :</b> Male</p>
+	                	<p class="lead"><b>Chamber :</b> House</p>
+	                	<p class="lead"><b>State   :</b> Pennsylvania</p>
+	                	<p class="lead"><b>Party   :</b> Republican</p> 
+	                	<p class="lead"><a href= "http://shuster.house.gov/"><b>Website</b></a></p>
+	                </div>
+                </section>
+                <!-- Post Content -->
+                <div id="committee-list" style="clear:both">
+                	<br />
+                	<hr />
+                	<h2>Committee Membership</h2>
+                	<p>Chairman, House Committee on Transportation and Infrastructure</p>
+                	<ul>
+						<li>Ex Officio, Subcommittee on Aviation</li>
+						<li>Ex Officio, Subcommittee on Coast Guard and Maritime Transportation</li>
+						<li>Ex Officio, Subcommittee on Economic Development, Public Buildings, and Emergency Management</li>
+						<li>Ex Officio, Subcommittee on Highways and Transit</li>
+						<li>Ex Officio, Subcommittee on Railroads, Pipelines, and Hazardous Materials</li>
+						<li>Ex Officio, Subcommittee on Water Resources and Environment</li>
+					</ul>
+					<p>House Committee on Armed Services</p>
+					<ul>
+						<li>Member, Subcommittee on Emerging Threats and Capabilities</li>
+					</ul>
+                	<hr />      
+                </div>
+                <div class="twitter">
+                	<a class="twitter-timeline" href="https://twitter.com/RepBillShuster" data-widget-id="656952888724291584">Tweets by @RepBillShuster</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
+                <hr />
+                <div class="youtube">
+
+                </div>
+            </div>
+        </div>                
+	</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+{% endblock %}
