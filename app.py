@@ -55,5 +55,17 @@ def representative2():
 def representative3():
     return render_template('representative3.html')
 
+@app.route('/committee/id/1')
+def committee1():
+    return render_template('committee1.html')
+
+@app.route('/committee/id/2')
+def committee2():
+    return render_template('committee2.html')
+
+@app.route('/committee/id/3')
+def committee3():
+    return render_template('committee3.html')
+
 if __name__ == '__main__':
     app.run()

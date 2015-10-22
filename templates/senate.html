@@ -20,23 +20,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr class='clickable-row' data-href='/senator/id/1'>
-        <td>Lamar</td>
-        <td>Alexander</td>
+      <tr>
+        <td><a href='/senator/id/1'>Lamar</a></td>
+        <td><a href='/senator/id/1'>Alexander</a></td>
         <td>75</td>
         <td>Republican</td>
         <td>Tennessee (Sr.)</td>
       </tr>
-      <tr class='clickable-row' data-href='/senator/id/2'>
-        <td>Michael</td>
-        <td>Enzi</td>
+      <tr>
+        <td><a href='/senator/id/2'>Michael</a></td>
+        <td><a href='/senator/id/2'>Enzi</a></td>
         <td>71</td>
         <td>Republican</td>
         <td>Wyoming (Sr.)</td>
       </tr>
-      <tr class='clickable-row' data-href='/senator/id/3'>
-        <td>Tammy</td>
-        <td>Baldwin</td>
+      <tr>
+        <td><a href='/senator/id/3'>Tammy</a></td>
+        <td><a href='/senator/id/3'>Baldwin</a></td>
         <td>53</td>
         <td>Democrat</td>
         <td>Wisconsin (Jr.)</td>
@@ -44,11 +44,4 @@
     </tbody>
 </table>
 </div>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
-</script>
 {% endblock %}
