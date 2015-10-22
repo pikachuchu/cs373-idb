@@ -6,33 +6,33 @@
 
 {% block body %}
 <div class="fullscreen-bg-about">
-    <!-- <img src="static/img/senate.jpg"/> -->
 </div>
 <div class="container">
+    <h1>About the Team</h1>
     <div class="row">
         <div class="col-md-6 col-lg-6">
             <div class="blog-stripe">
-                <a href="#">
-                    <img src="../static/img/group.jpg" class="feature">
-                </a>
+                <img src="../static/img/group.jpg" class="feature">
                 <div class="block-title">
-
                     <h3> Statistics: </h3>
-                    <p> Total Commits: 160 <br>
-                        Total Tests: 10 <br>
-                        Total Issues: 95 <br>
+                    <p> Total Commits: 82 <br>
+                        Total Tests: 12 <br>
+                        Total Issues: 31 <br>
                     </p>
 
                     <h3> Links: </h3>
                     <p> <a href="http://docs.politicianhub1.apiary.io/#">Apiary API</a> <br>
                         <a href="https://github.com/pikachuchu/cs373-idb/issues">Github Issue Tracker</a> <br>
                         <a href="https://github.com/pikachuchu/cs373-idb">Github Repo</a> <br>
-                        <a href="https://github.com/pikachuchu/cs373-idb/wiki">Github Wiki</a>             
+                        <a href="https://github.com/pikachuchu/cs373-idb/wiki">Github Wiki</a>
                     </p>
 
                     <h3>Data Sources: </h3>
-                    <p> <a href="https://sunlightlabs.github.io/congress/">Sunlight Labs</a> <br>
-                        <a href="https://www.govtrack.us/developers/api">Govtrack</a> <br>
+                    <p> We used the following APIs and wrote <a href='https://github.com/pikachuchu/cs373-idb/tree/master/data'>these scripts</a> that got data from the APIs and created JSON objects with the information we wanted from them.
+                        <ul>
+                          <li><a href="https://sunlightlabs.github.io/congress/">Sunlight Labs</a></li>
+                          <li><a href="https://www.govtrack.us/developers/api">Govtrack</a></li>
+                        </ul>
                     </p>
                 </div>
             </div>
@@ -40,75 +40,73 @@
         <div class="col-md-6 col-lg-6">
             <ul class="all-blogs">
                 <li class="media">
-                    <a class="pull-left" href="#">
-                        <div class="profilePic">
-                            <img class="aboutImage" src="../static/daniel.jpg" alt="...  ">
-                        </div>                    
-                    </a>
+                    <div class="profilePic">
+                        <img class="aboutImage" src="../static/daniel.jpg" alt="...  ">
+                    </div>
                     <div class="media-body">
+                        <br />
                         <h4 class="media-heading">Daniel Coonan</h4>
-                        <p> Commits: 32 <br>
-                         Tests: 2 <br>
-                         Issues: 19 </p>
-
+                        <p> Commits: 6 <br>
+                         Tests: 0 <br>
+                         Issues: 2 <br>
+                         Major Responsibilities: Frontend - About</p>
                         <p class="author">I pretend to be a computer science major.  My interests include web, mobile and distributed.  In the past I have worked with .net/c#, bootstrap, css/html and java... lots of java.</p>
                     </div>
                 </li>
                 <li class="media">
-                    <a class="pull-left" href="#">
-                        <div class="profilePic">
-                            <img class="aboutImage" src="../static/brian.jpg" alt="...  ">
-                        </div>
-                    </a>
+                    <div class="profilePic">
+                        <img class="aboutImage" src="../static/brian.jpg" alt="...  ">
+                    </div>
                     <div class="media-body">
+                        <br />
                         <h4 class="media-heading">Brian Chenault</h4>
-                        <p> Commits: 32 <br>
-                         Tests: 2 <br>
-                         Issues: 19 </p>
+                        <p> Commits: 7 <br>
+                         Tests: 12 <br>
+                         Issues: 2 <br>
+                         Major Responsibilities: Models, Technical Report, Unit Tests</p>
                         <p class="author">I am an idealist out to save the world.  I also like politics.</p>
                     </div>
                 </li>
                 <li class="media">
-                    <a class="pull-left" href="#">
-                        <div class="profilePic">
-                            <img class="aboutImage" src="../static/lawrence.jpg" alt="...  ">
-                        </div>                    
-                    </a>
+                    <div class="profilePic">
+                        <img class="aboutImage" src="../static/lawrence.jpg" alt="...  ">
+                    </div>
                     <div class="media-body">
+                        <br />
                         <h4 class="media-heading">Lawrence Ying</h4>
-                        <p> Commits: 32 <br>
-                         Tests: 2 <br>
-                         Issues: 19 <br>
-                         Women: ∞ </p>
+                        <p> Commits: 10 <br>
+                         Tests: 0 <br>
+                         Issues: 4 <br>
+                         Major Responsibilities: Frontend - Splash, Tables</p>
                         <p class="author">I like swimming every month or so.</p>
                     </div>
                 </li>
                 <li class="media">
-                    <a class="pull-left" href="#">
-                        <div class="profilePic">
-                            <img class="aboutImage" src="../static/chuchu.jpg" alt="...  ">
-                        </div>                    
-                    </a>
+                    <div class="profilePic">
+                        <img class="aboutImage" src="../static/chuchu.jpg" alt="...  ">
+                    </div>
                     <div class="media-body">
-                        <h4 class="media-heading">Chuchuchu Ma</h4>
-                        <p> Commits: 32 <br>
-                         Tests: 2 <br>
-                         Issues: 19 </p>
-                        <p class="author">I think my name sounds like pikachu which is cute.  Also I like cutting my hair reeeally short.</p>
+                        <br />
+                        <h4 class="media-heading">Chuchu Ma</h4>
+                        <p> Commits: 26 <br>
+                         Tests: 0 <br>
+                         Issues: 20 <br>
+                         Major Responsibilities: API Documentation, Technical Report, Data Scraping</p>
+                        <p class="author">I think my name sounds like pikachu which is cute. Also I like cutting my hair reeeally short.</p>
                     </div>
                 </li>
                 <li class="media">
-                    <a class="pull-left" href="#">
-                        <div class="profilePic">
-                            <img class="aboutImage" src="../static/andreas.jpg" alt="...  ">
-                        </div>                    
-                    </a>
+                    <div class="profilePic">
+                        <img class="aboutImage" src="../static/andreas.jpg" alt="...  ">
+                    </div>
                     <div class="media-body">
+                        <br />
                         <h4 class="media-heading">Andreas Sudihardjo</h4>
-                        <p> Commits: 32 <br>
-                         Tests: 2 <br>
-                         Issues: 19 </p>
-                        <p class="author">These peopel are wierd, I don't know how I ended up here.</p>
+                        <p> Commits: 12 <br>
+                         Tests: 0 <br>
+                         Issues: 6 <br>
+                         Major Responsibilities: Frontend - Content of Pages</p>
+                        <p class="author">These people are weird, I don't know how I ended up here.</p>
                     </div>
                 </li>
             </ul>
@@ -155,10 +153,6 @@
     height: auto;
 }
 </style>
-
-
-
-
 
 {% endblock %}
 
