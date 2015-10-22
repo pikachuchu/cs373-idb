@@ -8,6 +8,7 @@
 <div class="fullscreen-bg-senate">
     <!-- <img src="static/img/senate.jpg"/> -->
 </div>
+<h1 align="center">Bills</h1>
 <div class="container">
 <table class="table table-striped">
     <thead>
@@ -21,41 +22,27 @@
     </thead>
     <tbody>
       <tr>
-        <td class='clickable-row' data-href='/bills/id/1'>An original concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2016 and setting forth the appropriate budgetary levels for fiscal years 2017 through 2025.</td>
+        <td><a href='/bills/id/1'>An original concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2016 and setting forth the appropriate budgetary levels for fiscal years 2017 through 2025.</a></td>
         <td>2015-03-20</td>
-        <td class='clickable-cell' data-href='/senator/id/2'>Michael Enzi</td>
+        <td><a href='/senator/id/2'>Michael Enzi</a></td>
         <td>Pass</td>
         <td>Pass</td>
       </tr>
       <tr>
-        <td class='clickable-row' data-href='/bills/id/2'>DHS IT Duplication Reduction Act of 2015</td>
+        <td><a href='/bills/id/2'>DHS IT Duplication Reduction Act of 2015</a></td>
         <td>2015-03-25</td>
-        <td class='clickable-cell' data-href='/representative/id/2'>Will Hurd</td>
+        <td><a href='/representative/id/2'>Will Hurd</a></td>
         <td>Pass</td>
         <td>Pass</td>
       </tr>
       <tr>
-        <td class='clickable-row' data-href='/bills/id/3'>FISA Amendments Act Reauthorization Act of 2012</td>
+        <td><a href='/bills/id/3'>FISA Amendments Act Reauthorization Act of 2012</a></td>
         <td>2012-06-15</td>
-        <td class='clickable-cell' data-href='/representative/id/3'>Lamar Smith</td>
+        <td><a href='/representative/id/3'>Lamar Smith</a></td>
         <td>Pass</td>
         <td>Pass</td>
       </tr>
     </tbody>
 </table>
 </div>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
-</script>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $(".clickable-cell").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
-</script>
 {% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            	<section>
+	                <h1>Senate Committee on Commerce, Science, and Transportation</h1>
+	                <hr />
+	                <div class="committee-text" style="float:left;">
+	                	<p class="lead"><b>Chamber      :</b> <a href='/senate'>Senate</a></p>
+	                	<p class="lead"><b>Jurisdiction :</b> N/A</p>
+	                	<p class="lead"><a href= "http://budget.senate.gov/"><b>Website</b></a></p>
+	                </div>
+                </section>
+               <div id="chair" style="clear:both">
+                        <hr />
+                        <h2>Chair</h2>
+                        <img class="img-responsive" id="person-picture" src="https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/E000285.jpg" alt="" style="float:left;margin-right:2em;width:75px" />
+                        <div class="person-text" style="float:left;">
+                            <p class="lead"><b>Fullname:</b> <a href= "/senator/id/2"><b>Michael Enzi</b></a>
+                            <p class="lead"><b>Party   :</b> Republican</p> 
+                        </div>
+                </div>
+
+            </div>
+        </div>
+	</div>
+{% endblock %}

@@ -2,7 +2,6 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -54,6 +53,18 @@ def representative2():
 @app.route('/representative/id/3')
 def representative3():
     return render_template('representative3.html')
+
+@app.route('/committee/id/1')
+def committee1():
+    return render_template('committee1.html')
+
+@app.route('/committee/id/2')
+def committee2():
+    return render_template('committee2.html')
+
+@app.route('/committee/id/3')
+def committee3():
+    return render_template('committee3.html')
 
 @app.route('/bills/id/1')
 def bills1():

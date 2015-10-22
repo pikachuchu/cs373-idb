@@ -5,77 +5,40 @@
 
 
 {% block body %}
-<div class="fullscreen-bg-committees">
-    <!-- <img src="static/img/senate.jpg"/> -->
+<div id="bg" class="fullscreen-bg-committees">
+    <img src="static/img/senate.jpg"/>
 </div>
-<div id="other" class="container"></div>
-
-<script type="text/babel">
-
-var cols = [
-    { key: 'firstName', label: 'Name' },
-    { key: 'lastName', label: 'Last Name' },
-    { key: 'website', label: 'Website' },
-    { key: 'description', label: 'Description' },
-    { key: 'chair', label: 'Chair' }
-];
-
-var data = [
-    { id: 1, firstName: 'John', lastName: 'Doe', website: 'www.google.com', description: 'sadfasad', chair: 'asdf' },
-    { id: 2, firstName: 'John', lastName: 'Doe', website: 'www.google.com', description: 'sadfasad', chair: 'asdf' }
-];
-
-var Table = React.createClass({
-
-    render: function() {
-        var headerComponents = this.generateHeaders(),
-            rowComponents = this.generateRows();
-
-        return (
-            <table className="table table-striped">
-                <thead> {headerComponents} </thead>
-                <tbody> {rowComponents} </tbody>
-            </table>
-        );
-    },
-
-    generateHeaders: function() {
-        var cols = this.props.cols;  // [{key, label}]
-
-        // generate our header (th) cell components
-        return cols.map(function(colData) {
-            return <th key={colData.key}> {colData.label} </th>;
-        });
-    },
-
-    generateRows: function() {
-        var cols = this.props.cols,  // [{key, label}]
-            data = this.props.data;
-
-        return data.map(function(item) {
-            // handle the column data within each row
-            var cells = cols.map(function(colData) {
-
-                // colData.key might be "firstName"
-                return <td> {item[colData.key]} </td>;
-            });
-            return <tr key={item.id}> {cells} </tr>;
-        });
-    }
-});
-
-React.render(<Table cols={cols} data={data}/>, document.getElementById('other'));
-
-// var our_rows = [
-//   {
-//     name: 'john',
-//     chamber: 'house',
-//     website: 'www',
-//     description: 'desc',
-//     chair: 'chair'
-//   }
-// ];
-// ReactDOM.render(<Table rows=our_rows/>, document.getElementById("other"));
-</script>
+<h1 align="center" style="color:white;">Committees</h1>
+<div class="container">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Chamber</th>
+        <th>Website</th>
+        <th>Chair</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href='/committee/id/1'>Senate Committee on Health, Education, Labor, and Pensions</a></td>
+        <td><a href='/senate'>Senate</a></td>
+        <td><a href='http://help.senate.gov'>http://help.senate.gov</a></td>
+        <td><a href='/senator/id/1'>Lamar Alexander</a></td>
+      </tr>
+      <tr>
+        <td><a href='/committee/id/2'>House Committee on Transportation and Infrastructure</a></td>
+        <td><a href='/house'>House</a></td>
+        <td><a href='http://transportation.house.gov'>http://transportation.house.gov</a></td>
+        <td><a href='/representative/id/1'>Bill Shuster</a></td>
+      </tr>
+      <tr>
+        <td><a href='/committee/id/3'>Senate Committee on the Budget</a></td>
+        <td><a href='/senate'>Senate</a></td>
+        <td><a href='http://budget.senate.gov'>http://budget.senate.gov</a></td>
+        <td><a href='/senator/id/2'>Michael Enzi</a></td>
+      </tr>
+    </tbody>
+</table>
+</div>
 {% endblock %}
-
