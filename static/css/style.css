@@ -1,10 +1,55 @@
-.fullscreen-bg {
+.fullscreen-bg-house {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
+    background: url(../img/house.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+.fullscreen-bg-senate {
+    position: fixed;
+    background: url(../img/senate.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+.fullscreen-bg-bills {
+    position: fixed;
+    background: url(../img/bill.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+.fullscreen-bg-about {
+    position: fixed;
+    background: url(../img/about.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+.fullscreen-bg-committees {
+    position: fixed;
+    background: url(../img/committee.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
     z-index: -100;
 }
 
@@ -15,11 +60,16 @@
 }
 
 .fullscreen-bg__video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
 }
 
 .container {
@@ -30,22 +80,4 @@
     float: left;
 }
 
-#bg {
-    position:fixed;
-    top:0;
-    left:-50%;
-    width:200%;
-    height:75%;
 
-}
-#bg img {
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    margin:auto;
-    min-width:50%;
-    min-height:50%;
-
-}

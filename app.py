@@ -2,7 +2,6 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -66,6 +65,18 @@ def committee2():
 @app.route('/committee/id/3')
 def committee3():
     return render_template('committee3.html')
+
+@app.route('/bills/id/1')
+def bills1():
+    return render_template('bills1.html')
+
+@app.route('/bills/id/2')
+def bills2():
+    return render_template('bills2.html')
+
+@app.route('/bills/id/3')
+def bills3():
+    return render_template('bills3.html')
 
 if __name__ == '__main__':
     app.run()
