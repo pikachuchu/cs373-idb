@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            	<section>
+	                <h1>An original concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2016 and setting forth the appropriate budgetary levels for fiscal years 2017 through 2025.</h1>
+	                <hr />
+	                <div class="person-text" style="float:left;">
+	                	<p class="lead"><b>Date Introduced:</b> 2015-03-20 </p>
+	                	<p class="lead"><b>House Status  :</b> Pass</p>
+	                	<p class="lead"><b>Senate Status :</b> Pass</p>
+	                	<p class="lead"><b>Current Status:</b> Agreed To</p>
+	                	<p class="lead"><b>Current Status Description:</b> This concurrent resolution was agreed to by both chambers of Congress on May 5, 2015. That is the end of the legislative process for concurrent resolutions. They do not have the force of law.</p> 
+	                	<p class="lead"><a href= "https://www.govtrack.us/congress/bills/114/sconres11"><b>Full Text</b></a></p>
+	                </div>
+                </section>
+                <!-- Post Content -->
+                <div id="committee-list" style="clear:both">
+                	<br />
+                	<hr />
+                	<h2>Sponsor</h2>
+                	<img class="img-responsive" id="person-picture" src="https://theunitedstates.io/images/congress/450x550/E000285.jpg" alt="" style="float:left;margin-right:2em;width:75px"; />
+	                <div class="person-text" style="float:left;">
+	                	<p class="lead"><b>Fullname:</b> <a href= "/senator/id/2"><b>Michael Enzi</b></a>
+	                	<p class="lead"><b>Party   :</b> Republican</p> 
+	                </div>
+                	<hr />      
+                </div>
+                <!-- <div class="twitter">
+                	<a class="twitter-timeline" href="https://twitter.com/RepBillShuster" data-widget-id="656952888724291584">Tweets by @RepBillShuster</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div> -->
+                <hr />
+                <div class="youtube">
+
+                </div>
+            </div>
+        </div>                
+	</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+{% endblock %}

@@ -55,5 +55,17 @@ def representative2():
 def representative3():
     return render_template('representative3.html')
 
+@app.route('/bills/id/1')
+def bills1():
+    return render_template('bills1.html')
+
+@app.route('/bills/id/2')
+def bills2():
+    return render_template('bills2.html')
+
+@app.route('/bills/id/3')
+def bills3():
+    return render_template('bills3.html')
+
 if __name__ == '__main__':
     app.run()
