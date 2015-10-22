@@ -10,46 +10,48 @@
 </div>
 <h1 align="center" style="color:white;">House of Representatives</h1>
 <div class="container">
-<table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Age</th>
-        <th>Party</th>
-        <th>State</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href='/representative/id/1'>Bill</a></td>
-        <td><a href='/representative/id/1'>Shuster</a></td>
-        <td>54</td>
-        <td>Republican</td>
-        <td>Pennsylvania</td>
-      </tr>
-      <tr>
-        <td><a href='/representative/id/2'>Will</a></td>
-        <td><a href='/representative/id/2'>Hurd</a></td>
-        <td>38</td>
-        <td>Republican</td>
-        <td>Texas</td>
-      </tr>
-      <tr>
-        <td><a href='/representative/id/3'>Lamar</a></td>
-        <td><a href='/representative/id/3'>Smith</a></td>
-        <td>67</td>
-        <td>Republican</td>
-        <td>Texas</td>
-      </tr>
-    </tbody>
-</table>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname</th>
+                    <th>Age</th>
+                    <th>Party</th>
+                    <th>State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href='/representative/id/1'>Bill</a></td>
+                    <td><a href='/representative/id/1'>Shuster</a></td>
+                    <td>54</td>
+                    <td>Republican</td>
+                    <td>Pennsylvania</td>
+                </tr>
+                <tr>
+                    <td><a href='/representative/id/2'>Will</a></td>
+                    <td><a href='/representative/id/2'>Hurd</a></td>
+                    <td>38</td>
+                    <td>Republican</td>
+                    <td>Texas</td>
+                </tr>
+                <tr>
+                    <td><a href='/representative/id/3'>Lamar</a></td>
+                    <td><a href='/representative/id/3'>Smith</a></td>
+                    <td>67</td>
+                    <td>Republican</td>
+                    <td>Texas</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 <script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
     });
-});
 </script>
 {% endblock %}
