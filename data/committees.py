@@ -34,6 +34,7 @@ for v in committees:
         }
     obj['is_subcommittee'] = committee['subcommittee']
     formatted[obj['id']] = obj
+    num += 1
 
 with open('committee_data.json', 'w') as outfile:
     json.dump(formatted, outfile)
