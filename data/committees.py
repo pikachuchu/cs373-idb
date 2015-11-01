@@ -15,23 +15,24 @@ for v in committees:
         curr = v
     obj = {
         "id": num,
-        "committee_id": curr['code'],
+        "committee_id": v['code'],
         "name": curr['name'],
         "website": curr['url'],
         "chamber": curr['committee_type'],
         "jurisdiction": curr['jurisdiction']
     }
 
-    sunlight_url = 'http://congress.api.sunlightfoundation.com/committees?apikey=' + apikey + '&committee_id=' + curr['code'] + '&fields=members,subcommittee'
+    sunlight_url = 'http://congress.api.sunlightfoundation.com/committees?apikey=' + apikey + '&committee_id=' + v['code'] + '&fields=members,subcommittee'
     committee = requests.get(sunlight_url).json()['results'][0]
     members = committee['members']
-    chairperson = members[0]
-    if chairperson['title'] == 'Chairman':
-        chair = chairperson['legislator']
-        obj['chair'] = {
-            'name': chair['first_name'] + ' ' + chair['last_name'],
-            'id': chair['bioguide_id']
-        }
+    if len(members) > 0:
+        chairperson = members[0]
+        if chairperson['title'] == 'Chairman':
+            chair = chairperson['legislator']
+            obj['chair'] = {
+                'name': chair['first_name'] + ' ' + chair['last_name'],
+                'id': chair['bioguide_id']
+            }
     obj['is_subcommittee'] = committee['subcommittee']
     formatted[obj['id']] = obj
     num += 1
