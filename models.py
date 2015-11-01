@@ -71,14 +71,15 @@ There is a one-to-one relationship with representatives (the sponsor).
 There is a many-to-many relationship with committees.
 """
 class bill(Base):
-    __tablename__ = 'bill'
-    id = Column(String(80), primary_key=True)
-    name = Column(String(80))
-    date_intro = Column(String(80))
-    house_status = Column(String(80))
-    senate_status = Column(String(80))
-    fk_sponsor = Column(Integer, ForeignKey("rep.id"))
-    #committees = relationship("committee", secondary=bill_committee_table)
+	__tablename__ = 'bill'
+	id = Column(String(80), primary_key=True)
+	name = Column(String(80))
+	date_intro = Column(String(80))
+	house_status = Column(String(80))
+	senate_status = Column(String(80))
+	fk_sponsor = Column(Integer, ForeignKey("rep.id"))
+	voting_url = Column(String(256))
+#committees = relationship("committee", secondary=bill_committee_table)
 
     #search_vector = Column(TSVectorType('name', 'year', 'result'))
 
@@ -86,5 +87,5 @@ class bill(Base):
 
 
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://root:politicianhub@localhost/phub')
+    engine = create_engine('mysql+mysqldb://root:politicianhub@localhost/test')
     Base.metadata.create_all(engine)
