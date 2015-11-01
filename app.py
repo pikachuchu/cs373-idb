@@ -1,6 +1,9 @@
 from flask import Flask, render_template, jsonify, make_response, abort
+from api import api
 
 app = Flask(__name__)
+
+app.register_blueprint(api, url_prefix='/api/v1')
 
 @app.route('/')
 def index():
@@ -77,81 +80,6 @@ def bills2():
 @app.route('/bills/id/3')
 def bills3():
     return render_template('bills3.html')
-
-# RESTful API
-
-dummy_data = [
-    {
-        'id': 0,
-        'first_name': 'foo',
-        'last_name': 'bar'
-    },
-    {
-        'id': 1,
-        'first_name': 'meow',
-        'last_name': 'cat'
-    }
-]
-
-"""
-GET all legislators
-"""
-@app.route('/api/v1/legislators', methods=['GET'])
-def get_legislators():
-    return jsonify({'legislators': dummy_data})
-
-"""
-GET all committees
-"""
-@app.route('/api/v1/committees', methods=['GET'])
-def get_committees():
-    return jsonify({'committees': dummy_data})
-
-"""
-GET all bills
-"""
-@app.route('/api/v1/bills', methods=['GET'])
-def get_bills():
-    return jsonify({'bills': dummy_data})
-
-"""
-GET a legislator by id
-"""
-@app.route('/api/v1/legislators/<int:legislator_id>', methods=['GET'])
-def get_legislator(legislator_id):
-    legislator = [v for v in dummy_data if v['id'] == legislator_id]
-    if len(legislator) == 0:
-        abort(404)
-    return jsonify({'legislator': legislator[0]})
-
-
-"""
-GET a committee by id
-"""
-@app.route('/api/v1/committees/<int:committee_id>', methods=['GET'])
-def get_committee(committee_id):
-    committee = [v for v in dummy_data if v['id'] == committee_id]
-    if len(committee) == 0:
-        abort(404)
-    return jsonify({'committee': committee[0]})
-
-
-"""
-GET a bill by id
-"""
-@app.route('/api/v1/bills/<int:bill_id>', methods=['GET'])
-def get_bill(bill_id):
-    bill = [v for v in dummy_data if v['id'] == bill_id]
-    if len(bill) == 0:
-        abort(404)
-    return jsonify({'bill': bill[0]})
-
-"""
-Handle 404 errors
-"""
-@app.errorhandler(404)
-def not_found(error):
-    return make_response(jsonify({'error': 'Not found'}), 404)
 
 if __name__ == '__main__':
     app.run()
