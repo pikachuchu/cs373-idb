@@ -5,11 +5,11 @@
 
 
 {% block body %}
-<div class="fullscreen-bg-senate">
+<div class="fullscreen-bg-house">
     <!-- <img src="static/img/senate.jpg"/> -->
 </div>
-<h1 align="center">Senate</h1>
-<div class="container" id = "senate">    
+<h1 align="center" style="color:white">House of Representatives</h1>
+<div class="container" id = "house">    
 </div>
 <script type="text/babel">
 
@@ -25,13 +25,11 @@ var data = [
     { 'id': 1, 'firstName': 'Bill', 'lastName': 'Shuster', 'age': '54', 'party': 'Republican', 'state': 'Pennsylvania' },
     { 'id': 2, 'firstName': 'Will', 'lastName': 'Hurd', 'age': '38', 'party': 'Republican', 'state': 'Texas' },
     { 'id': 3, 'firstName': 'Lamar', 'lastName': 'Smith', 'age': '67', 'party': 'Republican', 'state': 'Texas' }
-    
 ]; //Json Data
 
 var Table = React.createClass({
     getInitialState: function(){
-        return {data: [ 
-]}
+        return {data: []}
     },
     /*loadData: function(){
         $.ajax({
@@ -86,7 +84,7 @@ var Table = React.createClass({
     }
  });
 
-React.render(<Table cols={cols} data={data}/>, document.getElementById('senate'));
+React.render(<Table cols={cols} data={data}/>, document.getElementById('house'));
 
 </script>
 {% endblock %}
