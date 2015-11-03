@@ -6,52 +6,77 @@
 
 {% block body %}
 <div class="fullscreen-bg-house">
-    <!-- <img src="static/img/house.jpg"/> -->
+    <!-- <img src="static/img/senate.jpg"/> -->
 </div>
-<h1 align="center" style="color:white;">House of Representatives</h1>
-<div class="container">
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Firstname</th>
-                    <th>Lastname</th>
-                    <th>Age</th>
-                    <th>Party</th>
-                    <th>State</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href='/representative/id/1'>Bill</a></td>
-                    <td><a href='/representative/id/1'>Shuster</a></td>
-                    <td>54</td>
-                    <td>Republican</td>
-                    <td>Pennsylvania</td>
-                </tr>
-                <tr>
-                    <td><a href='/representative/id/2'>Will</a></td>
-                    <td><a href='/representative/id/2'>Hurd</a></td>
-                    <td>38</td>
-                    <td>Republican</td>
-                    <td>Texas</td>
-                </tr>
-                <tr>
-                    <td><a href='/representative/id/3'>Lamar</a></td>
-                    <td><a href='/representative/id/3'>Smith</a></td>
-                    <td>67</td>
-                    <td>Republican</td>
-                    <td>Texas</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<h1 align="center" style="color:white">House of Representatives</h1>
+<div class="container" id = "house">    
 </div>
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $(".clickable-row").click(function() {
-            window.document.location = $(this).data("href");
+<script type="text/babel">
+
+var data = [
+    { 'id': 1, 'firstName': 'Bill', 'lastName': 'Shuster', 'age': '54', 'party': 'Republican', 'state': 'Pennsylvania' },
+    { 'id': 2, 'firstName': 'Will', 'lastName': 'Hurd', 'age': '38', 'party': 'Republican', 'state': 'Texas' },
+    { 'id': 3, 'firstName': 'Lamar', 'lastName': 'Smith', 'age': '67', 'party': 'Republican', 'state': 'Texas' }
+]; //Json Data
+
+var Table = React.createClass({
+    getInitialState: function(){
+        return {data: []}
+    },
+    /*loadData: function(){
+        $.ajax({
+            url: '/daotao/lops',
+            success: function(data){
+                this.setState({data: data.lops});
+            }.bind(this)
+        })
+    },
+    componentWillMount: function(){
+        this.loadData();
+    },*/ 
+    componentDidMount: function(){
+        var self = this;
+        $('#mytable').dataTable({
+          "bAutoWidth": false,
+          "bDestroy": true,     
+          "fnDrawCallback": function() {                
+                self.forceUpdate();         
+          }, 
         });
-    });
+    },
+    componentDidUpdate: function(){
+        $('#mytable').dataTable({
+          "bAutoWidth": false,
+          "bDestroy": true, 
+        });
+    },
+    render: function(){
+        var x = this.props.data.map(function(d, index){
+            return <tr><td><a href={"representative/id/" +d.id}>{d.firstName}</a></td><td><a href={"representative/id/" +d.id}>{d.lastName}</a></td><td>{d.age}</td><td>{d.party}</td><td>{d.state}</td></tr>
+        });
+        
+        return (
+            <div className="table-responsive">
+                <table className="table table-striped" id="mytable">
+                    <thead>
+                        <tr className="success">
+                            <td>First Name</td>
+                            <td>Last Name</td>
+                            <td>Age</td>
+                            <td>Party</td>
+                            <td>State</td>
+                        </tr>   
+                    </thead>
+                    <tbody>
+                        {x}
+                    </tbody>
+                </table>
+            </div>
+        )       
+    }
+ });
+
+React.render(<Table data={data}/>, document.getElementById('house'));
+
 </script>
 {% endblock %}

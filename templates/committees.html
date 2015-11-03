@@ -8,42 +8,76 @@
 <div id="bg" class="fullscreen-bg-committees">
 </div>
 <h1 align="center" style="color:white;">Committees</h1>
-<div class="container">
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Chamber</th>
-                    <th>Website</th>
-                    <th>Chair</th>
-                    <th>Subcommittee?</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href='/committee/id/1'>Senate Committee on Health, Education, Labor, and Pensions</a></td>
-                    <td><a href='/senate'>Senate</a></td>
-                    <td><a href='http://help.senate.gov'>http://help.senate.gov</a></td>
-                    <td><a href='/senator/id/1'>Lamar Alexander</a></td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td><a href='/committee/id/2'>House Committee on Transportation and Infrastructure</a></td>
-                    <td><a href='/house'>House</a></td>
-                    <td><a href='http://transportation.house.gov'>http://transportation.house.gov</a></td>
-                    <td><a href='/representative/id/1'>Bill Shuster</a></td>
-                    <td>No</td>
-                </tr>
-                <tr>
-                    <td><a href='/committee/id/3'>Senate Committee on the Budget</a></td>
-                    <td><a href='/senate'>Senate</a></td>
-                    <td><a href='http://budget.senate.gov'>http://budget.senate.gov</a></td>
-                    <td><a href='/senator/id/2'>Michael Enzi</a></td>
-                    <td>No</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="container" id="committees">
 </div>
+<script type="text/babel">
+
+var data = [
+    { 'id': 1, 'name': 'Senate Committee on Health, Education, Labor, and Pensions', 'chamber': 'Senate', 'website': 'http://help.senate.gov', 'chairName': 'Lamar Alexander', 'chairId': '1', 'subcommittee': 'No' },
+    { 'id': 2, 'name': 'House Committee on Transportation and Infrastructure', 'chamber': 'House', 'website': 'http://transportation.house.gov', 'chairName': 'Bill Shuster', 'chairId': '1', 'subcommittee': 'No' },
+    { 'id': 3, 'name': 'Senate Committee on the Budget', 'chamber': 'Senate', 'website': 'http://budget.senate.gov', 'chairName': 'Michael Enzi', 'chairId': '2', 'subcommittee': 'No' }
+]; //Json Data
+
+var Table = React.createClass({
+    getInitialState: function(){
+        return {data: []}
+    },
+    /*loadData: function(){
+        $.ajax({
+            url: '/daotao/lops',
+            success: function(data){
+                this.setState({data: data.lops});
+            }.bind(this)
+        })
+    },
+    componentWillMount: function(){
+        this.loadData();
+    },*/ 
+    componentDidMount: function(){
+        var self = this;
+        $('#mytable').dataTable({
+          "bAutoWidth": false,
+          "bDestroy": true,     
+          "fnDrawCallback": function() {                
+                self.forceUpdate();         
+          }, 
+        });
+    },
+    componentDidUpdate: function(){
+        $('#mytable').dataTable({
+          "bAutoWidth": false,
+          "bDestroy": true, 
+        });
+    },
+    render: function(){
+        var x = this.props.data.map(function(d, index){
+            var chamber = (d.chamber == "Senate") ? "/senate" : "/house";
+            var chair = (d.chamber == "Senate") ? "/senator/id/" : "/representative/id/";
+            return <tr><td><a href={"committee/id/" +d.id}>{d.name}</a></td><td><a href={chamber}>{d.chamber}</a></td><td><a href={d.website}>{d.website}</a></td><td><a href={chair + d.chairId}>{d.chairName}</a></td><td>{d.subcommittee}</td></tr>
+        });
+        
+        return (
+            <div className="table-responsive">
+                <table className="table table-striped" id="mytable">
+                    <thead>
+                        <tr className="success">
+                            <td>Name</td>
+                            <td>Chamber</td>
+                            <td>Website</td>
+                            <td>Chair</td>
+                            <td>Subcommittee?</td>
+                        </tr>   
+                    </thead>
+                    <tbody>
+                        {x}
+                    </tbody>
+                </table>
+            </div>
+        )       
+    }
+ });
+
+React.render(<Table data={data}/>, document.getElementById('committees'));
+
+</script>
 {% endblock %}
