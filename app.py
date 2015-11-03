@@ -82,4 +82,4 @@ def bills3():
     return render_template('bills3.html')
 
 if __name__ == '__main__':
-    app.run()
+    app.run('0.0.0.0', port=8000)
