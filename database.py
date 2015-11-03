@@ -35,7 +35,7 @@ def add_bill_committees(row, obj, verbose):
             obj['committees'].append(get_committee_by_id(r.committee_id, verbose))
         else:
             obj['committees'].append(r.committee_id)
-
+    
 """
 Get all legislators from the database
 """
@@ -89,6 +89,8 @@ def get_committee_by_id(committee_id, verbose):
     obj = {}
     if row:
         obj = committee.get_obj(row)
+        if verbose:
+            obj['chair'] = get_legislator_by_id(obj['chair'], False)
     return obj
 
 """
@@ -100,5 +102,7 @@ def get_bill_by_id(bill_id, verbose):
     if row:
         obj = bill.get_obj(row)
         add_bill_committees(row, obj, verbose)
+        if verbose:
+            obj['sponsor'] = get_legislator_by_id(obj['sponsor'], False)
     return obj
 
