@@ -57,6 +57,23 @@ class legislator(Base):
     image = Column(String(2048))
     #committees = relationship("committee", secondary=rep_committee_table)
 
+    def get_obj(row):
+        return {
+            'id': row.id,
+            'first_name': row.first_name,
+            'last_name': row.last_name,
+            'chamber': row.chamber,
+            'gender': row.gender,
+            'birthday': row.birthday,
+            'party': row.party,
+            'state': row.state,
+            'twitter': row.twitter,
+            'website': row.website,
+            'bio_guide': row.bio_guide,
+            'contact_form': row.contact_form,
+            'image': row.image
+        }
+
     #search_vector = Column(TSVectorType('first_name', 'last_name', 'chamber', 'party', 'state'))
 
 """
@@ -73,6 +90,18 @@ class committee(Base):
     is_subcommittee = Column(Boolean)
     committee_id = Column(String(80))
     fk_chair = Column(Integer, nullable=True)
+
+    def get_obj(row):
+        return {
+            'id': row.id,
+            'name': row.name,
+            'chamber': row.chamber,
+            'website': row.website,
+            'jurisdiction': row.jurisdiction,
+            'is_subcommittee': row.is_subcommittee,
+            'committee_id': row.committee_id,
+            'chair': row.fk_chair
+        }
 
     #search_vector = Column(TSVectorType('name', 'chamber', 'chair'))
 
@@ -95,8 +124,22 @@ class bill(Base):
     current_status_description = Column(Text)
     current_status = Column(String(80))
     fk_sponsor = Column(Integer, nullable=True)
-#committees = relationship("committee", secondary=bill_committee_table)
 
+    def get_obj(row):
+        return {
+            'id': row.id,
+            'name': row.name,
+            'bill_id': row.bill_id,
+            'bill_type': row.bill_type,
+            'date_intro': row.date_intro,
+            'house_status': row.house_status,
+            'senate_status': row.senate_status,
+            'link': row.link,
+            'current_status_label': row.current_status_label,
+            'current_status_description': row.current_status_description,
+            'current_status': row.current_status,
+            'sponsor': row.fk_sponsor
+        }
     #search_vector = Column(TSVectorType('name', 'year', 'result'))
 
 if __name__ == "__main__":
