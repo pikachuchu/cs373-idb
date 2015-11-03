@@ -14,14 +14,18 @@ for c in bill_data:
     bill_ids[curr['bill_id']] = c
 print(bill_ids)
 
-formatted_result = []
+formatted_result = set() 
 for r in rep_data:
     votes = rep_data[r]['votes']
     for c in votes:
-        formatted_result.append([r, bill_ids[c['bill_id']], c['result']])
+        formatted_result.add((r, bill_ids[c['bill_id']], c['result']))
+
+result = []
+for a,b,c in formatted_result:
+    result.append([a,b,c]) 
 
 with open('votes_data.json', 'w') as outfile:
-    json.dump(formatted_result, outfile)
+    json.dump(result, outfile)
 
-print(formatted_result)
+print(result)
 
