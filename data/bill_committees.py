@@ -17,8 +17,10 @@ formatted_result = []
 for r in bill_data:
     committees = bill_data[r]['committees']
     for c in committees:
-        formatted_result.append([r, committee_ids[c]])
-        break
+        try:
+            formatted_result.append([r, committee_ids[c]])
+        except:
+            pass
 
 with open('bill_committee_data.json', 'w') as outfile:
     json.dump(formatted_result, outfile)

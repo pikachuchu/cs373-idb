@@ -19,7 +19,6 @@ for r in rep_data:
     votes = rep_data[r]['votes']
     for c in votes:
         formatted_result.append([r, bill_ids[c['bill_id']], c['result']])
-        break
 
 with open('votes_data.json', 'w') as outfile:
     json.dump(formatted_result, outfile)
