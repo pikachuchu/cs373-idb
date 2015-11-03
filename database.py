@@ -23,6 +23,7 @@ def add_bill_committees(row, obj):
     obj['committees'] = []
     for r in session.query(bill_committee).filter(bill_committee.bill_id == row.id):
         obj['committees'].append(r.committee_id)
+
 """
 Get all legislators from the database
 """
@@ -61,9 +62,11 @@ Get a legislator by its id from the database
 """
 def get_legislator_by_id(legislator_id):
     row = session.query(legislator).filter(legislator.id == legislator_id).first()
-    obj = legislator.get_obj(row)
-    add_committee_members(row, obj)
-    add_votes(row, obj)
+    obj = {}
+    if row:
+        obj = legislator.get_obj(row)
+        add_committee_members(row, obj)
+        add_votes(row, obj)
     return obj
 
 """
@@ -71,7 +74,9 @@ Get a committee by its id from the database
 """
 def get_committee_by_id(committee_id):
     row = session.query(committee).filter(committee.id == committee_id).first()
-    obj = committee.get_obj(row)
+    obj = {}
+    if row:
+        obj = committee.get_obj(row)
     return obj
 
 """
@@ -79,8 +84,8 @@ Get a bill by its id from the database
 """
 def get_bill_by_id(bill_id):
     row = session.query(bill).filter(bill.id == bill_id).first()
-    obj = bill.get_obj(row)
-    add_bill_committees(row, obj)
+    obj = {}
+    if row:
+        obj = bill.get_obj(row)
+        add_bill_committees(row, obj)
     return obj
-
-print(get_bill_by_id(1))
