@@ -49,8 +49,10 @@ var Table = React.createClass({
     },
     render: function(){
         var table = this.state.data.map(function(d, index){
-            var sponsorName = (d["sponsor"]) ? "Name Here" : "None";
-            var sponsor = (sponsorName == "None") ? sponsorName : <a href={"legislator/id/" + d["sponsor"]}>{sponsorName}</a>;
+
+            var sponsorPerson = d["sponsor"];
+            var sponsorName = (sponsorPerson["id"]) ? sponsorPerson["first_name"] + " " + sponsorPerson["last_name"] : "None";
+            var sponsor = (sponsorName == "None") ? sponsorName : <a href={"legislator/id/" + sponsorPerson["id"]}>{sponsorName}</a>;
             var senate_status = (d["senate_status"] == "") ? "none" : d["senate_status"];
             var house_status = (d["house_status"] == "") ? "none" : d["house_status"];
             return (<tr>
@@ -91,7 +93,7 @@ var Table = React.createClass({
         }
     }
  });
-React.render(<Table source="http://politicianhub.me/api/v1/bills" />, document.getElementById('bills'));
+React.render(<Table source="http://politicianhub.me/api/v1/bills?verbose=true" />, document.getElementById('bills'));
 
 </script>
 {% endblock %}

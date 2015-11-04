@@ -71,7 +71,7 @@ var Table = React.createClass({
             var subcommittee = (d["is_subcommittee"]) ? "Yes" : "No";
             var chairPerson = d["chair"];
             var chairName = (chairPerson["id"]) ? chairPerson["first_name"] + " " + chairPerson["last_name"] : "None";
-            var chair = (chairName ==  "None") ? chairName : <a href={"legislator/id/" + 5}>{chairName}</a> ;
+            var chair = (chairName ==  "None") ? chairName : <a href={"legislator/id/" + chairPerson["id"]}>{chairName}</a> ;
             return (<tr>
                      <td><a href={"committees/id/" +d["id"]}>{d["name"]}</a></td>
                      <td>{chamb}</td>
