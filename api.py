@@ -5,13 +5,58 @@ import database as db
 
 api = Blueprint('api', __name__)
 
+legislator_fields = {
+    'id',
+    'first_name',
+    'last_name',
+    'chamber',
+    'gender',
+    'birthday',
+    'state',
+    'twitter',
+    'website',
+    'bio_guide',
+    'contact_form',
+    'image'
+}
+
+committee_fields = {
+    'id',
+    'name',
+    'chamber',
+    'website',
+    'jurisdiction',
+    'is_subcommittee',
+    'committee_id',
+    'chair'
+}
+
+bill_fields = {
+    'id',
+    'name',
+    'bill_id',
+    'bill_type',
+    'date_intro',
+    'house_status',
+    'senate_status',
+    'link',
+    'current_status_label',
+    'current_status_description',
+    'current_status',
+    'sponsor'
+}
+
 """
 GET all legislators
 """
 @api.route('/legislators', methods=['GET'])
 def get_legislators():
     verbose = request.args.get('verbose')
-    return jsonify({'legislators': db.get_legislators(verbose == 'true')})
+    args = {}
+    for v in request.args:
+        if v in legislator_fields:
+            args[v] = request.args.get(v)
+    return jsonify({'legislators': db.get_legislators(args, verbose == 'true')})
 
 """
 GET all committees
@@ -19,7 +64,11 @@ GET all committees
 @api.route('/committees', methods=['GET'])
 def get_committees():
     verbose = request.args.get('verbose')
-    return jsonify({'committees': db.get_committees(verbose == 'true')})
+    args = {}
+    for v in request.args:
+        if v in committee_fields:
+            args[v] = request.args.get(v)
+    return jsonify({'committees': db.get_committees(args, verbose == 'true')})
 
 """
 GET all bills
@@ -27,7 +76,11 @@ GET all bills
 @api.route('/bills', methods=['GET'])
 def get_bills():
     verbose = request.args.get('verbose')
-    return jsonify({'bills': db.get_bills(verbose == 'true')})
+    args = {}
+    for v in request.args:
+        if v in bill_fields:
+            args[v] = request.args.get(v)
+    return jsonify({'bills': db.get_bills(args, verbose == 'true')})
 
 """
 GET a legislator by id
