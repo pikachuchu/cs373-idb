@@ -20,7 +20,6 @@ before_script:
     - printenv
     - pip list
     - mysql -e 'create database test'
-    - cp ./.travis.database.yml ./config/database.yml
 
 script:
     - date
