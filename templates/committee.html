@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8" id = "committee1">
+            	
+            </div>
+        </div>
+	</div>
+
+<script type="text/babel">
+    var data = [
+        {
+        chair: {        
+            bio_guide: "C001095",
+            birthday: "1977-05-13",
+            chamber: "Senate",
+            committees: [],
+            contact_form: "",
+            first_name: "Tom",
+            gender: "male",
+            id: 405,
+            image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/C001095.jpg",
+            last_name: "Cotton",
+            party: "Republican",
+            state: "AR",
+            twitter: "SenTomCotton",
+            votes: [],
+            website: "http://www.cotton.senate.gov"
+        },
+        chamber: "house",
+        committee_id: "HSFA16",
+        id: 1,
+        is_subcommittee: true,
+        jurisdiction: "The House Committee on Foreign Affairs considers legislation that impacts the diplomatic community, which includes the Department of State, the Agency for International Development (USAID), the Peace Corps, the United Nations, and the enforcement of the Arms Export Control Act.",
+        name: "House Committee on Foreign Affairs",
+        website: "http://foreignaffairs.house.gov/"
+        }
+   ]; //Json Data
+ 
+
+ var Table = React.createClass({
+        getInitialState: function(){
+            return {data: []}
+        },
+        componentDidMount: function(){
+            var self = this;
+            $.get(this.props.source, function(result) {
+              var d = [];
+              d.push(result);
+              if (this.isMounted()) {
+                this.setState({
+                  data: d
+                });
+              }
+            }.bind(this));
+        },
+        componentDidUpdate: function(){
+            $('#mytable').dataTable({
+              "bAutoWidth": false,
+              "bDestroy": true, 
+            });
+        },
+        render: function(){
+            var committee = this.props.data[0];
+            
+            var isSub = (committee["is_subcommittee"]) ? "Yes" : "No";
+
+            var chair = committee["chair"];
+
+
+            return (
+                <section>
+                    <h1> {committee["name"]} </h1>
+                    <hr />
+                    <div className="committee-text" >
+                        <p className="lead"><b>Chamber      :</b> <a href= {"/" + committee["chamber"]}>{committee["chamber"]}</a></p>
+                        <p className="lead"><b>Jurisdiction :</b> {committee["jurisdiction"]}</p>
+                        <p className="lead"><b>Subcommittee? :</b> {isSub}</p>
+                        <p className="lead"><a href= {committee["website"]}><b>Website</b></a></p>
+                    </div>
+
+                    <div id="chair" >
+                        <hr />
+                        <h2>Chair</h2>
+                        <img className="img-responsive" id="person-picture" src={chair["image"]} alt="" />
+                        <div className="person-text" >
+                            <p className="lead"><b>Fullname:</b> <a href= {"/" + chair["chamber"].toLowerCase() + "/id/" + chair["id"]}><b>{chair["first_name"] + " " + chair["last_name"]}</b></a> </p>
+                            <p className="lead"><b>Party   :</b> {chair["party"]}</p> 
+                        </div>
+                    </div>
+
+                </section>
+            )       
+        }
+     });
+
+    React.render(<Table data={data}/>, document.getElementById('committee1'));
+
+</script>
+{% endblock %}

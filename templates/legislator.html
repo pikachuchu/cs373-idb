@@ -55,7 +55,7 @@
 	    		console.log(person["gender"]);
 	    		var gender = (person["gender"] == "male") ? "Male" : "Female";
 		    	var committeesList = person["committees"].map(function(d, index){
-	            return <li><a href={"/committees/id/" + d.id}>{d.name}</a></li>
+	            return <li><a href={"/committee/id/" + d.id}>{d.name}</a></li>
 	        	});
 	        	var billsList = person["votes"].map(function(d, index){
 	        		return (
