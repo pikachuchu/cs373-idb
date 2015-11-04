@@ -321,7 +321,7 @@ class tests(TestCase):
         assert(toRemove == None)
     
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://phub:@localhost/test?charset=utf8')
+    engine = create_engine('mysql+mysqldb://travis:@localhost/test?charset=utf8')
     Session = sessionmaker(bind=engine)
     session = Session()
     engine.echo = True
