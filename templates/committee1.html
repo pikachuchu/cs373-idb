@@ -7,27 +7,82 @@
 {% block body %}
 	<div class="container">
         <div class="row">
-            <div class="col-lg-8">
-            	<section>
-	                <h1>Senate Committee on Health, Education, Labor, and Pensions</h1>
-	                <hr />
-	                <div class="committee-text" style="float:left;">
-	                	<p class="lead"><b>Chamber      :</b> <a href='/senate'>Senate</a></p>
-	                	<p class="lead"><b>Jurisdiction :</b> N/A</p>
-	                	<p class="lead"><b>Subcommittee? :</b> No</p>
-	                	<p class="lead"><a href= "http://help.senate.gov/"><b>Website</b></a></p>
-	                </div>
-                </section>
-                <div id="chair" style="clear:both">
-                        <hr />
-                        <h2>Chair</h2>
-                        <img class="img-responsive" id="person-picture" src="https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000360.jpg" alt="" style="float:left;margin-right:2em;width:75px" />
-                        <div class="person-text" style="float:left;">
-                            <p class="lead"><b>Fullname:</b> <a href= "/senator/id/1"><b>Lamar Alexander</b></a>
-                            <p class="lead"><b>Party   :</b> Republican</p> 
-                        </div>
-                </div>
+            <div class="col-lg-8" id = "committee1">
+            	
             </div>
         </div>
 	</div>
+
+<script type="text/babel">
+    var data = [
+        {
+        chair: { },
+        chamber: "house",
+        committee_id: "HSFA16",
+        id: 1,
+        is_subcommittee: true,
+        jurisdiction: "The House Committee on Foreign Affairs considers legislation that impacts the diplomatic community, which includes the Department of State, the Agency for International Development (USAID), the Peace Corps, the United Nations, and the enforcement of the Arms Export Control Act.",
+        name: "House Committee on Foreign Affairs",
+        website: "http://foreignaffairs.house.gov/"
+        }
+   ]; //Json Data
+ 
+
+ var Table = React.createClass({
+        getInitialState: function(){
+            return {data: [ 
+    ]}
+        },
+        /*loadData: function(){
+            $.ajax({
+                url: '/daotao/lops',
+                success: function(data){
+                    this.setState({data: data.lops});
+                }.bind(this)
+            })
+        },
+        componentWillMount: function(){
+            this.loadData();
+        },*/ 
+        componentDidMount: function(){
+            var self = this;
+            $('#mytable').dataTable({
+              "bAutoWidth": false,
+              "bDestroy": true,     
+              "fnDrawCallback": function() {                
+                    self.forceUpdate();         
+              }, 
+            });
+        },
+        componentDidUpdate: function(){
+            $('#mytable').dataTable({
+              "bAutoWidth": false,
+              "bDestroy": true, 
+            });
+        },
+        render: function(){
+            var committee = this.props.data[0];
+            
+            var isSub = (committee["is_subcommittee"]) ? "Yes" : "No";
+
+
+            return (
+                <section>
+                    <h1> {committee["name"]} </h1>
+                    <hr />
+                    <div className="committee-text" >
+                        <p className="lead"><b>Chamber      :</b> <a href= {"/" + committee["chamber"]}>{committee["chamber"]}</a></p>
+                        <p className="lead"><b>Jurisdiction :</b> {committee["jurisdiction"]}</p>
+                        <p className="lead"><b>Subcommittee? :</b> {isSub}</p>
+                        <p className="lead"><a href= {committee["website"]}><b>Website</b></a></p>
+                    </div>
+
+                </section>
+            )       
+        }
+     });
+
+    React.render(<Table data={data}/>, document.getElementById('committee1'));
+
+</script>
 {% endblock %}
