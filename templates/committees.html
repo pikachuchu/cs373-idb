@@ -69,8 +69,9 @@ var Table = React.createClass({
             }
             var chamb = (chamber == "Joint") ? chamber : <a href={chamberLink}>{chamber}</a>;
             var subcommittee = (d["is_subcommittee"]) ? "Yes" : "No";
-            var chairName = (d["chair"]) ? "Name Here" : "None";
-            var chair = (chairName ==  "None") ? chairName : <a href={"legislator/id/" + d["chair"]}>{chairName}</a> ;
+            var chairPerson = d["chair"];
+            var chairName = (chairPerson["id"]) ? chairPerson["first_name"] + " " + chairPerson["last_name"] : "None";
+            var chair = (chairName ==  "None") ? chairName : <a href={"legislator/id/" + 5}>{chairName}</a> ;
             return (<tr>
                      <td><a href={"committees/id/" +d["id"]}>{d["name"]}</a></td>
                      <td>{chamb}</td>
@@ -109,7 +110,7 @@ var Table = React.createClass({
         }
     }
  });
-React.render(<Table source="http://politicianhub.me/api/v1/committees" />, document.getElementById('committees'));
+React.render(<Table source="http://politicianhub.me/api/v1/committees?verbose=true" />, document.getElementById('committees'));
 
 </script>
 {% endblock %}
