@@ -33,6 +33,10 @@ def about():
 # def senator(sen_id):
 #     return render_template('senator.html', sen_id = sen_id)
 
+@app.route('/legislator/id/<int:legislator_id>')
+def legislator(legislator_id):
+    return render_template('legislator.html', legislator_id = legislator_id)
+
 @app.route('/senator/id/1')
 def senator1():
     return render_template('senator1.html')
