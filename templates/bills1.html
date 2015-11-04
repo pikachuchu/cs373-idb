@@ -83,17 +83,31 @@
         },
         render: function(){
             var bills = this.props.data[0];
-            
+            var sponsor = bills["sponsor"];
 
 
             return (
                 <section>
                     <h1> {bills["name"]} </h1>
                     <hr />
-                    <div className="committee-text" >
-                        <h1></h1>
-	                <hr />
-                    </div>
+                    <div className="person-text" >
+	                	<p className="lead"><b>Date Introduced:</b> {bills["date_intro"]}} </p>
+	                	<p className="lead"><b>House Status  :</b> {bills["senate_status"]}</p>
+	                	<p className="lead"><b>Senate Status :</b> {bills["house_status"]}</p>
+	                	<p className="lead"><b>Current Status:</b> {bills["current_status"]}</p>
+	                	<p className="lead"><b>Current Status Description:</b> {bills["current_status_description"]}</p> 
+	                	<p className="lead"><a href= {bills["link"]}><b>Full Text</b></a></p>
+	                </div>
+	                
+	                <div id="committee-list" >
+	                	<hr />
+	                	<h2>Sponsor</h2>
+	                	<img className="img-responsive" id="person-picture" src={sponsor["image"]} alt="" />
+	                	<div className="person-text" >
+		                	<p className="lead"><b>Fullname:</b> <a href= {"/" + sponsor["chamber"].toLowerCase() + "/id/" + sponsor["id"]}><b>{sponsor["first_name"] + " " + sponsor["last_name"]}</b></a> </p>
+		                	<p className="lead"><b>Party   :</b> {sponsor["party"]}</p> 
+		                </div>
+                	</div>
 
                 </section>
             )       
