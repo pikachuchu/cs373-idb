@@ -12,36 +12,34 @@
 </div>
 <script type="text/babel">
 
-var data = [
-    { 'id': 1, 'name': 'Senate Committee on Health, Education, Labor, and Pensions', 'chamber': 'Senate', 'website': 'http://help.senate.gov', 'chairName': 'Lamar Alexander', 'chairId': '1', 'subcommittee': 'No' },
-    { 'id': 2, 'name': 'House Committee on Transportation and Infrastructure', 'chamber': 'House', 'website': 'http://transportation.house.gov', 'chairName': 'Bill Shuster', 'chairId': '1', 'subcommittee': 'No' },
-    { 'id': 3, 'name': 'Senate Committee on the Budget', 'chamber': 'Senate', 'website': 'http://budget.senate.gov', 'chairName': 'Michael Enzi', 'chairId': '2', 'subcommittee': 'No' }
-]; //Json Data
-
 var Table = React.createClass({
     getInitialState: function(){
-        return {data: []}
+        return {
+            data: []
+        }
     },
-    /*loadData: function(){
-        $.ajax({
-            url: '/daotao/lops',
-            success: function(data){
-                this.setState({data: data.lops});
-            }.bind(this)
-        })
-    },
-    componentWillMount: function(){
-        this.loadData();
-    },*/ 
+    // loadData: function(){
+    //     $.get(this.props.source, function(result) {
+    //       if (this.isMounted()) {
+    //         this.setState({
+    //           data : []
+    //         });
+    //       }
+    //     }.bind(this));
+    // },
+    // componentWillMount: function(){
+    //     this.loadData();
+    // }, 
     componentDidMount: function(){
         var self = this;
-        $('#mytable').dataTable({
-          "bAutoWidth": false,
-          "bDestroy": true,     
-          "fnDrawCallback": function() {                
-                self.forceUpdate();         
-          }, 
-        });
+        $.get(this.props.source, function(result) {
+          var lastGist = result["committees"];
+          if (this.isMounted()) {
+            this.setState({
+              data: lastGist
+            });
+          }
+        }.bind(this));
     },
     componentDidUpdate: function(){
         $('#mytable').dataTable({
@@ -50,34 +48,68 @@ var Table = React.createClass({
         });
     },
     render: function(){
-        var x = this.props.data.map(function(d, index){
-            var chamber = (d.chamber == "Senate") ? "/senate" : "/house";
-            var chair = (d.chamber == "Senate") ? "/senator/id/" : "/representative/id/";
-            return <tr><td><a href={"committee/id/" +d.id}>{d.name}</a></td><td><a href={chamber}>{d.chamber}</a></td><td><a href={d.website}>{d.website}</a></td><td><a href={chair + d.chairId}>{d.chairName}</a></td><td>{d.subcommittee}</td></tr>
-        });
         
-        return (
-            <div className="table-responsive">
-                <table className="table table-striped" id="mytable">
-                    <thead>
-                        <tr className="success">
-                            <td>Name</td>
-                            <td>Chamber</td>
-                            <td>Website</td>
-                            <td>Chair</td>
-                            <td>Subcommittee?</td>
-                        </tr>   
-                    </thead>
-                    <tbody>
-                        {x}
-                    </tbody>
-                </table>
-            </div>
-        )       
+        var dat = this.state.data;
+        var table = this.state.data.map(function(d, index){
+            var chamberLink = "";
+            var chamber = "";
+            if(d["chamber"] == "house")
+            {
+                chamber = "House";
+                chamberLink = "/house";
+            }
+            else if(d["chamber"] == "senate")
+            {
+                chamber = "Senate";
+                chamberLink = "/senate";
+            }
+            else
+            {
+                chamber = "Joint";
+            }
+            var chamb = (chamber == "Joint") ? chamber : <a href={chamberLink}>{chamber}</a>;
+            var subcommittee = (d["is_subcommittee"]) ? "Yes" : "No";
+            var chairName = (d["chair"]) ? "Name Here" : "None";
+            var chair = (chairName ==  "None") ? chairName : <a href={"legislator/id/" + d["chair"]}>{chairName}</a> ;
+            return (<tr>
+                     <td><a href={"committees/id/" +d["id"]}>{d["name"]}</a></td>
+                     <td>{chamb}</td>
+                     <td><a href={d.website}>{d.website}</a></td>
+                     <td>{chair}</td>
+                     <td>{subcommittee}</td>
+                 </tr>)
+        });
+        if(this.state.data.length > 1)
+        {      
+            return (
+                    <div className="table-responsive">
+                        <table className="table table-striped" id="mytable">
+                            <thead>
+                                <tr className="success">
+                                    <td>Name</td>
+                                    <td>Chamber</td>
+                                    <td>Website</td>
+                                    <td>Chair</td>
+                                    <td>Subcommitte?</td>
+                                </tr>   
+                            </thead>
+                            <tbody>
+                                {table}
+                            </tbody>
+                        </table>
+                    </div>
+                )    
+        }
+        else
+        {
+            return (
+                    <div className="table-responsive">
+                    </div>
+                )    
+        }
     }
  });
-
-React.render(<Table data={data}/>, document.getElementById('committees'));
+React.render(<Table source="http://politicianhub.me/api/v1/committees" />, document.getElementById('committees'));
 
 </script>
 {% endblock %}
