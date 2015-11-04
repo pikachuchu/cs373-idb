@@ -22,17 +22,6 @@
 	    getInitialState: function(){
 	        return {data: []}
 	    },
-	    /*loadData: function(){
-	        $.ajax({
-	            url: '/daotao/lops',
-	            success: function(data){
-	                this.setState({data: data.lops});
-	            }.bind(this)
-	        })
-	    },
-	    componentWillMount: function(){
-	        this.loadData();
-	    },*/ 
 	    componentDidMount: function(){
 	        var self = this;
 	        $.get(this.props.source, function(result) {
@@ -60,7 +49,7 @@
 				}
 	    		var person = this.state.data["0"];
 		    	var committeesList = person["committees"].map(function(d, index){
-	            return <li>{d.name}</li>
+	            return <li><a href={"/committees/id/" + d.id}>{d.name}</a></li>
 	        	});
 	        	var billsList = person["votes"].map(function(d, index){
 	            return <li>Voted {d.result}: <br/> {d.bill.name}</li>
@@ -86,8 +75,7 @@
 	                	<h2>Committee Membership</h2>
 	                	<ul>
 	                		{committeesList}
-	                	</ul>
-	                	<hr />      
+	                	</ul>    
 	                </div>
 	
 	                <div id="votes-list">
