@@ -5,86 +5,86 @@ HOST: http://polls.apiblueprint.org/
 
 Politican Hub is an API for receiving information on the people serving in Congress, Congressional committees, and recent bills that have been introduced.
 
-## Representatives [/reps]
+## Legislators [/api/v1/legislators]
 
-### List All Representatives [GET]
+### List All Legislators [GET]
 
 + Response 200 (application/json)
+    
+        {
+            "legislators": [
+                {
+                    "bio_guide": "B001236",
+                    "birthday": "1966-10-04",
+                    "chamber": "house",
+                    "committees": [19, 21],
+                    "contact_form": "http://contact-me.gov",
+                    "first_name": "Darin",
+                    "gender": "M",
+                    "id": 1,
+                    "image": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000014.jpg"
+                    "last_name": "LaHood",
+                    "party": "Republican",
+                    "state": "IL",
+                    "twitter": null,
+                    "votes": [
+                        {
+                            "bill_id": 6,
+                            "result": "Yea"
+                        }
+                    ],
+                    "website": "https://lahood.house.gov/"
+                },
+                {
+                    "bio_guide": "B001135",
+                    "birthday": "1973-02-08",
+                    "chamber": "house",
+                    "committees": [18],
+                    "contact_form": "http://contact-reptrentkelly.gov",
+                    "first_name": "Trent",
+                    "gender": "M",
+                    "id": 2,
+                    "image": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000012.jpg"
+                    "last_name": "Kelly",
+                    "party": "Republican",
+                    "state": "MS",
+                    "twitter": "reptrentkelly",
+                    "votes": [],
+                    "website": "http://franks.house.gov"
+                }
+            ]
+        }
 
-        [
-            {
-                "id": 1,
-                "first_name": "Darin",
-                "last_name": "LaHood",
-                "chamber": "house",
-                "gender": "M",
-                "birthday": "1966-10-04",
-                "party": "Republican",
-                "state": "IL",
-                "twitter": null,
-                "youtube": null
-                "website": "https://lahood.house.gov/",
-                "contact_form": "http://contact-me.gov",
-                "committees": [
-                    {
-                        "id": "HSII24",
-                        "name": "Some Committee Name"
-                    }
-                ],
-                "image_url": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000014.jpg"
-            },
-            {
-                "id": 2,
-                "first_name": "Trent",
-                "last_name": "Kelly",
-                "chamber": "house",
-                "gender": "M",
-                "birthday": "1973-02-08",
-                "party": "Republican",
-                "state": "MS",
-                "twitter": "reptrentkelly",
-                "youtube": ""
-                "website": "http://franks.house.gov",
-                "contact_form": "http://contact-reptrentkelly.gov",
-                 "committees": [
-                    {
-                        "id": "HSIF",
-                        "name": "Other Committee Name"
-                    }
-                ],
-                "image_url": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000012.jpg"
-            }
-        ]
+## Legislator [/api/v1/legislators/{legislator_id}]
 
-## Representative [/reps/{rep_id}]
-
-### Get a Single Representative [GET]
+### Get a Single Legislator [GET]
 
 + Response 200 (application/json)
 
         {
-            "id": 2,
-            "first_name": "Trent",
-            "last_name": "Kelly",
+            "bio_guide": "B001236",
+            "birthday": "1966-10-04",
             "chamber": "house",
+            "committees": [19, 21],
+            "contact_form": "http://contact-me.gov",
+            "first_name": "Darin",
             "gender": "M",
-            "birthday": "1973-02-08",
+            "id": 1,
+            "image": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000014.jpg"
+            "last_name": "LaHood",
             "party": "Republican",
-            "state": "MS",
-            "twitter": "reptrentkelly",
-            "youtube": ""
-            "website": "http://franks.house.gov",
-            "contact_form": "http://contact-reptrentkelly.gov",
-            "committees": [
+            "state": "IL",
+            "twitter": null,
+            "votes": [
                 {
-                    "id": "HSIF",
-                    "name": "Other Committee Name"
+                    "bill_id": 6,
+                    "result": "Yea"
                 }
             ],
-            "image_url": "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/A000012.jpg"
+            "website": "https://lahood.house.gov/"
         }
 
-## Committees [/committees]
+## Committees [/api/v1/committees]
 
 ### List All Committees [GET]
 
@@ -92,48 +92,45 @@ Politican Hub is an API for receiving information on the people serving in Congr
         
         [
             {
-                "id": "SSGA18",
-                "name": "Federal Spending Oversight and Emergency Management",
+                "chair": 57,
                 "chamber": "senate",
-                "website": "http://hsgac.senate.gov/",
+                "committee_id": "SSFI",
+                "id": 180,
+                "is_subcommittee": false,
                 "jurisdiction": "The Federal Spending Oversight and Emergency Management is responsible for...",
-                "chair": {
-                    "name": "Rand Paul",
-                    "id": 3
-                }
+                "name": "Federal Spending Oversight and Emergency Management",
+                "website": "http://hsgac.senate.gov/"
             },
             {
-                "id": "HSII10",
-                "name": "Federal Lands",
+                "chair": null,
                 "chamber": "house",
-                "website": "http://naturalresources.house.gov/",
+                "committee_id": "HSAP19",
+                "id": 18,
+                "is_subcommittee": true,
                 "jurisdiction": "The Federal Lands Committee is responsible for...",
-                "chair": {
-                    "name": "Trent Kelly",
-                    "id": 2
-                }
+                "name": "Federal Lands",
+                "website": "http://naturalresources.house.gov/",
             }
         ]
 
-## Committee [/committee/{committee_id}]
+## Committee [/api/v1/committees/{committee_id}]
 
 ### Get a Single Committee [GET]
 
 + Response 200 (application/json)
 
         {
-            "id": "SSGA18",
-            "name": "Federal Spending Oversight and Emergency Management",
+            "chair": 57,
             "chamber": "senate",
-            "website": "http://hsgac.senate.gov/",
+            "committee_id": "SSFI",
+            "id": 180,
+            "is_subcommittee": false,
             "jurisdiction": "The Federal Spending Oversight and Emergency Management is responsible for...",
-            "chair": {
-                "name": "Rand Paul",
-                "id": 3
-            }
+            "name": "Federal Spending Oversight and Emergency Management",
+            "website": "http://hsgac.senate.gov/"
         }
 
-## Bills [/bills]
+## Bills [/api/v1/bills]
 
 ### List All Bills [GET]
 
@@ -141,46 +138,56 @@ Politican Hub is an API for receiving information on the people serving in Congr
 
         [
             {
-                "id": "s1482-114",
-                "name": "To adapt to changing crude oil market conditions.",
-                "date_introduced": "2015-02-04",
-                "committees": ["HSIF","HSIF03","HSFA","HSFA18","SSBK"],
-                "sponsor": {
-                    "name": "Joe Barton",
-                    "id": 10
-                },
+                "bill_id": "s1482-114",
+                "bill_type": "house_bill",
+                "committees": [104, 188],
+                "current_status": "enacted_signed",
+                "current_status_description": "This bill was enacted after being signed by the President on December 19, 2014",
+                "current_status_label": "Enacted — Signed by the President",
+                "date_intro": "2015-02-04",
                 "house_status": "pass",
-                "senate_status": "pass"
+                "id": 18,
+                "link": "https://www.govtrack.us/congress/bills/114/s1482",
+                "name": "To adapt to changing crude oil market conditions.",
+                "senate_status": "pass",
+                "sponsor": 126
             },
             {
-                "id": "s994-114",
-                "name": "Native American Energy Act",
-                "date_introduced": "2015-01-26",
-                "committees": ["HSII","HSII06","HSII24","SLIA"],
-                "sponsor": {
-                    "name": "Don Young",
-                    "id": 15
-                },
+                "bill_id": "s994-114",
+                "bill_type": "house_bill",
+                "committees": [88],
+                "current_status": "enacted_signed",
+                "current_status_description": "This bill was enacted after being signed by the President on July 20, 2015.",
+                "current_status_label": "Enacted — Signed by the President",
+                "date_intro": "2015-01-26",
                 "house_status": "pass",
-                "senate_status": "fail"
+                "id": 300,
+                "link": "https://www.govtrack.us/congress/bills/114/s994",
+                "name": "Native American Energy Act",
+                "senate_status": "fail",
+                "sponsor": 196
+
             }
         ]
 
-## Bill [/bill]
+## Bill [/api/v1/bills/{bill_id}]
 
 ### Get a Single Bill [GET]
 
 + Response 200 (application/json)
 
         {
-            "id": "s994-114",
-            "name": "Native American Energy Act",
-            "date_introduced": "2015-01-26",
-            "committees": ["HSII","HSII06","HSII24","SLIA"],
-            "sponsor": {
-                "name": "Don Young",
-                "id": 15
-            },
+            "bill_id": "s1482-114",
+            "bill_type": "house_bill",
+            "committees": [104, 188],
+            "current_status": "enacted_signed",
+            "current_status_description": "This bill was enacted after being signed by the President on December 19, 2014",
+            "current_status_label": "Enacted — Signed by the President",
+            "date_intro": "2015-02-04",
             "house_status": "pass",
-            "senate_status": "fail"
+            "id": 18,
+            "link": "https://www.govtrack.us/congress/bills/114/s1482",
+            "name": "To adapt to changing crude oil market conditions.",
+            "senate_status": "pass",
+            "sponsor": 126
         }
