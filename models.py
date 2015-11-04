@@ -1,12 +1,10 @@
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import *
 
-#metadata = MetaData()
-
 Base = declarative_base()
 
 """
-Association between reps and committees.
+Association between legislators and committees.
 """
 class committee_member(Base):
     __tablename__ = 'committee_members'
@@ -22,7 +20,7 @@ class bill_committee(Base):
     committee_id = Column(Integer, primary_key=True)
 
 """
-Association between legislators and bills
+Association between legislators and bills.
 """
 class vote(Base):
     __tablename__ = 'votes'
@@ -50,7 +48,6 @@ class legislator(Base):
     bio_guide = Column(String(80))
     contact_form = Column(String(2048))
     image = Column(String(2048))
-    #committees = relationship("committee", secondary=rep_committee_table)
 
     def get_obj(row):
         return {
@@ -68,8 +65,6 @@ class legislator(Base):
             'contact_form': row.contact_form,
             'image': row.image
         }
-
-    #search_vector = Column(TSVectorType('first_name', 'last_name', 'chamber', 'party', 'state'))
 
 """
 Model for Congressional committees.
@@ -97,8 +92,6 @@ class committee(Base):
             'committee_id': row.committee_id,
             'chair': row.fk_chair
         }
-
-    #search_vector = Column(TSVectorType('name', 'chamber', 'chair'))
 
 """
 Model for recent bills.
@@ -135,7 +128,6 @@ class bill(Base):
             'current_status': row.current_status,
             'sponsor': row.fk_sponsor
         }
-    #search_vector = Column(TSVectorType('name', 'year', 'result'))
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://phub:@localhost/phub?charset=utf8')

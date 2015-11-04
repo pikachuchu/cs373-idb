@@ -324,7 +324,6 @@ if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://travis:@localhost/test?charset=utf8')
     Session = sessionmaker(bind=engine)
     session = Session()
-    engine.echo = True
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
     main()

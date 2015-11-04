@@ -23,8 +23,11 @@
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="models.html#bill">bill</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#bill_committee">bill_committee</a>
 </font></dt><dt><font face="helvetica, arial"><a href="models.html#committee">committee</a>
-</font></dt><dt><font face="helvetica, arial"><a href="models.html#rep">rep</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#committee_member">committee_member</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#legislator">legislator</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#vote">vote</a>
 </font></dt></dl>
 </dd>
 </dl>
@@ -51,9 +54,19 @@ Only&nbsp;keys&nbsp;that&nbsp;are&nbsp;present&nbsp;as<br>
 attributes&nbsp;of&nbsp;the&nbsp;instance's&nbsp;class&nbsp;are&nbsp;allowed.&nbsp;These&nbsp;could&nbsp;be,<br>
 for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.</tt></dd></dl>
 
+<dl><dt><a name="bill-get_obj"><strong>get_obj</strong></a>(row)</dt></dl>
+
 <hr>
 Data descriptors defined here:<br>
-<dl><dt><strong>committees</strong></dt>
+<dl><dt><strong>bill_id</strong></dt>
+</dl>
+<dl><dt><strong>bill_type</strong></dt>
+</dl>
+<dl><dt><strong>current_status</strong></dt>
+</dl>
+<dl><dt><strong>current_status_description</strong></dt>
+</dl>
+<dl><dt><strong>current_status_label</strong></dt>
 </dl>
 <dl><dt><strong>date_intro</strong></dt>
 </dl>
@@ -63,21 +76,68 @@ Data descriptors defined here:<br>
 </dl>
 <dl><dt><strong>id</strong></dt>
 </dl>
-<dl><dt><strong>name</strong></dt>
+<dl><dt><strong>link</strong></dt>
 </dl>
-<dl><dt><strong>search_vector</strong></dt>
+<dl><dt><strong>name</strong></dt>
 </dl>
 <dl><dt><strong>senate_status</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x10fb71750; bill&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x109988710; bill&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('bill', MetaData(bind=None), Column('id', ...tor', TSVectorType(), table=&lt;bill&gt;), schema=None)</dl>
+<dl><dt><strong>__table__</strong> = Table('bills', MetaData(bind=None), Column('id',...sponsor', Integer(), table=&lt;bills&gt;), schema=None)</dl>
 
-<dl><dt><strong>__table_args__</strong> = None</dl>
+<dl><dt><strong>__tablename__</strong> = 'bills'</dl>
 
-<dl><dt><strong>__tablename__</strong> = 'bill'</dl>
+<hr>
+Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="bill_committee">class <strong>bill_committee</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#bill_committee">bill_committee</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="bill_committee-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;simple&nbsp;constructor&nbsp;that&nbsp;allows&nbsp;initialization&nbsp;from&nbsp;kwargs.<br>
+&nbsp;<br>
+Sets&nbsp;attributes&nbsp;on&nbsp;the&nbsp;constructed&nbsp;instance&nbsp;using&nbsp;the&nbsp;names&nbsp;and<br>
+values&nbsp;in&nbsp;``kwargs``.<br>
+&nbsp;<br>
+Only&nbsp;keys&nbsp;that&nbsp;are&nbsp;present&nbsp;as<br>
+attributes&nbsp;of&nbsp;the&nbsp;instance's&nbsp;class&nbsp;are&nbsp;allowed.&nbsp;These&nbsp;could&nbsp;be,<br>
+for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>bill_id</strong></dt>
+</dl>
+<dl><dt><strong>committee_id</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x109939b10; bill_committee&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('bill_committees', MetaData(bind=None), Co..., primary_key=True, nullable=False), schema=None)</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'bill_committees'</dl>
 
 <hr>
 Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
@@ -114,31 +174,33 @@ Only&nbsp;keys&nbsp;that&nbsp;are&nbsp;present&nbsp;as<br>
 attributes&nbsp;of&nbsp;the&nbsp;instance's&nbsp;class&nbsp;are&nbsp;allowed.&nbsp;These&nbsp;could&nbsp;be,<br>
 for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.</tt></dd></dl>
 
+<dl><dt><a name="committee-get_obj"><strong>get_obj</strong></a>(row)</dt></dl>
+
 <hr>
 Data descriptors defined here:<br>
 <dl><dt><strong>chamber</strong></dt>
+</dl>
+<dl><dt><strong>committee_id</strong></dt>
 </dl>
 <dl><dt><strong>fk_chair</strong></dt>
 </dl>
 <dl><dt><strong>id</strong></dt>
 </dl>
+<dl><dt><strong>is_subcommittee</strong></dt>
+</dl>
 <dl><dt><strong>jurisdiction</strong></dt>
 </dl>
 <dl><dt><strong>name</strong></dt>
-</dl>
-<dl><dt><strong>search_vector</strong></dt>
 </dl>
 <dl><dt><strong>website</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x10fb71050; committee&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x10996ec90; committee&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('committee', MetaData(bind=None), Column('... TSVectorType(), table=&lt;committee&gt;), schema=None)</dl>
+<dl><dt><strong>__table__</strong> = Table('committees', MetaData(bind=None), Column(...ir', Integer(), table=&lt;committees&gt;), schema=None)</dl>
 
-<dl><dt><strong>__table_args__</strong> = None</dl>
-
-<dl><dt><strong>__tablename__</strong> = 'committee'</dl>
+<dl><dt><strong>__tablename__</strong> = 'committees'</dl>
 
 <hr>
 Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
@@ -156,17 +218,17 @@ Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="rep">class <strong>rep</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="committee_member">class <strong>committee_member</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#rep">rep</a></dd>
+<dd><a href="models.html#committee_member">committee_member</a></dd>
 <dd>sqlalchemy.ext.declarative.api.Base</dd>
 <dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="rep-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;simple&nbsp;constructor&nbsp;that&nbsp;allows&nbsp;initialization&nbsp;from&nbsp;kwargs.<br>
+<dl><dt><a name="committee_member-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;simple&nbsp;constructor&nbsp;that&nbsp;allows&nbsp;initialization&nbsp;from&nbsp;kwargs.<br>
 &nbsp;<br>
 Sets&nbsp;attributes&nbsp;on&nbsp;the&nbsp;constructed&nbsp;instance&nbsp;using&nbsp;the&nbsp;names&nbsp;and<br>
 values&nbsp;in&nbsp;``kwargs``.<br>
@@ -177,11 +239,62 @@ for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.<
 
 <hr>
 Data descriptors defined here:<br>
+<dl><dt><strong>committee_id</strong></dt>
+</dl>
+<dl><dt><strong>legislator_id</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x109939610; committee_member&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('committee_members', MetaData(bind=None), ..., primary_key=True, nullable=False), schema=None)</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'committee_members'</dl>
+
+<hr>
+Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="legislator">class <strong>legislator</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#legislator">legislator</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="legislator-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;simple&nbsp;constructor&nbsp;that&nbsp;allows&nbsp;initialization&nbsp;from&nbsp;kwargs.<br>
+&nbsp;<br>
+Sets&nbsp;attributes&nbsp;on&nbsp;the&nbsp;constructed&nbsp;instance&nbsp;using&nbsp;the&nbsp;names&nbsp;and<br>
+values&nbsp;in&nbsp;``kwargs``.<br>
+&nbsp;<br>
+Only&nbsp;keys&nbsp;that&nbsp;are&nbsp;present&nbsp;as<br>
+attributes&nbsp;of&nbsp;the&nbsp;instance's&nbsp;class&nbsp;are&nbsp;allowed.&nbsp;These&nbsp;could&nbsp;be,<br>
+for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.</tt></dd></dl>
+
+<dl><dt><a name="legislator-get_obj"><strong>get_obj</strong></a>(row)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>bio_guide</strong></dt>
+</dl>
 <dl><dt><strong>birthday</strong></dt>
 </dl>
 <dl><dt><strong>chamber</strong></dt>
-</dl>
-<dl><dt><strong>committees</strong></dt>
 </dl>
 <dl><dt><strong>contact_form</strong></dt>
 </dl>
@@ -197,25 +310,70 @@ Data descriptors defined here:<br>
 </dl>
 <dl><dt><strong>party</strong></dt>
 </dl>
-<dl><dt><strong>search_vector</strong></dt>
-</dl>
 <dl><dt><strong>state</strong></dt>
 </dl>
 <dl><dt><strong>twitter</strong></dt>
 </dl>
 <dl><dt><strong>website</strong></dt>
 </dl>
-<dl><dt><strong>youtube</strong></dt>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x10996e650; legislator&gt;</dl>
+
+<dl><dt><strong>__table__</strong> = Table('legislators', MetaData(bind=None), Column...(length=2048), table=&lt;legislators&gt;), schema=None)</dl>
+
+<dl><dt><strong>__tablename__</strong> = 'legislators'</dl>
+
+<hr>
+Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br>
+<dl><dt><strong>metadata</strong> = MetaData(bind=None)</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="vote">class <strong>vote</strong></a>(sqlalchemy.ext.declarative.api.Base)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#vote">vote</a></dd>
+<dd>sqlalchemy.ext.declarative.api.Base</dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="vote-__init__"><strong>__init__</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;simple&nbsp;constructor&nbsp;that&nbsp;allows&nbsp;initialization&nbsp;from&nbsp;kwargs.<br>
+&nbsp;<br>
+Sets&nbsp;attributes&nbsp;on&nbsp;the&nbsp;constructed&nbsp;instance&nbsp;using&nbsp;the&nbsp;names&nbsp;and<br>
+values&nbsp;in&nbsp;``kwargs``.<br>
+&nbsp;<br>
+Only&nbsp;keys&nbsp;that&nbsp;are&nbsp;present&nbsp;as<br>
+attributes&nbsp;of&nbsp;the&nbsp;instance's&nbsp;class&nbsp;are&nbsp;allowed.&nbsp;These&nbsp;could&nbsp;be,<br>
+for&nbsp;example,&nbsp;any&nbsp;mapped&nbsp;columns&nbsp;or&nbsp;relationships.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>bill_id</strong></dt>
+</dl>
+<dl><dt><strong>legislator_id</strong></dt>
+</dl>
+<dl><dt><strong>result</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x10ff25a50; rep&gt;</dl>
+<dl><dt><strong>__mapper__</strong> = &lt;Mapper at 0x109939dd0; vote&gt;</dl>
 
-<dl><dt><strong>__table__</strong> = Table('rep', MetaData(bind=None), Column('id', I...ctor', TSVectorType(), table=&lt;rep&gt;), schema=None)</dl>
+<dl><dt><strong>__table__</strong> = Table('votes', MetaData(bind=None), Column('legi..., String(length=80), table=&lt;votes&gt;), schema=None)</dl>
 
-<dl><dt><strong>__table_args__</strong> = None</dl>
-
-<dl><dt><strong>__tablename__</strong> = 'rep'</dl>
+<dl><dt><strong>__tablename__</strong> = 'votes'</dl>
 
 <hr>
 Data descriptors inherited from sqlalchemy.ext.declarative.api.Base:<br>
@@ -236,7 +394,6 @@ Data and other attributes inherited from sqlalchemy.ext.declarative.api.Base:<br
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>bill_committee_table</strong> = Table('bill_committee_assoc', MetaData(bind=None...id'), table=&lt;bill_committee_assoc&gt;), schema=None)<br>
-<strong>func</strong> = &lt;sqlalchemy.sql.functions._FunctionGenerator object&gt;<br>
-<strong>rep_committee_table</strong> = Table('rep_committee_assoc', MetaData(bind=None)....id'), table=&lt;rep_committee_assoc&gt;), schema=None)</td></tr></table>
+<td width="100%"><strong>func</strong> = &lt;sqlalchemy.sql.functions._FunctionGenerator object&gt;<br>
+<strong>modifier</strong> = &lt;sqlalchemy.sql.functions._FunctionGenerator object&gt;</td></tr></table>
 </body></html>
