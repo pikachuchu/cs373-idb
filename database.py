@@ -39,9 +39,10 @@ def add_bill_committees(row, obj, verbose):
 """
 Get all legislators from the database
 """
-def get_legislators(verbose):
+def get_legislators(args, verbose):
     result = []
-    for row in session.query(legislator).order_by(legislator.id):
+    query = session.query(legislator).order_by(legislator.id).filter_by(**args)
+    for row in query:
         obj = legislator.get_obj(row)
         add_committee_members(row, obj, verbose)
         add_votes(row, obj, verbose)
@@ -51,9 +52,10 @@ def get_legislators(verbose):
 """
 Get all committees from the database
 """
-def get_committees(verbose):
+def get_committees(args, verbose):
     result = []
-    for row in session.query(committee).order_by(committee.id):
+    query = session.query(committee).order_by(committee.id).filter_by(**args)
+    for row in query:
         obj = committee.get_obj(row)
         result.append(obj)
     return result
@@ -61,9 +63,10 @@ def get_committees(verbose):
 """
 Get all bills from the database
 """
-def get_bills(verbose):
+def get_bills(args, verbose):
     result = []
-    for row in session.query(bill).order_by(bill.id):
+    query = session.query(bill).order_by(bill.id).filter_by(**args)
+    for row in query:
         obj = bill.get_obj(row)
         add_bill_committees(row, obj, verbose)
         result.append(obj)
