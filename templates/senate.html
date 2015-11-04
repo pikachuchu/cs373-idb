@@ -49,13 +49,13 @@ var Table = React.createClass({
         });
     },
     render: function(){
-        
-        var dat = this.state.data;
         var table = this.state.data.map(function(d, index){
+            var spl = d.birthday.split("-");
+            var age = 2015 - parseInt(spl[0]);
             return (<tr>
                      <td><a href={"senator/id/" +d["id"]}>{d["first_name"]}</a></td>
                      <td><a href={"senator/id/" +d["id"]}>{d["last_name"]}</a></td>
-                     <td>{d.birthday}</td>
+                     <td>{age}</td>
                      <td>{d.party}</td>
                      <td>{d.state}</td>
                  </tr>)
