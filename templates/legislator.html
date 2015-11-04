@@ -53,6 +53,11 @@
 	    {
 	    	if(this.state.data.length > 0)
 	    	{
+	    		var imageStyle = {
+					float: 'left',
+					marginRight:'2em',
+					width:'250px'
+				}
 	    		var person = this.state.data["0"];
 		    	var committeesList = person["committees"].map(function(d, index){
 	            return <li>{d.name}</li>
@@ -65,7 +70,7 @@
 		        	<section>
 		                <h1> {person["first_name"]} {person["last_name"]} </h1>
 		                <hr />
-		                <img className="img-responsive" id="person-picture" src={person["image"]} alt="" />
+		                <img className="img-responsive" id="person-picture" src={person["image"]} alt="" style={imageStyle}/>
 		                <div className="person-text">
 		                	<p className="lead"><b>Fullname:</b> {person["first_name"]} {person["last_name"]}</p>
 		                	<p className="lead"><b>Birthday:</b> {person["birthday"]}</p>
