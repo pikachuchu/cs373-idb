@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, make_response, abort, request
+from flask.ext.cors import CORS, cross_origin
 import database as db
 
 # RESTful API
@@ -14,18 +15,13 @@ legislator_fields = {
     'birthday',
     'state',
     'twitter',
-    'website',
-    'bio_guide',
-    'contact_form',
-    'image'
+    'bio_guide'
 }
 
 committee_fields = {
     'id',
     'name',
     'chamber',
-    'website',
-    'jurisdiction',
     'is_subcommittee',
     'committee_id',
     'chair'
@@ -39,9 +35,6 @@ bill_fields = {
     'date_intro',
     'house_status',
     'senate_status',
-    'link',
-    'current_status_label',
-    'current_status_description',
     'current_status',
     'sponsor'
 }
@@ -50,6 +43,7 @@ bill_fields = {
 GET all legislators
 """
 @api.route('/legislators', methods=['GET'])
+@cross_origin()
 def get_legislators():
     verbose = request.args.get('verbose')
     args = {}
@@ -62,6 +56,7 @@ def get_legislators():
 GET all committees
 """
 @api.route('/committees', methods=['GET'])
+@cross_origin()
 def get_committees():
     verbose = request.args.get('verbose')
     args = {}
@@ -74,6 +69,7 @@ def get_committees():
 GET all bills
 """
 @api.route('/bills', methods=['GET'])
+@cross_origin()
 def get_bills():
     verbose = request.args.get('verbose')
     args = {}
@@ -86,6 +82,7 @@ def get_bills():
 GET a legislator by id
 """
 @api.route('/legislators/<int:legislator_id>', methods=['GET'])
+@cross_origin()
 def get_legislator(legislator_id):
     verbose = request.args.get('verbose')
     legislator = db.get_legislator_by_id(legislator_id, verbose == 'true')
@@ -98,6 +95,7 @@ def get_legislator(legislator_id):
 GET a committee by id
 """
 @api.route('/committees/<int:committee_id>', methods=['GET'])
+@cross_origin()
 def get_committee(committee_id):
     verbose = request.args.get('verbose')
     committee = db.get_committee_by_id(committee_id, verbose == 'true')
@@ -110,6 +108,7 @@ def get_committee(committee_id):
 GET a bill by id
 """
 @api.route('/bills/<int:bill_id>', methods=['GET'])
+@cross_origin()
 def get_bill(bill_id):
     verbose = request.args.get('verbose')
     bill = db.get_bill_by_id(bill_id, verbose == 'true')
@@ -121,6 +120,7 @@ def get_bill(bill_id):
 Handle 404 errors
 """
 @api.errorhandler(404)
+@cross_origin()
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 
