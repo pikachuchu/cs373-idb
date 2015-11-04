@@ -2,7 +2,7 @@ from sqlalchemy import *
 from sqlalchemy.orm import sessionmaker
 from models import *
 
-db = create_engine('mysql+mysqldb://root:politicianhub@localhost/phub?charset=utf8')
+db = create_engine('mysql+mysqldb://phub:@localhost/phub?charset=utf8')
 Session = sessionmaker(bind=db)
 session = Session()
 
@@ -57,6 +57,8 @@ def get_committees(args, verbose):
     query = session.query(committee).order_by(committee.id).filter_by(**args)
     for row in query:
         obj = committee.get_obj(row)
+        if verbose:
+            obj['chair'] = get_legislator_by_id(obj['chair'], False)
         result.append(obj)
     return result
 
@@ -69,6 +71,8 @@ def get_bills(args, verbose):
     for row in query:
         obj = bill.get_obj(row)
         add_bill_committees(row, obj, verbose)
+        if verbose:
+            obj['sponsor'] = get_legislator_by_id(obj['sponsor'], False)
         result.append(obj)
     return result
 
