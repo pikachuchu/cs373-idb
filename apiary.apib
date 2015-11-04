@@ -9,6 +9,9 @@ Politican Hub is an API for receiving information on the people serving in Congr
 
 ### List All Legislators [GET]
 
+Optional arguments to filter by (i.e. GET /api/v1/legislators?chamber=house&state=IL):
+bio_guide, birthday, chamber, first_name, gender, id, last_name, party, state, twitter
+
 + Response 200 (application/json)
     
         {
@@ -59,6 +62,8 @@ Politican Hub is an API for receiving information on the people serving in Congr
 
 ### Get a Single Legislator [GET]
 
+Optional argument verbose (i.e. GET/api/v1/legislators/{legislator_id}?verbose=true): gets data for foreign keys "committees" and "bill_id" and replaces with corresponding JSON objects
+
 + Response 200 (application/json)
 
         {
@@ -87,6 +92,9 @@ Politican Hub is an API for receiving information on the people serving in Congr
 ## Committees [/api/v1/committees]
 
 ### List All Committees [GET]
+
+Optional arguments to filter by (i.e. GET /api/v1/committees?chamber=senate):
+chair, chamber, committee_id, id, is_subcommittee, name
 
 + Response 200 (application/json)
         
@@ -117,6 +125,8 @@ Politican Hub is an API for receiving information on the people serving in Congr
 
 ### Get a Single Committee [GET]
 
+Optional argument verbose (i.e. GET/api/v1/committees/{committee_id}?verbose=true): gets data for foreign key "chair" and replaces with corresponding JSON object
+
 + Response 200 (application/json)
 
         {
@@ -133,6 +143,9 @@ Politican Hub is an API for receiving information on the people serving in Congr
 ## Bills [/api/v1/bills]
 
 ### List All Bills [GET]
+
+Optional arguments to filter by (i.e. GET /api/v1/bills?senate_status=pass):
+bill_id, bill_type, current_status, date_intro, house_status, id, senate_status, sponsor
 
 + Response 200 (application/json)
 
@@ -173,6 +186,8 @@ Politican Hub is an API for receiving information on the people serving in Congr
 ## Bill [/api/v1/bills/{bill_id}]
 
 ### Get a Single Bill [GET]
+
+Optional argument verbose (i.e. GET /api/v1/bills/{bill_id}?verbose=true): gets data for foreign keys "sponsor" and "committees" and replaces with corresponding JSON objects
 
 + Response 200 (application/json)
 
