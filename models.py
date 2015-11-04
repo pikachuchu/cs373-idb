@@ -39,7 +39,6 @@ Model for legislators.
 This model is used for both senators and members of the House of Representatives.
 There is a many-to-many relationship with committees.
 """
-
 class legislator(Base):
     __tablename__ = 'legislators'
     id = Column(Integer, primary_key=True)
@@ -143,5 +142,5 @@ class bill(Base):
     #search_vector = Column(TSVectorType('name', 'year', 'result'))
 
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://root:politicianhub@localhost/phub?charset=utf8')
+    engine = create_engine('mysql+mysqldb://phub:@localhost/phub?charset=utf8')
     Base.metadata.create_all(engine)
