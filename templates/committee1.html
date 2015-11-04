@@ -16,7 +16,23 @@
 <script type="text/babel">
     var data = [
         {
-        chair: { },
+        chair: {        
+            bio_guide: "C001095",
+            birthday: "1977-05-13",
+            chamber: "Senate",
+            committees: [],
+            contact_form: "",
+            first_name: "Tom",
+            gender: "male",
+            id: 405,
+            image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/C001095.jpg",
+            last_name: "Cotton",
+            party: "Republican",
+            state: "AR",
+            twitter: "SenTomCotton",
+            votes: [],
+            website: "http://www.cotton.senate.gov"
+        },
         chamber: "house",
         committee_id: "HSFA16",
         id: 1,
@@ -65,6 +81,8 @@
             
             var isSub = (committee["is_subcommittee"]) ? "Yes" : "No";
 
+            var chair = committee["chair"];
+
 
             return (
                 <section>
@@ -75,6 +93,16 @@
                         <p className="lead"><b>Jurisdiction :</b> {committee["jurisdiction"]}</p>
                         <p className="lead"><b>Subcommittee? :</b> {isSub}</p>
                         <p className="lead"><a href= {committee["website"]}><b>Website</b></a></p>
+                    </div>
+
+                    <div id="chair" >
+                        <hr />
+                        <h2>Chair</h2>
+                        <img className="img-responsive" id="person-picture" src={chair["image"]} alt="" />
+                        <div className="person-text" >
+                            <p className="lead"><b>Fullname:</b> <a href= {"/" + chair["chamber"].toLowerCase() + "/id/" + chair["id"]}><b>{chair["first_name"] + " " + chair["last_name"]}</b></a> </p>
+                            <p className="lead"><b>Party   :</b> {chair["party"]}</p> 
+                        </div>
                     </div>
 
                 </section>
