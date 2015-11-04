@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+            	<section>
+	                <h1>Sen. Lamar Alexander </h1>
+	                <hr />
+	                <img class="img-responsive" id="person-picture" src="https://theunitedstates.io/images/congress/original/A000360.jpg" alt="" style="float:left;margin-right:2em;width:250px" />
+	                <div class="person-text" style="float:left;">
+	                	<p class="lead"><b>Fullname:</b> Lamar Alexander</p>
+	                	<p class="lead"><b>Birthday:</b> 1940-07-03 (Age: 75)</p>
+	                	<p class="lead"><b>Gender  :</b> Male</p>
+	                	<p class="lead"><b>Chamber :</b> Senate (Sr.)</p>
+	                	<p class="lead"><b>State   :</b> Tennessee</p>
+	                	<p class="lead"><b>Party   :</b> Republican</p> 
+	                	<p class="lead"><a href= "http://www.alexander.senate.gov/public/"><b>Website</b></a></p>
+	                </div>
+                </section>
+                <!-- Post Content -->
+                <div id="committee-list" style="clear:both">
+                	<br />
+                	<hr />
+                	<h2>Committee Membership</h2>
+                	<p><a href="/committee/id/1">Chairman, Senate Committee on Health, Education, Labor, and Pensions</a></p>
+            		<ul>
+            			<li>Ex Officio, Subcommittee on Children and Families</li>
+						<li>Ex Officio, Subcommittee on Employment and Workplace Safety</li>
+						<li>Ex Officio, Subcommittee on Primary Health and Retirement Security</li>
+               		</ul>
+	               	<p>Senate Committee on Appropriations</p>
+	               	<ul>
+	               		<li>Chairman, Subcommittee on Energy and Water Development</li>
+						<li>Member, Subcommittee on Commerce, Justice, Science, and Related Agencies</li>
+						<li>Member, Subcommittee on Department of Defense</li>
+						<li>Member, Subcommittee on Department of the Interior, Environment, and Related Agencies</li>
+						<li>Member, Subcommittee on Departments of Labor, Health and Human Services, and Education, and Related Agencies</li>
+						<li>Member, Subcommittee on Transportation, Housing and Urban Development, and Related Agencies</li>
+	               	</ul>
+	               	<p>Senate Committee on Energy and Natural Resources</p>
+	               	<ul>
+		               	<li>Member, Subcommittee on Energy</li>
+						<li>Member, Subcommittee on National Parks</li>
+						<li>Member, Subcommittee on Public Lands, Forests, and Mining</li>
+						</ul>
+					<p>Senate Committee on Rules and Administration</p>
+                	<hr />      
+                </div>
+                <div class="twitter">
+                	<a class="twitter-timeline" href="https://twitter.com/SenAlexander" data-widget-id="656630196540301312">Tweets by @SenAlexander</a>
+					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+					</script>
+                </div>
+                <hr />
+                <div class="youtube">
+
+                </div>
+            </div>
+        </div>                
+	</div>
+<script type="text/javascript">
+  jQuery(document).ready(function($) {
+    $(".clickable-row").click(function() {
+        window.document.location = $(this).data("href");
+    });
+});
+</script>
+{% endblock %}
