@@ -3,15 +3,14 @@
 language: python
 
 python:
-    - "3.4"
+    - "2.7"
 
 sudo: false
 
 install:
     - pip install --upgrade pip
     - pip --version
-    - pip install coverage
-    - pip install flask
+    - pip install -r requirements.txt
 
 before_script:
     - uname -a

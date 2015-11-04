@@ -1,13 +1,9 @@
-from sqlalchemy_utils.types import TSVectorType
-from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy_searchable import make_searchable
 from sqlalchemy import *
 
 #metadata = MetaData()
 
 Base = declarative_base()
-make_searchable()
 
 """
 Association between reps and committees.
