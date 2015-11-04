@@ -1,23 +1,15 @@
 from unittest import main, TestCase
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker 
-#from sqlalchemy_searchable import search
 
 from flask import *
-#from flask.ext.sqlalchemy import SQLAlchemy
 from flask import request
 from sqlalchemy import Column, ForeignKey, Integer, String, Text, Float, LargeBinary, Boolean
 
 import threading
 from flask import Flask, render_template, url_for, g, request, session, redirect, abort, flash
-#from flask.ext.sqlalchemy import SQLAlchemy
 
 from models import *
-#from __init__ import unittests
-#unittests()
-
-#for this tests to work you need to have a postgres database 
-#set up with the name testdb, no username, no password
 
 class tests(TestCase):
   
@@ -97,7 +89,7 @@ class tests(TestCase):
 
         self.assertEqual(startSize + 1, endSize)    
 
-        #Test that the table committee is readable
+    #Test that the table committee is readable
     def test_read_committee(self):
 
         session.add(committee(name = "Ways and Means"))
@@ -199,7 +191,7 @@ class tests(TestCase):
 
         self.assertEqual(startSize + 1, endSize)    
 
-        #Test that the table bill is readable
+    #Test that the table bill is readable
     def test_read_bill(self):
 
         session.add(bill(name = "Test"))
@@ -224,8 +216,6 @@ class tests(TestCase):
         assert (query is not None)
         assert (query.house_status == "Passed")
         
-
-    
     #Test deletion of a row in bill
     def test_delete_bill_row(self):
         session.add(bill(name = "delete"))
@@ -241,13 +231,10 @@ class tests(TestCase):
         toRemove = session.query(bill).filter(bill.name == "delete").first()
         assert(toRemove == None)
     
-    
-
-
-    
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://root:politicianhub@localhost/test?charset=utf8')
+    engine = create_engine('mysql+mysqldb://phub:@localhost/test?charset=utf8')
     Session = sessionmaker(bind=engine)
     session = Session()
     engine.echo = True
+    Base.metadata.create_all(engine)
     main()
