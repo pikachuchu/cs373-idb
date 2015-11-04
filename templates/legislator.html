@@ -37,6 +37,10 @@
 	    },
 	    componentDidUpdate: function(){
 	        $('body').append(script);
+	        $('#mytable').dataTable({
+	          "bAutoWidth": false,
+	          "bDestroy": true, 
+	        });
 	    },
 	    render: function()
 	    {
@@ -48,11 +52,17 @@
 					width:'250px'
 				}
 	    		var person = this.state.data["0"];
+	    		console.log(person["gender"]);
+	    		var gender = (person["gender"] == "male") ? "Male" : "Female";
 		    	var committeesList = person["committees"].map(function(d, index){
 	            return <li><a href={"/committees/id/" + d.id}>{d.name}</a></li>
 	        	});
 	        	var billsList = person["votes"].map(function(d, index){
-	            return <li>Voted {d.result}: <br/> {d.bill.name}</li>
+	        		return (
+	        			<tr>
+	        				<td><a href={"legislator/id/" +d.bill.id}>{d.bill.name}</a></td>
+	        				<td>{d.result}</td>
+	        			</tr>)
 	        	});
 		        
 		        return (
@@ -63,8 +73,8 @@
 		                <div className="person-text">
 		                	<p className="lead"><b>Fullname:</b> {person["first_name"]} {person["last_name"]}</p>
 		                	<p className="lead"><b>Birthday:</b> {person["birthday"]}</p>
-		                	<p className="lead"><b>Gender  :</b> {person["gender"]}</p>
-		                	<p className="lead"><b>Chamber :</b> {person["chamber"]} (Sr.)</p>
+		                	<p className="lead"><b>Gender  :</b> {gender}</p>
+		                	<p className="lead"><b>Chamber :</b> {person["chamber"]}</p>
 		                	<p className="lead"><b>State   :</b> {person["state"]}</p>
 		                	<p className="lead"><b>Party   :</b> {person["party"]}</p> 
 		                	<p className="lead"><a href= {person["website"]}><b>Website</b></a></p>
@@ -82,9 +92,19 @@
 	                	<br />
 	                	<hr />
 	                	<h2>Votes</h2>
-	                	<ul>
-	                		{billsList}
-	                	</ul>
+	                	<div className="table-responsive">
+	                        <table className="table table-striped" id="mytable">
+	                            <thead>
+	                                <tr className="success">
+	                                    <td>Bill Name</td>
+	                                    <td>Vote</td>
+	                                </tr>   
+	                            </thead>
+	                            <tbody>
+	                                {billsList}
+	                            </tbody>
+	                        </table>
+	                    </div>
 	                	<hr />      
 	                </div>
 	
