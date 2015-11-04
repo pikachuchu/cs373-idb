@@ -12,37 +12,34 @@
 <div class="container" id="bills">
 </div>
 <script type="text/babel">
-
-var data = [
-    { 'id': 1, 'billName': 'An original concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2016 and setting forth the appropriate budgetary levels for fiscal years 2017 through 2025.', 'dateIntroduced': '2015-03-20', 'sponsorName': 'Michael Enzi', 'sponsorChamber': 'Senate', 'sponsorId': '2', 'senateStatus': 'Pass', 'houseStatus': 'Pass' },
-    { 'id': 2, 'billName': 'DHS IT Duplication Reduction Act of 2015', 'dateIntroduced': '2015-03-25', 'sponsorName': 'Will Hurd', 'sponsorChamber': 'House', 'sponsorId': '2', 'senateStatus': 'Pass', 'houseStatus': 'Pass' },
-    { 'id': 3, 'billName': 'FISA Amendments Act Reauthorization Act of 2012', 'dateIntroduced': '2012-06-15', 'sponsorName': 'Lamar Smith', 'sponsorChamber': 'House', 'sponsorId': '3', 'senateStatus': 'Pass', 'houseStatus': 'Pass' }
-]; //Json Data
-
 var Table = React.createClass({
     getInitialState: function(){
-        return {data: []}
+        return {
+            data: []
+        }
     },
-    /*loadData: function(){
-        $.ajax({
-            url: '/daotao/lops',
-            success: function(data){
-                this.setState({data: data.lops});
-            }.bind(this)
-        })
-    },
-    componentWillMount: function(){
-        this.loadData();
-    },*/ 
+    // loadData: function(){
+    //     $.get(this.props.source, function(result) {
+    //       if (this.isMounted()) {
+    //         this.setState({
+    //           data : []
+    //         });
+    //       }
+    //     }.bind(this));
+    // },
+    // componentWillMount: function(){
+    //     this.loadData();
+    // }, 
     componentDidMount: function(){
         var self = this;
-        $('#mytable').dataTable({
-          "bAutoWidth": false,
-          "bDestroy": true,     
-          "fnDrawCallback": function() {                
-                self.forceUpdate();         
-          }, 
-        });
+        $.get(this.props.source, function(result) {
+          var lastGist = result["bills"];
+          if (this.isMounted()) {
+            this.setState({
+              data: lastGist
+            });
+          }
+        }.bind(this));
     },
     componentDidUpdate: function(){
         $('#mytable').dataTable({
@@ -51,33 +48,50 @@ var Table = React.createClass({
         });
     },
     render: function(){
-        var x = this.props.data.map(function(d, index){
-            var link = (d.sponsorChamber == "Senate") ? '/senator/id/' : '/representative/id/';
-            return <tr><td><a href={"/bills/id/" +d.id}>{d.billName}</a></td><td>{d.dateIntroduced}</td><td><a href={link + d.sponsorId}>{d.sponsorName}</a></td><td>{d.senateStatus}</td><td>{d.houseStatus}</td></tr>
+        var table = this.state.data.map(function(d, index){
+            var sponsorName = (d["sponsor"]) ? "Name Here" : "None";
+            var sponsor = (sponsorName == "None") ? sponsorName : <a href={"legislator/id/" + d["sponsor"]}>{sponsorName}</a>;
+            var senate_status = (d["senate_status"] == "") ? "none" : d["senate_status"];
+            var house_status = (d["house_status"] == "") ? "none" : d["house_status"];
+            return (<tr>
+                     <td><a href={"/bills/id/" +d["id"]}>{d["name"]}</a></td>
+                     <td>{d["date_intro"]}</td>
+                     <td>{sponsor}</td>
+                     <td>{senate_status}</td>
+                     <td>{house_status}</td>
+                 </tr>)
         });
-        
-        return (
-            <div className="table-responsive">
-                <table className="table table-striped" id="mytable">
-                    <thead>
-                        <tr className="success">
-                            <td>Bill Name</td>
-                            <td>Date Introduced</td>
-                            <td>Sponsor</td>
-                            <td>Senate Status</td>
-                            <td>House Status</td>
-                        </tr>   
-                    </thead>
-                    <tbody>
-                        {x}
-                    </tbody>
-                </table>
-            </div>
-        )       
+        if(this.state.data.length > 1)
+        {      
+            return (
+                    <div className="table-responsive">
+                        <table className="table table-striped" id="mytable">
+                            <thead>
+                                <tr className="success">
+                                    <td>Bill Name</td>
+                                    <td>Date Introduced</td>
+                                    <td>Sponsor</td>
+                                    <td>Senate Status</td>
+                                    <td>House Status</td>
+                                </tr>   
+                            </thead>
+                            <tbody>
+                                {table}
+                            </tbody>
+                        </table>
+                    </div>
+                )    
+        }
+        else
+        {
+            return (
+                    <div className="table-responsive">
+                    </div>
+                )    
+        }
     }
  });
-
-React.render(<Table data={data}/>, document.getElementById('bills'));
+React.render(<Table source="http://politicianhub.me/api/v1/bills" />, document.getElementById('bills'));
 
 </script>
 {% endblock %}
