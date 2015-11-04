@@ -16,7 +16,7 @@ for v in committees:
     obj = {
         "id": num,
         "committee_id": v['code'],
-        "name": curr['name'],
+        "name": v['name'],
         "website": curr['url'],
         "chamber": curr['committee_type'],
         "jurisdiction": curr['jurisdiction']

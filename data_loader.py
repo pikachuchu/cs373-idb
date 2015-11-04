@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 import json
 from models import legislator, bill, committee, committee_member, vote, bill_committee
 
-engine = create_engine('mysql+mysqldb://root:politicianhub@localhost/phub?charset=utf8')
+engine = create_engine('mysql+mysqldb://phub:@localhost/phub?charset=utf8')
 Session = sessionmaker(bind=engine)
 session = Session()
 engine.echo = True
@@ -56,7 +56,7 @@ for key in data:
         current_status = info['current_status'],
         fk_sponsor = sponsor)
 
-    session.add(cur_bill)
+    session.merge(cur_bill)
 
 with open('data/committee_data.json', 'r') as infile:
 	 data = json.load(infile)
@@ -76,7 +76,7 @@ for key in data:
         is_subcommittee = info['is_subcommittee'],
         committee_id = info['committee_id'],
         fk_chair = chair)
-    session.add(cur_com)
+    session.merge(cur_com)
 
 data = json.load(open('data/committee_members_data.json'))
 for l,c in data:
@@ -84,7 +84,7 @@ for l,c in data:
         legislator_id = int(l),
         committee_id = int(c)
     )
-    session.add(curr)
+    session.merge(curr)
 
 data = json.load(open('data/votes_data.json'))
 for l,b,r in data:
@@ -93,7 +93,7 @@ for l,b,r in data:
         bill_id = int(b),
         result = r
     )
-    session.add(curr)
+    session.merge(curr)
 
 data = json.load(open('data/bill_committee_data.json'))
 for b,c in data:
@@ -101,7 +101,7 @@ for b,c in data:
         bill_id = int(b),
         committee_id = int(c)
     )
-    session.add(curr)
+    session.merge(curr)
 
 session.commit()
 
