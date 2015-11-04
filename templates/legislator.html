@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container" >
+        <div class="row">
+            <div class="col-lg-8" id = "senate1">
+            
+            </div>
+            <div id="scriptContainer"></div>
+        </div>                
+	</div>
+
+<script type="text/babel">
+
+	var script = document.createElement('script');
+	script.text = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");';
+	var Table = React.createClass({
+	    getInitialState: function(){
+	        return {data: []}
+	    },
+	    /*loadData: function(){
+	        $.ajax({
+	            url: '/daotao/lops',
+	            success: function(data){
+	                this.setState({data: data.lops});
+	            }.bind(this)
+	        })
+	    },
+	    componentWillMount: function(){
+	        this.loadData();
+	    },*/ 
+	    componentDidMount: function(){
+	        var self = this;
+	        $.get(this.props.source, function(result) {
+	          // var lastGist = result["legislators"];
+	          var d = [];
+	          d.push(result);
+	          if (this.isMounted()) {
+	            this.setState({
+	              data: d
+	            });
+	          }
+	        }.bind(this));
+	    },
+	    componentDidUpdate: function(){
+	        $('body').append(script);
+	    },
+	    render: function()
+	    {
+	    	if(this.state.data.length > 0)
+	    	{
+	    		var person = this.state.data["0"];
+		    	var committeesList = person["committees"].map(function(d, index){
+	            return <li>{d.name}</li>
+	        	});
+	        	var billsList = person["votes"].map(function(d, index){
+	            return <li>Voted {d.result}: <br/> {d.bill.name}</li>
+	        	});
+		        
+		        return (
+		        	<section>
+		                <h1> {person["first_name"]} {person["last_name"]} </h1>
+		                <hr />
+		                <img className="img-responsive" id="person-picture" src={person["image"]} alt="" />
+		                <div className="person-text">
+		                	<p className="lead"><b>Fullname:</b> {person["first_name"]} {person["last_name"]}</p>
+		                	<p className="lead"><b>Birthday:</b> {person["birthday"]}</p>
+		                	<p className="lead"><b>Gender  :</b> {person["gender"]}</p>
+		                	<p className="lead"><b>Chamber :</b> {person["chamber"]} (Sr.)</p>
+		                	<p className="lead"><b>State   :</b> {person["state"]}</p>
+		                	<p className="lead"><b>Party   :</b> {person["party"]}</p> 
+		                	<p className="lead"><a href= {person["website"]}><b>Website</b></a></p>
+		                </div>
+	                <div id="committee-list">
+	                	<br />
+	                	<hr />
+	                	<h2>Committee Membership</h2>
+	                	<ul>
+	                		{committeesList}
+	                	</ul>
+	                	<hr />      
+	                </div>
+	
+	                <div id="votes-list">
+	                	<br />
+	                	<hr />
+	                	<h2>Votes</h2>
+	                	<ul>
+	                		{billsList}
+	                	</ul>
+	                	<hr />      
+	                </div>
+	
+	                <div className="twitter">
+	                	<a className="twitter-timeline" href={"https://twitter.com/" + person["twitter"]} data-widget-id="656630196540301312" data-screen-name={person["twitter"]}>Tweets by @{person["twitter"]}</a>
+	                </div>
+	                <hr />
+		            </section>
+		        )       
+			}
+			else
+			{
+				return (<div></div>)
+			}
+	    }
+	 });
+
+	React.render(<Table source={"http://politicianhub.me/api/v1/legislators/{{legislator_id}}?verbose=true"}/>, document.getElementById('senate1'));
+
+</script>
+{% endblock %}
