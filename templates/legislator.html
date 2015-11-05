@@ -60,7 +60,7 @@
 	        	var billsList = person["votes"].map(function(d, index){
 	        		return (
 	        			<tr>
-	        				<td><a href={"legislator/id/" +d.bill.id}>{d.bill.name}</a></td>
+	        				<td><a href={"/bills/id/" +d.bill.id}>{d.bill.name}</a></td>
 	        				<td>{d.result}</td>
 	        			</tr>)
 	        	});

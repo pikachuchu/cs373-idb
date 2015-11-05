@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-8" id = "bills1">
+            	
+            </div>
+        </div>
+	</div>
+
+	<script type="text/babel">
+    var data = [
+        {
+			bill_id: "hr3800-112",
+			bill_type: "house_bill",
+			committees: [],
+			current_status: "enacted_signed",
+			current_status_description: "This bill was enacted after being signed by the President on January 31, 2012.",
+			current_status_label: "Enacted — Signed by the President",
+			date_intro: "2012-01-23",
+			house_status: "pass",
+			id: 1,
+			link: "https://www.govtrack.us/congress/bills/112/hr3800",
+			name: "Airport and Airway Extension Act of 2012",
+			senate_status: "pass",
+			sponsor: {
+				bio_guide: "M000689",
+				birthday: "1943-01-27",
+				chamber: "House",
+				committees: [],
+				contact_form: "https://mica.house.gov/contact-form",
+				first_name: "John",
+				gender: "male",
+				id: 165,
+				image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/M000689.jpg",
+				last_name: "Mica",
+				party: "Republican",
+				state: "FL",
+				twitter: null,
+				votes: [],
+				website: "http://mica.house.gov"
+				}
+			}
+   ]; //Json Data
+
+
+   var Table = React.createClass({
+        getInitialState: function(){
+            return {data: [ 
+    ]}
+        },
+        /*loadData: function(){
+            $.ajax({
+                url: '/daotao/lops',
+                success: function(data){
+                    this.setState({data: data.lops});
+                }.bind(this)
+            })
+        },
+        componentWillMount: function(){
+            this.loadData();
+        },*/ 
+        componentDidMount: function(){
+            var self = this;
+            $('#mytable').dataTable({
+              "bAutoWidth": false,
+              "bDestroy": true,     
+              "fnDrawCallback": function() {                
+                    self.forceUpdate();         
+              }, 
+            });
+        },
+        componentDidUpdate: function(){
+            $('#mytable').dataTable({
+              "bAutoWidth": false,
+              "bDestroy": true, 
+            });
+        },
+        render: function(){
+            var bills = this.props.data[0];
+            var sponsor = bills["sponsor"];
+
+
+            return (
+                <section>
+                    <h1> {bills["name"]} </h1>
+                    <hr />
+                    <div className="person-text" >
+	                	<p className="lead"><b>Date Introduced:</b> {bills["date_intro"]}} </p>
+	                	<p className="lead"><b>House Status  :</b> {bills["senate_status"]}</p>
+	                	<p className="lead"><b>Senate Status :</b> {bills["house_status"]}</p>
+	                	<p className="lead"><b>Current Status:</b> {bills["current_status"]}</p>
+	                	<p className="lead"><b>Current Status Description:</b> {bills["current_status_description"]}</p> 
+	                	<p className="lead"><a href= {bills["link"]}><b>Full Text</b></a></p>
+	                </div>
+	                
+	                <div id="committee-list" >
+	                	<hr />
+	                	<h2>Sponsor</h2>
+	                	<img className="img-responsive" id="person-picture" src={sponsor["image"]} alt="" />
+	                	<div className="person-text" >
+		                	<p className="lead"><b>Fullname:</b> <a href= {"/" + sponsor["chamber"].toLowerCase() + "/id/" + sponsor["id"]}><b>{sponsor["first_name"] + " " + sponsor["last_name"]}</b></a> </p>
+		                	<p className="lead"><b>Party   :</b> {sponsor["party"]}</p> 
+		                </div>
+                	</div>
+
+                </section>
+            )       
+        }
+     });
+
+    React.render(<Table data={data}/>, document.getElementById('bills1'));
+
+</script>
+{% endblock %}
