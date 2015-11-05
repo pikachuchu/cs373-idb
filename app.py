@@ -56,12 +56,12 @@ def bill(bill_id):
 
 @app.route('/tests')
 def tests():
-    p = subprocess.Popen(["python", "tests.py"],
+    p = subprocess.Popen(["make", "test"],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             stdin=subprocess.PIPE)
     out, err = p.communicate()
-    return render_template('tests.html', output=err)
+    return render_template('tests.html', output=err+out)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000)
