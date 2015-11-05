@@ -5,69 +5,626 @@
 
 
 {% block body %}
-	<div class="container">
+	<div class="container" >
         <div class="row">
-            <div class="col-lg-8">
-            	<section>
-	                <h1>Sen. Lamar Alexander </h1>
-	                <hr />
-	                <img class="img-responsive" id="person-picture" src="https://theunitedstates.io/images/congress/original/A000360.jpg" alt="" style="float:left;margin-right:2em;width:250px" />
-	                <div class="person-text" style="float:left;">
-	                	<p class="lead"><b>Fullname:</b> Lamar Alexander</p>
-	                	<p class="lead"><b>Birthday:</b> 1940-07-03 (Age: 75)</p>
-	                	<p class="lead"><b>Gender  :</b> Male</p>
-	                	<p class="lead"><b>Chamber :</b> Senate (Sr.)</p>
-	                	<p class="lead"><b>State   :</b> Tennessee</p>
-	                	<p class="lead"><b>Party   :</b> Republican</p> 
-	                	<p class="lead"><a href= "http://www.alexander.senate.gov/public/"><b>Website</b></a></p>
-	                </div>
-                </section>
-                <!-- Post Content -->
-                <div id="committee-list" style="clear:both">
-                	<br />
-                	<hr />
-                	<h2>Committee Membership</h2>
-                	<p><a href="/committee/id/1">Chairman, Senate Committee on Health, Education, Labor, and Pensions</a></p>
-            		<ul>
-            			<li>Ex Officio, Subcommittee on Children and Families</li>
-						<li>Ex Officio, Subcommittee on Employment and Workplace Safety</li>
-						<li>Ex Officio, Subcommittee on Primary Health and Retirement Security</li>
-               		</ul>
-	               	<p>Senate Committee on Appropriations</p>
-	               	<ul>
-	               		<li>Chairman, Subcommittee on Energy and Water Development</li>
-						<li>Member, Subcommittee on Commerce, Justice, Science, and Related Agencies</li>
-						<li>Member, Subcommittee on Department of Defense</li>
-						<li>Member, Subcommittee on Department of the Interior, Environment, and Related Agencies</li>
-						<li>Member, Subcommittee on Departments of Labor, Health and Human Services, and Education, and Related Agencies</li>
-						<li>Member, Subcommittee on Transportation, Housing and Urban Development, and Related Agencies</li>
-	               	</ul>
-	               	<p>Senate Committee on Energy and Natural Resources</p>
-	               	<ul>
-		               	<li>Member, Subcommittee on Energy</li>
-						<li>Member, Subcommittee on National Parks</li>
-						<li>Member, Subcommittee on Public Lands, Forests, and Mining</li>
-						</ul>
-					<p>Senate Committee on Rules and Administration</p>
-                	<hr />      
-                </div>
-                <div class="twitter">
-                	<a class="twitter-timeline" href="https://twitter.com/SenAlexander" data-widget-id="656630196540301312">Tweets by @SenAlexander</a>
-					<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-					</script>
-                </div>
-                <hr />
-                <div class="youtube">
-
-                </div>
+            <div class="col-lg-8" id = "senate1">
+            	
             </div>
         </div>                
 	</div>
-<script type="text/javascript">
-  jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+					</script>
+<script type="text/babel">
+	var data = [{
+bio_guide: "B001236",
+birthday: "1950-12-10",
+chamber: "Senate",
+committees: [
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAP16",
+id: 19,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Appropriations",
+website: "http://appropriations.senate.gov/"
+},
+{
+chair: { },
+chamber: "joint",
+committee_id: "JCSE",
+id: 21,
+is_subcommittee: false,
+jurisdiction: null,
+name: "Commission on Security and Cooperation in Europe",
+website: "http://www.csce.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAF13",
+id: 22,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Agriculture, Nutrition, and Forestry",
+website: "http://agriculture.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAF14",
+id: 27,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Agriculture, Nutrition, and Forestry",
+website: "http://agriculture.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAP23",
+id: 71,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Appropriations",
+website: "http://appropriations.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSEV15",
+id: 73,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Environment and Public Works",
+website: "http://epw.senate.gov/"
+},
+{
+chair: { },
+chamber: "joint",
+committee_id: "JSPR",
+id: 122,
+is_subcommittee: false,
+jurisdiction: null,
+name: "Joint Committee on Printing",
+website: "https://cha.house.gov/jointcommittees/joint-committee-on-printing"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAP19",
+id: 132,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Appropriations",
+website: "http://appropriations.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAF16",
+id: 143,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Agriculture, Nutrition, and Forestry",
+website: "http://agriculture.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAF",
+id: 173,
+is_subcommittee: false,
+jurisdiction: null,
+name: "Senate Committee on Agriculture, Nutrition, and Forestry",
+website: "http://agriculture.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAP",
+id: 174,
+is_subcommittee: false,
+jurisdiction: null,
+name: "Senate Committee on Appropriations",
+website: "http://appropriations.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSEV",
+id: 179,
+is_subcommittee: false,
+jurisdiction: null,
+name: "Senate Committee on Environment and Public Works",
+website: "http://epw.senate.gov/"
+},
+{
+chair: { },
+chamber: "senate",
+committee_id: "SSRA",
+id: 185,
+is_subcommittee: false,
+jurisdiction: null,
+name: "Senate Committee on Rules and Administration",
+website: "http://rules.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSVA",
+id: 189,
+is_subcommittee: false,
+jurisdiction: null,
+name: "Senate Committee on Veterans' Affairs",
+website: "http://veterans.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAP20",
+id: 199,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Appropriations",
+website: "http://appropriations.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSEV09",
+id: 202,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Environment and Public Works",
+website: "http://epw.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSEV08",
+id: 217,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Environment and Public Works",
+website: "http://epw.senate.gov/"
+},
+{
+chair: {},
+chamber: "senate",
+committee_id: "SSAP24",
+id: 221,
+is_subcommittee: true,
+jurisdiction: null,
+name: "Senate Committee on Appropriations",
+website: "http://appropriations.senate.gov/"
+}
+],
+contact_form: "http://www.boozman.senate.gov/public/index.cfm/e-mail-me",
+first_name: "John",
+gender: "male",
+id: 1,
+image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/B001236.jpg",
+last_name: "Boozman",
+party: "Republican",
+state: "AR",
+twitter: "JohnBoozman",
+votes: [],
+votes: [
+{
+bill: {
+bill_id: "hr2-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on April 16, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-03-24",
+house_status: "pass",
+id: 6,
+link: "https://www.govtrack.us/congress/bills/114/hr2",
+name: "Medicare Access and CHIP Reauthorization Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "sjres8-114",
+bill_type: "senate_joint_resolution",
+committees: [],
+current_status: "prov_kill_veto",
+current_status_description: "This resolution was vetoed by the President on March 31, 2015. The bill is dead unless Congress can override it.",
+current_status_label: "Vetoed (No Override Attempt)",
+date_intro: "2015-02-09",
+house_status: "pass",
+id: 7,
+link: "https://www.govtrack.us/congress/bills/114/sjres8",
+name: "A joint resolution providing for congressional disapproval under chapter 8 of title 5, United States Code, of the rule submitted by the National Labor Relations Board relating to representation case procedures.",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr3236-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on July 31, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-07-28",
+house_status: "pass",
+id: 10,
+link: "https://www.govtrack.us/congress/bills/114/hr3236",
+name: "Surface Transportation and Veterans Health Care Choice Improvement Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr1295-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on June 29, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-03-04",
+house_status: "pass",
+id: 24,
+link: "https://www.govtrack.us/congress/bills/114/hr1295",
+name: "Trade Preferences Extension Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "s754-114",
+bill_type: "senate_bill",
+committees: [],
+current_status: "pass_over_senate",
+current_status_description: "This bill passed in the Senate on October 27, 2015 and goes to the House next for consideration.",
+current_status_label: "Passed Senate",
+date_intro: "2015-03-17",
+house_status: "",
+id: 29,
+link: "https://www.govtrack.us/congress/bills/114/s754",
+name: "Cybersecurity Information Sharing Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr22-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "pass_back_senate",
+current_status_description: "This bill has been passed in the House and the Senate, but the Senate made changes and sent it back to the House on July 30, 2015.",
+current_status_label: "Passed Senate with Changes",
+date_intro: "2015-01-06",
+house_status: "pass",
+id: 60,
+link: "https://www.govtrack.us/congress/bills/114/hr22",
+name: "Developing a Reliable and Innovative Vision for the Economy Act",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr1314-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "passed_bill",
+current_status_description: "This bill was passed by Congress on October 30, 2015 and goes to the President next.",
+current_status_label: "Passed House & Senate",
+date_intro: "2015-03-04",
+house_status: "pass",
+id: 64,
+link: "https://www.govtrack.us/congress/bills/114/hr1314",
+name: "Trade Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "s295-114",
+bill_type: "senate_bill",
+committees: [],
+current_status: "pass_over_senate",
+current_status_description: "This bill passed in the Senate on February 11, 2015 and goes to the House next for consideration.",
+current_status_label: "Passed Senate",
+date_intro: "2015-01-28",
+house_status: "",
+id: 77,
+link: "https://www.govtrack.us/congress/bills/114/s295",
+name: "Amy and Vicky Child Pornography Victim Restitution Improvement Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr2048-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on June 2, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-04-28",
+house_status: "pass",
+id: 85,
+link: "https://www.govtrack.us/congress/bills/114/hr2048",
+name: "Uniting and Strengthening America by Fulfilling Rights and Ensuring Effective Discipline Over Monitoring Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "s178-114",
+bill_type: "senate_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on May 29, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-01-13",
+house_status: "pass",
+id: 106,
+link: "https://www.govtrack.us/congress/bills/114/s178",
+name: "Justice for Victims of Trafficking Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr1735-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "prov_kill_veto",
+current_status_description: "This bill was vetoed by the President on October 22, 2015. The bill is dead unless Congress can override it.",
+current_status_label: "Vetoed (No Override Attempt)",
+date_intro: "2015-04-13",
+house_status: "pass",
+id: 150,
+link: "https://www.govtrack.us/congress/bills/114/hr1735",
+name: "National Defense Authorization Act for Fiscal Year 2016",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr644-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "pass_back_house",
+current_status_description: "This bill passed in the Senate and the House, but the House made changes and sent it back to the Senate on June 12, 2015.",
+current_status_label: "Passed House with Changes",
+date_intro: "2015-02-02",
+house_status: "pass",
+id: 178,
+link: "https://www.govtrack.us/congress/bills/114/hr644",
+name: "Trade Facilitation and Trade Enforcement Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "sconres16-114",
+bill_type: "senate_concurrent_resolution",
+committees: [],
+current_status: "pass_over_senate",
+current_status_description: "This resolution passed in the Senate on May 11, 2015 and goes to the House next for consideration.",
+current_status_label: "Passed Senate",
+date_intro: "2015-05-07",
+house_status: "",
+id: 190,
+link: "https://www.govtrack.us/congress/bills/114/sconres16",
+name: "A concurrent resolution stating the policy of the United States regarding the release of United States citizens in Iran.",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr1191-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on May 22, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-03-02",
+house_status: "pass",
+id: 215,
+link: "https://www.govtrack.us/congress/bills/114/hr1191",
+name: "Iran Nuclear Agreement Review Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr203-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on February 12, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-01-07",
+house_status: "pass",
+id: 233,
+link: "https://www.govtrack.us/congress/bills/114/hr203",
+name: "Clay Hunt SAV Act",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "sconres11-114",
+bill_type: "senate_concurrent_resolution",
+committees: [],
+current_status: "passed_concurrentres",
+current_status_description: "This concurrent resolution was agreed to by both chambers of Congress on May 5, 2015. That is the end of the legislative process for concurrent resolutions. They do not have the force of law.",
+current_status_label: "Agreed To (Concurrent Resolution)",
+date_intro: "2015-03-20",
+house_status: "pass",
+id: 251,
+link: "https://www.govtrack.us/congress/bills/114/sconres11",
+name: "An original concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2016 and setting forth the appropriate budgetary levels for fiscal years 2017 through 2025.",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "s1177-114",
+bill_type: "senate_bill",
+committees: [],
+current_status: "pass_over_senate",
+current_status_description: "This bill passed in the Senate on July 16, 2015 and goes to the House next for consideration.",
+current_status_label: "Passed Senate",
+date_intro: "2015-04-30",
+house_status: "",
+id: 263,
+link: "https://www.govtrack.us/congress/bills/114/s1177",
+name: "Every Child Achieves Act of 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Yea"
+},
+{
+bill: {
+bill_id: "hr240-114",
+bill_type: "house_bill",
+committees: [],
+current_status: "enacted_signed",
+current_status_description: "This bill was enacted after being signed by the President on March 4, 2015.",
+current_status_label: "Enacted — Signed by the President",
+date_intro: "2015-01-09",
+house_status: "pass",
+id: 279,
+link: "https://www.govtrack.us/congress/bills/114/hr240",
+name: "Department of Homeland Security Appropriations Act, 2015",
+senate_status: "pass",
+sponsor: {}
+},
+result: "Nay"
+}
+],
+website: "http://www.boozman.senate.gov"
+}]; //Json Data
+
+	var Table = React.createClass({
+	    getInitialState: function(){
+	        return {data: [ 
+	]}
+	    },
+	    /*loadData: function(){
+	        $.ajax({
+	            url: '/daotao/lops',
+	            success: function(data){
+	                this.setState({data: data.lops});
+	            }.bind(this)
+	        })
+	    },
+	    componentWillMount: function(){
+	        this.loadData();
+	    },*/ 
+	    componentDidMount: function(){
+	        var self = this;
+	        $('#mytable').dataTable({
+	          "bAutoWidth": false,
+	          "bDestroy": true,     
+	          "fnDrawCallback": function() {                
+	                self.forceUpdate();         
+	          }, 
+	        });
+	    },
+	    componentDidUpdate: function(){
+	        $('#mytable').dataTable({
+	          "bAutoWidth": false,
+	          "bDestroy": true, 
+	        });
+	    },
+	    render: function(){
+	    	var person = this.props.data[0];
+	    	var committeesList = person.committees.map(function(d, index){
+            return <li>{d.name}</li>
+        	});
+        	var billsList = person.votes.map(function(d, index){
+            return <li>Voted {d.result}: <br/> {d.bill.name}</li>
+        	});
+	        
+	        return (
+	        	<section>
+	                <h1> {person["first_name"]} {person["last_name"]} </h1>
+	                <hr />
+	                <img className="img-responsive" id="person-picture" src={person["image"]} alt="" />
+	                <div className="person-text">
+	                	<p className="lead"><b>Fullname:</b> {person["first_name"]} {person["last_name"]}</p>
+	                	<p className="lead"><b>Birthday:</b> {person["birthday"]}</p>
+	                	<p className="lead"><b>Gender  :</b> {person["gender"]}</p>
+	                	<p className="lead"><b>Chamber :</b> {person["chamber"]} (Sr.)</p>
+	                	<p className="lead"><b>State   :</b> {person["state"]}</p>
+	                	<p className="lead"><b>Party   :</b> {person["party"]}</p> 
+	                	<p className="lead"><a href= {person["website"]}><b>Website</b></a></p>
+	                </div>
+                <div id="committee-list">
+                	<br />
+                	<hr />
+                	<h2>Committee Membership</h2>
+                	<ul>
+                		{committeesList}
+                	</ul>
+                	<hr />      
+                </div>
+
+                <div id="votes-list">
+                	<br />
+                	<hr />
+                	<h2>Votes</h2>
+                	<ul>
+                		{billsList}
+                	</ul>
+                	<hr />      
+                </div>
+
+                <div className="twitter">
+                	<a className="twitter-timeline" href={"https://twitter.com/" + person["twitter"]} data-widget-id="656630196540301312" data-screen-name={person["twitter"]}>Tweets by @{person["twitter"]}</a>
+                </div>
+                <hr />
+	            </section>
+	        )       
+	    }
+	 });
+
+	React.render(<Table data={data}/>, document.getElementById('senate1'));
+
 </script>
 {% endblock %}

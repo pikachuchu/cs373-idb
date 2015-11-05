@@ -7,30 +7,114 @@
 {% block body %}
 	<div class="container">
         <div class="row">
-            <div class="col-lg-8">
-            	<section>
-	                <h1>An original concurrent resolution setting forth the congressional budget for the United States Government for fiscal year 2016 and setting forth the appropriate budgetary levels for fiscal years 2017 through 2025.</h1>
-	                <hr />
-	                <div class="person-text" style="float:left;">
-	                	<p class="lead"><b>Date Introduced:</b> 2015-03-20 </p>
-	                	<p class="lead"><b>House Status  :</b> Pass</p>
-	                	<p class="lead"><b>Senate Status :</b> Pass</p>
-	                	<p class="lead"><b>Current Status:</b> Agreed To</p>
-	                	<p class="lead"><b>Current Status Description:</b> This concurrent resolution was agreed to by both chambers of Congress on May 5, 2015. That is the end of the legislative process for concurrent resolutions. They do not have the force of law.</p> 
-	                	<p class="lead"><a href= "https://www.govtrack.us/congress/bills/114/sconres11"><b>Full Text</b></a></p>
-	                </div>
-                </section>
-                <!-- Post Content -->
-                <div id="committee-list" style="clear:both">
-                	<hr />
-                	<h2>Sponsor</h2>
-                	<img class="img-responsive" id="person-picture" src="https://theunitedstates.io/images/congress/450x550/E000285.jpg" alt="" style="float:left;margin-right:2em;width:75px"; />
-	                <div class="person-text" style="float:left;">
-	                	<p class="lead"><b>Fullname:</b> <a href= "/senator/id/2"><b>Michael Enzi</b></a>
-	                	<p class="lead"><b>Party   :</b> Republican</p> 
-	                </div>
-                </div>
+            <div class="col-lg-8" id = "bills1">
+            	
             </div>
         </div>
 	</div>
+
+	<script type="text/babel">
+    var data = [
+        {
+			bill_id: "hr3800-112",
+			bill_type: "house_bill",
+			committees: [],
+			current_status: "enacted_signed",
+			current_status_description: "This bill was enacted after being signed by the President on January 31, 2012.",
+			current_status_label: "Enacted — Signed by the President",
+			date_intro: "2012-01-23",
+			house_status: "pass",
+			id: 1,
+			link: "https://www.govtrack.us/congress/bills/112/hr3800",
+			name: "Airport and Airway Extension Act of 2012",
+			senate_status: "pass",
+			sponsor: {
+				bio_guide: "M000689",
+				birthday: "1943-01-27",
+				chamber: "House",
+				committees: [],
+				contact_form: "https://mica.house.gov/contact-form",
+				first_name: "John",
+				gender: "male",
+				id: 165,
+				image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/M000689.jpg",
+				last_name: "Mica",
+				party: "Republican",
+				state: "FL",
+				twitter: null,
+				votes: [],
+				website: "http://mica.house.gov"
+				}
+			}
+   ]; //Json Data
+
+
+   var Table = React.createClass({
+        getInitialState: function(){
+            return {data: [ 
+    ]}
+        },
+        /*loadData: function(){
+            $.ajax({
+                url: '/daotao/lops',
+                success: function(data){
+                    this.setState({data: data.lops});
+                }.bind(this)
+            })
+        },
+        componentWillMount: function(){
+            this.loadData();
+        },*/ 
+        componentDidMount: function(){
+            var self = this;
+            $('#mytable').dataTable({
+              "bAutoWidth": false,
+              "bDestroy": true,     
+              "fnDrawCallback": function() {                
+                    self.forceUpdate();         
+              }, 
+            });
+        },
+        componentDidUpdate: function(){
+            $('#mytable').dataTable({
+              "bAutoWidth": false,
+              "bDestroy": true, 
+            });
+        },
+        render: function(){
+            var bills = this.props.data[0];
+            var sponsor = bills["sponsor"];
+
+
+            return (
+                <section>
+                    <h1> {bills["name"]} </h1>
+                    <hr />
+                    <div className="person-text" >
+	                	<p className="lead"><b>Date Introduced:</b> {bills["date_intro"]}} </p>
+	                	<p className="lead"><b>House Status  :</b> {bills["senate_status"]}</p>
+	                	<p className="lead"><b>Senate Status :</b> {bills["house_status"]}</p>
+	                	<p className="lead"><b>Current Status:</b> {bills["current_status"]}</p>
+	                	<p className="lead"><b>Current Status Description:</b> {bills["current_status_description"]}</p> 
+	                	<p className="lead"><a href= {bills["link"]}><b>Full Text</b></a></p>
+	                </div>
+	                
+	                <div id="committee-list" >
+	                	<hr />
+	                	<h2>Sponsor</h2>
+	                	<img className="img-responsive" id="person-picture" src={sponsor["image"]} alt="" />
+	                	<div className="person-text" >
+		                	<p className="lead"><b>Fullname:</b> <a href= {"/" + sponsor["chamber"].toLowerCase() + "/id/" + sponsor["id"]}><b>{sponsor["first_name"] + " " + sponsor["last_name"]}</b></a> </p>
+		                	<p className="lead"><b>Party   :</b> {sponsor["party"]}</p> 
+		                </div>
+                	</div>
+
+                </section>
+            )       
+        }
+     });
+
+    React.render(<Table data={data}/>, document.getElementById('bills1'));
+
+</script>
 {% endblock %}

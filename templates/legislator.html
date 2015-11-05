@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+	<div class="container" >
+        <div class="row">
+            <div class="col-lg-8" id = "senate1">
+            
+            </div>
+            <div id="scriptContainer"></div>
+        </div>                
+	</div>
+
+<script type="text/babel">
+
+	var script = document.createElement('script');
+	script.text = '!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?"http":"https";if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");';
+	var Table = React.createClass({
+	    getInitialState: function(){
+	        return {data: []}
+	    },
+	    componentDidMount: function(){
+	        var self = this;
+	        $.get(this.props.source, function(result) {
+	          // var lastGist = result["legislators"];
+	          var d = [];
+	          d.push(result);
+	          if (this.isMounted()) {
+	            this.setState({
+	              data: d
+	            });
+	          }
+	        }.bind(this));
+	    },
+	    componentDidUpdate: function(){
+	        $('body').append(script);
+	        $('#mytable').dataTable({
+	          "bAutoWidth": false,
+	          "bDestroy": true, 
+	        });
+	    },
+	    render: function()
+	    {
+	    	if(this.state.data.length > 0)
+	    	{
+	    		var imageStyle = {
+					float: 'left',
+					marginRight:'2em',
+					width:'250px'
+				}
+	    		var person = this.state.data["0"];
+	 
+	    		var gender = (person["gender"] == "male") ? "Male" : "Female";
+		    	var committeesList = person["committees"].map(function(d, index){
+	            return <li><a href={"/committee/id/" + d.id}>{d.name}</a></li>
+	        	});
+	        	var billsList = person["votes"].map(function(d, index){
+	        		return (
+	        			<tr>
+	        				<td><a href={"/bills/id/" +d.bill.id}>{d.bill.name}</a></td>
+	        				<td>{d.result}</td>
+	        			</tr>)
+	        	});
+		        
+		        return (
+		        	<section>
+		                <h1> {person["first_name"]} {person["last_name"]} </h1>
+		                <hr />
+		                <img className="img-responsive" id="person-picture" src={person["image"]} alt="" style={imageStyle}/>
+		                <div className="person-text">
+		                	<p className="lead"><b>Fullname:</b> {person["first_name"]} {person["last_name"]}</p>
+		                	<p className="lead"><b>Birthday:</b> {person["birthday"]}</p>
+		                	<p className="lead"><b>Gender  :</b> {gender}</p>
+		                	<p className="lead"><b>Chamber :</b> {person["chamber"]}</p>
+		                	<p className="lead"><b>State   :</b> {person["state"]}</p>
+		                	<p className="lead"><b>Party   :</b> {person["party"]}</p> 
+		                	<p className="lead"><a href= {person["website"]}><b>Website</b></a></p>
+		                </div>
+	                <div id="committee-list">
+	                	<br />
+	                	<hr />
+	                	<h2>Committee Membership</h2>
+	                	<ul>
+	                		{committeesList}
+	                	</ul>    
+	                </div>
+	
+	                <div id="votes-list">
+	                	<br />
+	                	<hr />
+	                	<h2>Votes</h2>
+	                	<div className="table-responsive">
+	                        <table className="table table-striped" id="mytable">
+	                            <thead>
+	                                <tr className="success">
+	                                    <td>Bill Name</td>
+	                                    <td>Vote</td>
+	                                </tr>   
+	                            </thead>
+	                            <tbody>
+	                                {billsList}
+	                            </tbody>
+	                        </table>
+	                    </div>
+	                	<hr />      
+	                </div>
+	
+	                <div className="twitter">
+	                	<a className="twitter-timeline" href={"https://twitter.com/" + person["twitter"]} data-widget-id="662005044443680768" data-screen-name={person["twitter"]}>Tweets by @{person["twitter"]}</a>
+	                </div>
+	                <hr />
+		            </section>
+		        )       
+			}
+			else
+			{
+				return (<div></div>)
+			}
+	    }
+	 });
+
+	React.render(<Table source={"http://politicianhub.me/api/v1/legislators/{{legislator_id}}?verbose=true"}/>, document.getElementById('senate1'));
+
+</script>
+{% endblock %}

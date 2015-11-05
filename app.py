@@ -42,65 +42,17 @@ def about():
 # def senator(sen_id):
 #     return render_template('senator.html', sen_id = sen_id)
 
-@app.route('/senator/id/1')
-@cross_origin()
-def senator1():
-    return render_template('senator1.html')
+@app.route('/legislator/id/<int:legislator_id>')
+def legislator(legislator_id):
+    return render_template('legislator.html', legislator_id = legislator_id)
 
-@app.route('/senator/id/2')
-@cross_origin()
-def senator2():
-    return render_template('senator2.html')
+@app.route('/committee/id/<int:committee_id>')
+def committee(committee_id):
+    return render_template('committee.html', committee_id = committee_id)
 
-@app.route('/senator/id/3')
-@cross_origin()
-def senator3():
-    return render_template('senator3.html')
-
-@app.route('/representative/id/1')
-@cross_origin()
-def representative1():
-    return render_template('representative1.html')
-
-@app.route('/representative/id/2')
-@cross_origin()
-def representative2():
-    return render_template('representative2.html')
-
-@app.route('/representative/id/3')
-@cross_origin()
-def representative3():
-    return render_template('representative3.html')
-
-@app.route('/committee/id/1')
-@cross_origin()
-def committee1():
-    return render_template('committee1.html')
-
-@app.route('/committee/id/2')
-@cross_origin()
-def committee2():
-    return render_template('committee2.html')
-
-@app.route('/committee/id/3')
-@cross_origin()
-def committee3():
-    return render_template('committee3.html')
-
-@app.route('/bills/id/1')
-@cross_origin()
-def bills1():
-    return render_template('bills1.html')
-
-@app.route('/bills/id/2')
-@cross_origin()
-def bills2():
-    return render_template('bills2.html')
-
-@app.route('/bills/id/3')
-@cross_origin()
-def bills3():
-    return render_template('bills3.html')
+@app.route('/bills/id/<int:bill_id>')
+def bill(bill_id):
+    return render_template('bill.html', bill_id = bill_id)
 
 @app.route('/tests')
 def tests():

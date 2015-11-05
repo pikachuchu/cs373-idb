@@ -13,38 +13,34 @@
 </div>
 <script type="text/babel">
 
-var data = [
-    { 'id': 1, 'firstName': 'Lamar', 'lastName': 'Alexander', 'age': '75', 'party': 'Republican', 'state': 'Tennessee (Sr.)' },
-    { 'id': 2, 'firstName': 'Michael', 'lastName': 'Enzi', 'age': '71', 'party': 'Republican', 'state': 'Wyoming (Sr.)' },
-    { 'id': 3, 'firstName': 'Tammy', 'lastName': 'Baldwin', 'age': '53', 'party': 'Democrat', 'state': 'Wisconsin (Sr.)' }
-    
-]; //Json Data
-
 var Table = React.createClass({
     getInitialState: function(){
-        return {data: [ 
-]}
+        return {
+            data: []
+        }
     },
-    /*loadData: function(){
-        $.ajax({
-            url: '/daotao/lops',
-            success: function(data){
-                this.setState({data: data.lops});
-            }.bind(this)
-        })
-    },
-    componentWillMount: function(){
-        this.loadData();
-    },*/ 
+    // loadData: function(){
+    //     $.get(this.props.source, function(result) {
+    //       if (this.isMounted()) {
+    //         this.setState({
+    //           data : []
+    //         });
+    //       }
+    //     }.bind(this));
+    // },
+    // componentWillMount: function(){
+    //     this.loadData();
+    // }, 
     componentDidMount: function(){
         var self = this;
-        $('#mytable').dataTable({
-          "bAutoWidth": false,
-          "bDestroy": true,     
-          "fnDrawCallback": function() {                
-                self.forceUpdate();         
-          }, 
-        });
+        $.get(this.props.source, function(result) {
+          var lastGist = result["legislators"];
+          if (this.isMounted()) {
+            this.setState({
+              data: lastGist
+            });
+          }
+        }.bind(this));
     },
     componentDidUpdate: function(){
         $('#mytable').dataTable({
@@ -53,32 +49,48 @@ var Table = React.createClass({
         });
     },
     render: function(){
-        var x = this.props.data.map(function(d, index){
-            return <tr><td><a href={"senator/id/" +d.id}>{d.firstName}</a></td><td><a href={"senator/id/" +d.id}>{d.lastName}</a></td><td>{d.age}</td><td>{d.party}</td><td>{d.state}</td></tr>
+        var table = this.state.data.map(function(d, index){
+            var spl = d.birthday.split("-");
+            var age = 2015 - parseInt(spl[0]);
+            return (<tr>
+                     <td><a href={"legislator/id/" +d["id"]}>{d["first_name"]}</a></td>
+                     <td><a href={"legislator/id/" +d["id"]}>{d["last_name"]}</a></td>
+                     <td>{age}</td>
+                     <td>{d.party}</td>
+                     <td>{d.state}</td>
+                 </tr>)
         });
-        
-        return (
-            <div className="table-responsive">
-                <table className="table table-striped" id="mytable">
-                    <thead>
-                        <tr className="success">
-                            <td>First Name</td>
-                            <td>Last Name</td>
-                            <td>Age</td>
-                            <td>Party</td>
-                            <td>State</td>
-                        </tr>   
-                    </thead>
-                    <tbody>
-                        {x}
-                    </tbody>
-                </table>
-            </div>
-        )       
+        if(this.state.data.length > 1)
+        {      
+            return (
+                    <div className="table-responsive">
+                        <table className="table table-striped" id="mytable">
+                            <thead>
+                                <tr className="success">
+                                    <td>First Name</td>
+                                    <td>Last Name</td>
+                                    <td>Age</td>
+                                    <td>Party</td>
+                                    <td>State</td>
+                                </tr>   
+                            </thead>
+                            <tbody>
+                                {table}
+                            </tbody>
+                        </table>
+                    </div>
+                )    
+        }
+        else
+        {
+            return (
+                    <div className="table-responsive">
+                    </div>
+                )    
+        }
     }
  });
-
-React.render(<Table data={data}/>, document.getElementById('senate'));
+React.render(<Table source="http://politicianhub.me/api/v1/legislators?chamber=Senate" />, document.getElementById('senate'));
 
 </script>
 {% endblock %}
