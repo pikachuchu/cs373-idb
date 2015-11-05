@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, make_response, abort
 from flask.ext.cors import CORS, cross_origin
 from api import api
+import subprocess
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -100,6 +101,15 @@ def bills2():
 @cross_origin()
 def bills3():
     return render_template('bills3.html')
+
+@app.route('/tests')
+def tests():
+    p = subprocess.Popen(["python", "tests.py"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            stdin=subprocess.PIPE)
+    out, err = p.communicate()
+    return render_template('tests.html', output=err)
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=8000)
