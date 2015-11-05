@@ -56,7 +56,6 @@ class tests(TestCase):
     # Test deletion of a row in legislators
     def test_delete_legislators_row(self):
         
-
         session.add(legislator(last_name = "delete"))
         session.commit()
 
@@ -70,6 +69,39 @@ class tests(TestCase):
         toRemove = session.query(legislator).filter(legislator.last_name == "delete").first()
         assert(toRemove == None)
 
+    def test_legislator_get_obj(self):
+        row = legislator(
+            id=1,
+            first_name='first',
+            last_name='last',
+            chamber='house',
+            gender='male',
+            birthday='2015-11-05',
+            party='R',
+            state='TX',
+            twitter='twitter',
+            website='website',
+            bio_guide='123456',
+            contact_form='form',
+            image='image',
+        )
+        result = {
+            'id': 1,
+            'first_name': 'first',
+            'last_name': 'last',
+            'chamber': 'house',
+            'gender': 'male',
+            'birthday': '2015-11-05',
+            'party': 'R',
+            'state': 'TX',
+            'twitter': 'twitter',
+            'website': 'website',
+            'bio_guide': '123456',
+            'contact_form': 'form',
+            'image': 'image'
+        }
+
+        assert(legislator.get_obj(row) == result)
 
     # Test that the table committees is writable
     def test_write_committees(self):
@@ -127,6 +159,29 @@ class tests(TestCase):
 
         toRemove = session.query(committee).filter(committee.name == "delete").first()
         assert(toRemove == None)
+
+    def test_committee_get_obj(self):
+        row = committee(
+            id=2,
+            name='committee_name',
+            chamber='senate',
+            website='website',
+            jurisdiction='hi',
+            is_subcommittee='true',
+            committee_id='123',
+            fk_chair=5
+        )
+        result = {
+            'id': 2,
+            'name': 'committee_name',
+            'chamber': 'senate',
+            'website': 'website',
+            'jurisdiction': 'hi',
+            'is_subcommittee': 'true',
+            'committee_id': '123',
+            'chair': 5
+        }
+        assert(committee.get_obj(row) == result)
 
     # Test that the table votes is writable
     def test_write_votes(self):
@@ -319,6 +374,38 @@ class tests(TestCase):
 
         toRemove = session.query(bill).filter(bill.name == "delete").first()
         assert(toRemove == None)
+
+    def test_bill_get_obj(self):
+      
+        row = bill(
+            id=3,
+            name='bill',
+            bill_id='12345',
+            bill_type='house_bill',
+            date_intro='2015-11-04',
+            house_status='pass',
+            senate_status='fail',
+            link='link',
+            current_status_label='label',
+            current_status_description='description',
+            current_status='status',
+            fk_sponsor=4
+        )
+        result = {
+            'id': 3,
+            'name': 'bill',
+            'bill_id': '12345',
+            'bill_type': 'house_bill',
+            'date_intro': '2015-11-04',
+            'house_status': 'pass',
+            'senate_status': 'fail',
+            'link': 'link',
+            'current_status_label': 'label',
+            'current_status_description': 'description',
+            'current_status': 'status',
+            'sponsor': 4
+        }
+        assert(bill.get_obj(row) == result)
     
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://travis:@localhost/test?charset=utf8')
