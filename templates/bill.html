@@ -7,7 +7,7 @@
 {% block body %}
 	<div class="container">
         <div class="row">
-            <div class="col-lg-8" id = "bills1">
+            <div class="col-lg-8" id = "billReact">
             	
             </div>
         </div>
@@ -48,32 +48,21 @@
 			}
    ]; //Json Data
 
-
    var Table = React.createClass({
         getInitialState: function(){
-            return {data: [ 
-    ]}
+            return {data: []}
         },
-        /*loadData: function(){
-            $.ajax({
-                url: '/daotao/lops',
-                success: function(data){
-                    this.setState({data: data.lops});
-                }.bind(this)
-            })
-        },
-        componentWillMount: function(){
-            this.loadData();
-        },*/ 
         componentDidMount: function(){
             var self = this;
-            $('#mytable').dataTable({
-              "bAutoWidth": false,
-              "bDestroy": true,     
-              "fnDrawCallback": function() {                
-                    self.forceUpdate();         
-              }, 
-            });
+            $.get(this.props.source, function(result) {
+              var d = [];
+              d.push(result);
+              if (this.isMounted()) {
+                this.setState({
+                  data: d
+                });
+              }
+            }.bind(this));
         },
         componentDidUpdate: function(){
             $('#mytable').dataTable({
@@ -82,39 +71,92 @@
             });
         },
         render: function(){
-            var bills = this.props.data[0];
-            var sponsor = bills["sponsor"];
-
-
-            return (
-                <section>
-                    <h1> {bills["name"]} </h1>
-                    <hr />
-                    <div className="person-text" >
-	                	<p className="lead"><b>Date Introduced:</b> {bills["date_intro"]}} </p>
-	                	<p className="lead"><b>House Status  :</b> {bills["senate_status"]}</p>
-	                	<p className="lead"><b>Senate Status :</b> {bills["house_status"]}</p>
-	                	<p className="lead"><b>Current Status:</b> {bills["current_status"]}</p>
-	                	<p className="lead"><b>Current Status Description:</b> {bills["current_status_description"]}</p> 
-	                	<p className="lead"><a href= {bills["link"]}><b>Full Text</b></a></p>
-	                </div>
-	                
-	                <div id="committee-list" >
-	                	<hr />
-	                	<h2>Sponsor</h2>
-	                	<img className="img-responsive" id="person-picture" src={sponsor["image"]} alt="" />
-	                	<div className="person-text" >
-		                	<p className="lead"><b>Fullname:</b> <a href= {"/" + sponsor["chamber"].toLowerCase() + "/id/" + sponsor["id"]}><b>{sponsor["first_name"] + " " + sponsor["last_name"]}</b></a> </p>
-		                	<p className="lead"><b>Party   :</b> {sponsor["party"]}</p> 
-		                </div>
-                	</div>
-
-                </section>
-            )       
+            if(this.state.data.length > 0)
+            {
+                var imgStyle = {
+                    float:'left',
+                    marginRight:'2em',
+                    width:'75px'
+                }
+               var bills = this.state.data["0"];
+               var sponsor = bills["sponsor"];
+               var senateStatus = (bills["senate_status"] == "pass") ? "Pass" : "Fail";
+               var houseStatus = (bills["house_status"] == "pass") ? "Pass" : "Fail";
+               var committees = bills["committees"].map(function(d, index){
+                    return (<li><h4><a href={"/committee/id/" + d["id"]}>{d["name"]}</a></h4></li>);
+               });
+               if(sponsor["id"]){
+                   return (
+                       <section>
+                           <h1> {bills["name"]} </h1>
+                           <hr />
+                           <div className="person-text" >
+                               <p className="lead"><b>Date Introduced:</b> {bills["date_intro"]} </p>
+                               <p className="lead"><b>House Status  :</b> {houseStatus}</p>
+                               <p className="lead"><b>Senate Status :</b> {senateStatus}</p>
+                               <p className="lead"><b>Current Status:</b> {bills["current_status_label"]}</p>
+                               <p className="lead"><b>Current Status Description:</b> {bills["current_status_description"]}</p> 
+                               <p className="lead"><a href= {bills["link"]}><b>Full Text</b></a></p>
+                           </div>
+                           <div id="sponsor" >
+                               <hr />
+                               <h2>Sponsor</h2>
+                               <img className="img-responsive" id="person-picture" src={sponsor["image"]} alt="" style={imgStyle} />
+                               <div className="person-text" >
+                                   <p className="lead"><b>Fullname:</b> <a href= {"/legislator/id/" + sponsor["id"]}><b>{sponsor["first_name"] + " " + sponsor["last_name"]}</b></a> </p>
+                                   <p className="lead"><b>Party   :</b> {sponsor["party"]}</p> 
+                               </div>
+                           </div>
+                           <div id="committees-list">
+                                <br />
+                                <hr />
+                                <h2>Committees of the Bill</h2>
+                                <ul>
+                                    {committees}
+                                </ul>
+                           </div>
+                           
+                       </section>
+                   )
+                }
+                else
+                {
+                    return (
+                       <section>
+                       <h1> {bills["name"]} </h1>
+                       <hr />
+                       <div className="person-text" >
+                           <p className="lead"><b>Date Introduced:</b> {bills["date_intro"]} </p>
+                           <p className="lead"><b>House Status  :</b> {houseStatus}</p>
+                           <p className="lead"><b>Senate Status :</b> {senateStatus}</p>
+                           <p className="lead"><b>Current Status:</b> {bills["current_status_label"]}</p>
+                           <p className="lead"><b>Current Status Description:</b> {bills["current_status_description"]}</p> 
+                           <p className="lead"><a href= {bills["link"]}><b>Full Text</b></a></p>
+                       </div>
+                       <div id="sponsor" >
+                           <hr />
+                           <h2>Sponsor</h2>
+                           <h4>There is no Sponsor for this Bill</h4>
+                       </div>
+                       <div id="committees-list">
+                            <br />
+                            <hr />
+                            <h2>Committees of the Bill</h2>
+                            <ul>
+                                {committees}
+                            </ul>
+                       </div>
+                   </section>)
+                }
+            }
+            else
+            {
+                return(<section></section>);
+            }       
         }
      });
 
-    React.render(<Table data={data}/>, document.getElementById('bills1'));
+    React.render(<Table data={data} source={"http://politicianhub.me/api/v1/bills/{{bill_id}}?verbose=true"}/>, document.getElementById('billReact'));
 
 </script>
 {% endblock %}

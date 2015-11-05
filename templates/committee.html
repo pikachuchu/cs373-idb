@@ -7,7 +7,7 @@
 {% block body %}
 	<div class="container">
         <div class="row">
-            <div class="col-lg-8" id = "committee1">
+            <div class="col-lg-8" id = "committeeReact">
             	
             </div>
         </div>
@@ -104,7 +104,7 @@
         }
      });
 
-    React.render(<Table source="http://politicianhub.me/api/v1/committees/{{committee_id}}?verbose=true"/>, document.getElementById('committee1'));
+    React.render(<Table source="http://politicianhub.me/api/v1/committees/{{committee_id}}?verbose=true"/>, document.getElementById('committeeReact'));
 
 </script>
 {% endblock %}
