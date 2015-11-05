@@ -14,35 +14,6 @@
 	</div>
 
 <script type="text/babel">
-    var data = [
-        {
-        chair: {        
-            bio_guide: "C001095",
-            birthday: "1977-05-13",
-            chamber: "Senate",
-            committees: [],
-            contact_form: "",
-            first_name: "Tom",
-            gender: "male",
-            id: 405,
-            image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/C001095.jpg",
-            last_name: "Cotton",
-            party: "Republican",
-            state: "AR",
-            twitter: "SenTomCotton",
-            votes: [],
-            website: "http://www.cotton.senate.gov"
-        },
-        chamber: "house",
-        committee_id: "HSFA16",
-        id: 1,
-        is_subcommittee: true,
-        jurisdiction: "The House Committee on Foreign Affairs considers legislation that impacts the diplomatic community, which includes the Department of State, the Agency for International Development (USAID), the Peace Corps, the United Nations, and the enforcement of the Arms Export Control Act.",
-        name: "House Committee on Foreign Affairs",
-        website: "http://foreignaffairs.house.gov/"
-        }
-   ]; //Json Data
- 
 
  var Table = React.createClass({
         getInitialState: function(){
@@ -66,41 +37,74 @@
               "bDestroy": true, 
             });
         },
-        render: function(){
-            var committee = this.props.data[0];
-            
-            var isSub = (committee["is_subcommittee"]) ? "Yes" : "No";
+        render: function()
+        {
+            if(this.state.data.length > 0)
+            {
+                var imgStyle = {
+                    float:'left',
+                    marginRight:'2em',
+                    width:'75px'
+                }
+                var committee = this.state.data["0"];
+                var isSub = (committee["is_subcommittee"]) ? "Yes" : "No";
+                var chair = committee["chair"];
+                var chamber = (committee["chamber"] == "house") ? "House" : "Senate" ;
+                console.log(chamber);
+                var jurisdiction = (committee["jurisdiction"]) ? committee["jurisdiction"] : "No Jurisdiction";
+                if(chair["id"])
+                {
+                    return (
+                        <section>
+                            <h1> {committee["name"]} </h1>
+                            <hr />
+                            <div className="committee-text" >
+                                <p className="lead"><b>Chamber      :</b> <a href= {"/" + committee["chamber"]}>{chamber}</a></p>
+                                <p className="lead"><b>Jurisdiction :</b> {jurisdiction}</p>
+                                <p className="lead"><b>Subcommittee? :</b> {isSub}</p>
+                                <p className="lead"><a href= {committee["website"]}><b>Website</b></a></p>
+                            </div>
 
-            var chair = committee["chair"];
+                            <div id="chair" >
+                                <hr />
+                                <h2>Chair</h2>
+                                <img className="img-responsive" id="person-picture" src={chair["image"]} alt="" style={imgStyle}/>
+                                <div className="person-text" >
+                                    <p className="lead"><b>Fullname:</b> <a href= {"/legislator/id/" + chair["id"]}><b>{chair["first_name"] + " " + chair["last_name"]}</b></a> </p>
+                                    <p className="lead"><b>Party   :</b> {chair["party"]}</p> 
+                                </div>
+                            </div>
 
-
-            return (
-                <section>
-                    <h1> {committee["name"]} </h1>
-                    <hr />
-                    <div className="committee-text" >
-                        <p className="lead"><b>Chamber      :</b> <a href= {"/" + committee["chamber"]}>{committee["chamber"]}</a></p>
-                        <p className="lead"><b>Jurisdiction :</b> {committee["jurisdiction"]}</p>
-                        <p className="lead"><b>Subcommittee? :</b> {isSub}</p>
-                        <p className="lead"><a href= {committee["website"]}><b>Website</b></a></p>
-                    </div>
-
-                    <div id="chair" >
-                        <hr />
-                        <h2>Chair</h2>
-                        <img className="img-responsive" id="person-picture" src={chair["image"]} alt="" />
-                        <div className="person-text" >
-                            <p className="lead"><b>Fullname:</b> <a href= {"/" + chair["chamber"].toLowerCase() + "/id/" + chair["id"]}><b>{chair["first_name"] + " " + chair["last_name"]}</b></a> </p>
-                            <p className="lead"><b>Party   :</b> {chair["party"]}</p> 
-                        </div>
-                    </div>
-
-                </section>
-            )       
+                        </section>
+                    )
+                }
+                else
+                {
+                    return (<section>
+                            <h1> {committee["name"]} </h1>
+                            <hr />
+                            <div className="committee-text" >
+                                <p className="lead"><b>Chamber      :</b> <a href= {"/" + committee["chamber"]}>{chamber}</a></p>
+                                <p className="lead"><b>Jurisdiction :</b> {jurisdiction}</p>
+                                <p className="lead"><b>Subcommittee? :</b> {isSub}</p>
+                                <p className="lead"><a href= {committee["website"]}><b>Website</b></a></p>
+                            </div>
+                            <div id="chair" >
+                                <hr />
+                                <h2>Chair</h2>
+                                <h4>There is no Chairman for this Committee</h4>
+                            </div>
+                            </section>)
+                }       
+            }
+            else
+            {
+                return (<section></section>)
+            }
         }
      });
 
-    React.render(<Table data={data}/>, document.getElementById('committee1'));
+    React.render(<Table source="http://politicianhub.me/api/v1/committees/{{committee_id}}?verbose=true"/>, document.getElementById('committee1'));
 
 </script>
 {% endblock %}

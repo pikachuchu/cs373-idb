@@ -52,7 +52,7 @@
 					width:'250px'
 				}
 	    		var person = this.state.data["0"];
-	    		console.log(person["gender"]);
+	 
 	    		var gender = (person["gender"] == "male") ? "Male" : "Female";
 		    	var committeesList = person["committees"].map(function(d, index){
 	            return <li><a href={"/committee/id/" + d.id}>{d.name}</a></li>

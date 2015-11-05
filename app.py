@@ -80,21 +80,6 @@ def representative2():
 def representative3():
     return render_template('representative3.html')
 
-@app.route('/committee/id/1')
-@cross_origin()
-def committee1():
-    return render_template('committee1.html')
-
-@app.route('/committee/id/2')
-@cross_origin()
-def committee2():
-    return render_template('committee2.html')
-
-@app.route('/committee/id/3')
-@cross_origin()
-def committee3():
-    return render_template('committee3.html')
-
 @app.route('/bills/id/1')
 @cross_origin()
 def bills1():
