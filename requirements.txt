@@ -1,0 +1,4 @@
+flask
+coverage
+sqlalchemy
+mysql-python

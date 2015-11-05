@@ -1,79 +1,126 @@
-from flask import Blueprint, jsonify, make_response, abort
+from flask import Blueprint, jsonify, make_response, abort, request
+from flask.ext.cors import CORS, cross_origin
+import database as db
 
 # RESTful API
 
 api = Blueprint('api', __name__)
 
-dummy_data = [
-    {
-        'id': 0,
-        'first_name': 'foo',
-        'last_name': 'bar'
-    },
-    {
-        'id': 1,
-        'first_name': 'meow',
-        'last_name': 'cat'
-    }
-]
+legislator_fields = {
+    'id',
+    'first_name',
+    'last_name',
+    'chamber',
+    'gender',
+    'birthday',
+    'state',
+    'twitter',
+    'bio_guide'
+}
+
+committee_fields = {
+    'id',
+    'name',
+    'chamber',
+    'is_subcommittee',
+    'committee_id',
+    'chair'
+}
+
+bill_fields = {
+    'id',
+    'name',
+    'bill_id',
+    'bill_type',
+    'date_intro',
+    'house_status',
+    'senate_status',
+    'current_status',
+    'sponsor'
+}
 
 """
 GET all legislators
 """
 @api.route('/legislators', methods=['GET'])
+@cross_origin()
 def get_legislators():
-    return jsonify({'legislators': dummy_data})
+    verbose = request.args.get('verbose')
+    args = {}
+    for v in request.args:
+        if v in legislator_fields:
+            args[v] = request.args.get(v)
+    return jsonify({'legislators': db.get_legislators(args, verbose == 'true')})
 
 """
 GET all committees
 """
 @api.route('/committees', methods=['GET'])
+@cross_origin()
 def get_committees():
-    return jsonify({'committees': dummy_data})
+    verbose = request.args.get('verbose')
+    args = {}
+    for v in request.args:
+        if v in committee_fields:
+            args[v] = request.args.get(v)
+    return jsonify({'committees': db.get_committees(args, verbose == 'true')})
 
 """
 GET all bills
 """
 @api.route('/bills', methods=['GET'])
+@cross_origin()
 def get_bills():
-    return jsonify({'bills': dummy_data})
+    verbose = request.args.get('verbose')
+    args = {}
+    for v in request.args:
+        if v in bill_fields:
+            args[v] = request.args.get(v)
+    return jsonify({'bills': db.get_bills(args, verbose == 'true')})
 
 """
 GET a legislator by id
 """
 @api.route('/legislators/<int:legislator_id>', methods=['GET'])
+@cross_origin()
 def get_legislator(legislator_id):
-    legislator = [v for v in dummy_data if v['id'] == legislator_id]
-    if len(legislator) == 0:
+    verbose = request.args.get('verbose')
+    legislator = db.get_legislator_by_id(legislator_id, verbose == 'true')
+    if not legislator:
         abort(404)
-    return jsonify({'legislator': legislator[0]})
+    return jsonify(legislator)
 
 
 """
 GET a committee by id
 """
 @api.route('/committees/<int:committee_id>', methods=['GET'])
+@cross_origin()
 def get_committee(committee_id):
-    committee = [v for v in dummy_data if v['id'] == committee_id]
-    if len(committee) == 0:
+    verbose = request.args.get('verbose')
+    committee = db.get_committee_by_id(committee_id, verbose == 'true')
+    if not committee:
         abort(404)
-    return jsonify({'committee': committee[0]})
+    return jsonify(committee)
 
 
 """
 GET a bill by id
 """
 @api.route('/bills/<int:bill_id>', methods=['GET'])
+@cross_origin()
 def get_bill(bill_id):
-    bill = [v for v in dummy_data if v['id'] == bill_id]
-    if len(bill) == 0:
+    verbose = request.args.get('verbose')
+    bill = db.get_bill_by_id(bill_id, verbose == 'true')
+    if not bill:
         abort(404)
-    return jsonify({'bill': bill[0]})
+    return jsonify(bill)
 
 """
 Handle 404 errors
 """
 @api.errorhandler(404)
+@cross_origin()
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
 

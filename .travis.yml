@@ -3,22 +3,26 @@
 language: python
 
 python:
-    - "3.4"
+    - "2.7"
+
+services:
+    - mysql
 
 sudo: false
 
 install:
     - pip install --upgrade pip
     - pip --version
-    - pip install coverage
-    - pip install flask
+    - pip install -r requirements.txt
 
 before_script:
     - uname -a
     - printenv
     - pip list
+    - mysql -e 'create database test'
 
 script:
     - date
     - ls -al
     - make check
+    - make test

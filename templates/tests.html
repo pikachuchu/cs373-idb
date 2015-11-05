@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" rel="stylesheet">
+    <link href="https://raw.githubusercontent.com/PrismJS/prism-themes/master/themes/prism-atom-dark.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+<div class="col-md-8 col-md-offset-2">
+    <pre><code class="bash">{{ output }}</code></pre>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+{% endblock %}

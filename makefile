@@ -32,3 +32,6 @@ clean:
 	rm -f  *.pyc
 	rm -rf __pycache__
 
+test:
+	coverage run --branch tests.py
+	coverage report --include=models.py
