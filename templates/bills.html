@@ -5,11 +5,14 @@
 
 
 {% block body %}
+<!-- <img src="../static/img/loading.gif"> -->
 <div class="fullscreen-bg-bills">
+    <!-- <img src="../static/img/loading.gif"> -->
     <!-- <img src="static/img/senate.jpg"/> -->
 </div>
 <h1 align="center">Bills</h1>
-<div class="container" id="bills">
+<div id="bills">
+
 </div>
 <script type="text/babel">
 var Table = React.createClass({
@@ -48,6 +51,12 @@ var Table = React.createClass({
         });
     },
     render: function(){
+
+        var imageStyle = {
+                    margin: 'auto',
+                    display: 'block'
+                }
+
         var table = this.state.data.map(function(d, index){
 
             var sponsorPerson = d["sponsor"];
@@ -66,6 +75,7 @@ var Table = React.createClass({
         if(this.state.data.length > 1)
         {      
             return (
+                <div className="container">
                     <div className="table-responsive">
                         <table className="table table-striped" id="mytable">
                             <thead>
@@ -82,13 +92,13 @@ var Table = React.createClass({
                             </tbody>
                         </table>
                     </div>
+                </div>
                 )    
         }
         else
         {
             return (
-                    <div className="table-responsive">
-                    </div>
+                     <img src="../static/img/loadingBill.gif" style={imageStyle}/>
                 )    
         }
     }
