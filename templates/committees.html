@@ -8,7 +8,7 @@
 <div id="bg" class="fullscreen-bg-committees">
 </div>
 <h1 align="center" style="color:white;">Committees</h1>
-<div class="container" id="committees">
+<div id="committees">
 </div>
 <script type="text/babel">
 
@@ -49,6 +49,11 @@ var Table = React.createClass({
     },
     render: function(){
         
+        var imageStyle = {
+                    margin: 'auto',
+                    display: 'block'
+                }
+
         var dat = this.state.data;
         var table = this.state.data.map(function(d, index){
             var chamberLink = "";
@@ -83,6 +88,7 @@ var Table = React.createClass({
         if(this.state.data.length > 1)
         {      
             return (
+                <div className="container">
                     <div className="table-responsive">
                         <table className="table table-striped" id="mytable">
                             <thead>
@@ -99,13 +105,13 @@ var Table = React.createClass({
                             </tbody>
                         </table>
                     </div>
+                </div>
                 )    
         }
         else
         {
             return (
-                    <div className="table-responsive">
-                    </div>
+                    <img src="../static/img/loadingBill.gif" style={imageStyle}/>
                 )    
         }
     }

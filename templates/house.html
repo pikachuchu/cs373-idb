@@ -9,7 +9,7 @@
     <!-- <img src="static/img/senate.jpg"/> -->
 </div>
 <h1 align="center" style="color:white">House of Representatives</h1>
-<div class="container" id = "house">    
+<div id = "house">    
 </div>
 <script type="text/babel">
 
@@ -49,6 +49,11 @@ var Table = React.createClass({
         });
     },
     render: function(){
+        var imageStyle = {
+                    margin: 'auto',
+                    display: 'block'
+                }
+
         var table = this.state.data.map(function(d, index){
             var spl = d.birthday.split("-");
             var age = 2015 - parseInt(spl[0]);
@@ -63,6 +68,7 @@ var Table = React.createClass({
         if(this.state.data.length > 1)
         {      
             return (
+                <div className="container">
                     <div className="table-responsive">
                         <table className="table table-striped" id="mytable">
                             <thead>
@@ -79,13 +85,13 @@ var Table = React.createClass({
                             </tbody>
                         </table>
                     </div>
+                </div>
                 )    
         }
         else
         {
             return (
-                    <div className="table-responsive">
-                    </div>
+                    <img src="../static/img/loadingBill.gif" style={imageStyle}/>
                 )    
         }
     }
