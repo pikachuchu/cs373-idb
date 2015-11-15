@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+
+{% block body %}
+<div class="fullscreen-bg-house">
+    <!-- <img src="static/img/senate.jpg"/> -->
+</div>
+<h1 align="center" style="color:white">House of Representatives</h1>
+<div id = "house">    
+</div>
+<script type="text/babel">
+
+var Table = React.createClass({
+    getInitialState: function(){
+        return {
+            data: []
+        }
+    },
+    // loadData: function(){
+    //     $.get(this.props.source, function(result) {
+    //       if (this.isMounted()) {
+    //         this.setState({
+    //           data : []
+    //         });
+    //       }
+    //     }.bind(this));
+    // },
+    // componentWillMount: function(){
+    //     this.loadData();
+    // }, 
+    componentDidMount: function(){
+        var self = this;
+        console.log("q: ");
+        console.log(this.props.query);
+        $.get(this.props.source, function(result) {
+          var lastGist = result["legislators"];
+          if (this.isMounted()) {
+            this.setState({
+              data: lastGist
+            });
+          }
+        }.bind(this));
+    },
+    componentDidUpdate: function(){
+        $('#mytable').dataTable({
+          "bAutoWidth": false,
+          "bDestroy": true, 
+        });
+    },
+    render: function(){
+        var imageStyle = {
+                    margin: 'auto',
+                    display: 'block'
+                }
+
+        var table = this.state.data.map(function(d, index){
+            var spl = d.birthday.split("-");
+            var age = 2015 - parseInt(spl[0]);
+            return (<tr>
+                     <td><a href={"legislator/id/" +d["id"]}>{d["first_name"]}</a></td>
+                     <td><a href={"legislator/id/" +d["id"]}>{d["last_name"]}</a></td>
+                     <td>{age}</td>
+                     <td>{d.party}</td>
+                     <td>{d.state}</td>
+                 </tr>)
+        });
+        if(this.state.data.length > 1)
+        {      
+            return (
+                <div className="container">
+                    <div className="table-responsive">
+                        <table className="table table-striped" id="mytable">
+                            <thead>
+                                <tr className="success">
+                                    <td>First Name</td>
+                                    <td>Last Name</td>
+                                    <td>Age</td>
+                                    <td>Party</td>
+                                    <td>State</td>
+                                </tr>   
+                            </thead>
+                            <tbody>
+                                {table}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                )    
+        }
+        else
+        {
+            return (
+                    <img src="../static/img/loadingBill.gif" style={imageStyle}/>
+                )    
+        }
+    }
+ });
+React.render(<Table query="{{query}}" source="http://politicianhub.me/api/v1/legislators?chamber=House" />, document.getElementById('house'));
+
+</script>
+{% endblock %}

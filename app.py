@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, make_response, abort
+from flask import Flask, render_template, jsonify, make_response, abort, request
 from flask.ext.cors import CORS, cross_origin
 from api import api
 import subprocess
@@ -53,6 +53,11 @@ def committee(committee_id):
 @app.route('/bills/id/<int:bill_id>')
 def bill(bill_id):
     return render_template('bill.html', bill_id = bill_id)
+
+@app.route('/search',  methods=['GET'])
+def search():
+    query = request.args.get('q')
+    return render_template('search.html', query=query)
 
 @app.route('/tests')
 def tests():
