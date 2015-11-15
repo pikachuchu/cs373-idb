@@ -33,6 +33,11 @@ def committees():
 def bills():
     return render_template('bills.html')
 
+@app.route('/comics')
+@cross_origin()
+def comics():
+    return render_template('comics.html')
+
 @app.route('/about')
 @cross_origin()
 def about():
