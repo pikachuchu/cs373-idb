@@ -22,21 +22,10 @@
 var Table = React.createClass({
     getInitialState: function(){
         return {
-            data: []
+            data: [],
+            series: []
         }
     },
-    // loadData: function(){
-    //     $.get(this.props.source, function(result) {
-    //       if (this.isMounted()) {
-    //         this.setState({
-    //           data : []
-    //         });
-    //       }
-    //     }.bind(this));
-    // },
-    // componentWillMount: function(){
-    //     this.loadData();
-    // }, 
     componentDidMount: function() {
         var self = this;
 
@@ -57,7 +46,7 @@ var Table = React.createClass({
                 "name": current["first_name"] + " " + current["last_name"],
                 "birthday": current["birthday"].substring(0, 4)
             }
-        }).sort(comparator);
+          }).sort(comparator);
 
           if (this.isMounted()) {
             this.setState({
@@ -65,6 +54,24 @@ var Table = React.createClass({
             });
           }
         }.bind(this));
+
+        console.log(this.props.series);
+
+        $.get(this.props.series, function(result) {
+            var data = result["data"];
+            alert(data["count"]);
+            var series = result["data"]["results"].map(function(key, index) {
+                return {
+                    "startYear": current["startYear"],
+                    "name": current["title"]
+                }
+            });
+
+            console.log(series);
+
+        }.bind(this));
+        
+        
     },
     componentDidUpdate: function(){
         $('#mytable').dataTable({
@@ -106,7 +113,9 @@ var Table = React.createClass({
     }
  });
 React.render(
-    <Table source="http://politicianhub.me/api/v1/legislators" />,
+    <Table
+        source="http://politicianhub.me/api/v1/legislators"
+        series="http://importmarvel.com/api/series" />,
     document.getElementById('comics')
 );
 
