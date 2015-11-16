@@ -50,7 +50,11 @@ def get_legislators():
     for v in request.args:
         if v in legislator_fields:
             args[v] = request.args.get(v)
-    return jsonify({'legislators': db.get_legislators(args, verbose == 'true')})
+    try:
+        legislators = db.get_legislators(args, verbose == 'true')
+    except Exception as e:
+        print(e) 
+    return jsonify({'legislators': legislators})
 
 """
 GET all committees
@@ -63,7 +67,12 @@ def get_committees():
     for v in request.args:
         if v in committee_fields:
             args[v] = request.args.get(v)
-    return jsonify({'committees': db.get_committees(args, verbose == 'true')})
+    try:
+        committees = db.get_committees(args, verbose == 'true')
+    except Exception as e:
+        print(e) 
+
+    return jsonify({'committees': committees})
 
 """
 GET all bills
@@ -76,7 +85,12 @@ def get_bills():
     for v in request.args:
         if v in bill_fields:
             args[v] = request.args.get(v)
-    return jsonify({'bills': db.get_bills(args, verbose == 'true')})
+    try:
+        bills = db.get_bills(args, verbose == 'true')
+    except Exception as e:
+        print(e) 
+
+    return jsonify({'bills': bills})
 
 """
 GET a legislator by id
@@ -85,11 +99,13 @@ GET a legislator by id
 @cross_origin()
 def get_legislator(legislator_id):
     verbose = request.args.get('verbose')
-    legislator = db.get_legislator_by_id(legislator_id, verbose == 'true')
+    try:
+        legislator = db.get_legislator_by_id(legislator_id, verbose == 'true')
+    except Exception as e:
+        print(e) 
     if not legislator:
         abort(404)
     return jsonify(legislator)
-
 
 """
 GET a committee by id
@@ -98,7 +114,10 @@ GET a committee by id
 @cross_origin()
 def get_committee(committee_id):
     verbose = request.args.get('verbose')
-    committee = db.get_committee_by_id(committee_id, verbose == 'true')
+    try:
+        committee = db.get_committee_by_id(committee_id, verbose == 'true')
+    except Exception as e:
+        print(e)
     if not committee:
         abort(404)
     return jsonify(committee)
@@ -111,7 +130,10 @@ GET a bill by id
 @cross_origin()
 def get_bill(bill_id):
     verbose = request.args.get('verbose')
-    bill = db.get_bill_by_id(bill_id, verbose == 'true')
+    try:
+        bill = db.get_bill_by_id(bill_id, verbose == 'true')
+    except Exception as e:
+        print(e)
     if not bill:
         abort(404)
     return jsonify(bill)
