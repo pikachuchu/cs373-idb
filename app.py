@@ -59,7 +59,8 @@ def about():
 def legislator(legislator_id):
     try:
         person = db.get_legislator_by_id(legislator_id, True)
-        person['gender'] = 'Male' if person['gender'] == 'Male' else 'Female'
+        person['gender'] = 'Male' if person['gender'] == 'male' else 'Female'
+        print(person)
     except Exception as e:
         print(e)
     return render_template('legislator.html', person=person)
