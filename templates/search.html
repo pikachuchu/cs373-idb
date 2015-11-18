@@ -65,6 +65,12 @@
                             <p className="list-group-item-text">{body}</p>
                           </a>)
                 });
+                var pagination = [];
+                var numpages = infopage["num_pages"];
+                for (var i = 1; i <= numpages; i++) {
+                  pagination.push(<li><a href="#">{i}</a></li>);
+                }
+                console.log(pagination.length);
                 return (
                     <section>
                         <h4>Showing {recCount} from {infopage["total_result_count"]} results</h4>
@@ -72,11 +78,12 @@
                           {list}
                         </div>
                         <ul className="pagination pagination-lg">
+                          {pagination}
                           <li className="active"><a href="#">1</a></li>
-                          <li><a href="#">2</a></li>
-                          <li><a href="#">3</a></li>
-                          <li><a href="#">4</a></li>
-                          <li><a href="#">5</a></li>
+                          <li><a href="/2">2</a></li>
+                          <li><a href="3">3</a></li>
+                          <li><a href="4">4</a></li>
+                          <li><a href="5">5</a></li>
                         </ul>
                     </section>)                     
             }
