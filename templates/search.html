@@ -44,7 +44,12 @@
             }.bind(this));
         },
         componentDidUpdate: function(){
-            
+            $('.pagination .disabled a, .pagination .active a').on('click', function(e) {
+                e.preventDefault();
+            });
+            $('#tooManyPage').on('click', function(e) {
+                e.preventDefault();
+            });
         },
         render: function()
         {
