@@ -349,6 +349,20 @@ class tests(TestCase):
 
         assert(found)
 
+    def test_read_bill2(self):
+
+        session.add(bill(name = "Test2"))
+        session.commit()
+
+        query = session.query(bill).all()
+        found = False
+
+        for x in query:
+            if(x.name == "Test2"):
+                found = True
+
+        assert(found)
+
     # Test filtering on an attribute in the table bills
     def test_read_bill_attribute(self):
 
@@ -359,6 +373,16 @@ class tests(TestCase):
        
         assert (query is not None)
         assert (query.house_status == "Passed")
+
+    def test_read_bill_attribute2(self):
+
+        session.add(bill(name = "AttrTest2", house_status = "Failed"))
+        session.commit()
+
+        query = session.query(bill).filter_by(name = "AttrTest2").first()
+       
+        assert (query is not None)
+        assert (query.house_status == "Failed")
         
     # Test deletion of a row in bills
     def test_delete_bill_row(self):
@@ -373,6 +397,21 @@ class tests(TestCase):
         session.commit()
 
         toRemove = session.query(bill).filter(bill.name == "delete").first()
+        assert(toRemove == None)
+
+    # Test deletion of a row in bills
+    def test_delete_bill_row2(self):
+        session.add(bill(name = "delete2"))
+        session.commit()
+
+        query = session.query(bill).filter(bill.name == "delete2").first()
+
+        assert(query != None)
+
+        session.delete(query);
+        session.commit()
+
+        toRemove = session.query(bill).filter(bill.name == "delete2").first()
         assert(toRemove == None)
 
     def test_bill_get_obj(self):
