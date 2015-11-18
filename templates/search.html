@@ -5,100 +5,323 @@
 
 
 {% block body %}
-<div class="fullscreen-bg-house">
-    <!-- <img src="static/img/senate.jpg"/> -->
-</div>
-<h1 align="center" style="color:white">House of Representatives</h1>
-<div id = "house">    
+<h1 align="center">Search Results for &ldquo;{{query}}&rdquo;</h1>
+<div id = "searchresults">    
 </div>
 <script type="text/babel">
 
-var Table = React.createClass({
-    getInitialState: function(){
-        return {
-            data: []
-        }
-    },
-    // loadData: function(){
-    //     $.get(this.props.source, function(result) {
-    //       if (this.isMounted()) {
-    //         this.setState({
-    //           data : []
-    //         });
-    //       }
-    //     }.bind(this));
-    // },
-    // componentWillMount: function(){
-    //     this.loadData();
-    // }, 
-    componentDidMount: function(){
-        var self = this;
-        console.log("q: ");
-        console.log(this.props.query);
-        $.get(this.props.source, function(result) {
-          var lastGist = result["legislators"];
-          if (this.isMounted()) {
-            this.setState({
-              data: lastGist
-            });
-          }
-        }.bind(this));
-    },
-    componentDidUpdate: function(){
-        $('#mytable').dataTable({
-          "bAutoWidth": false,
-          "bDestroy": true, 
-        });
-    },
-    render: function(){
-        var imageStyle = {
-                    margin: 'auto',
-                    display: 'block'
-                }
+ var source = "https://api.swiftype.com/api/v1/public/engines/search.json?q=" + q + "&engine_key=8eNhTJLVxxJ7yq815rPc"
 
-        var table = this.state.data.map(function(d, index){
-            var spl = d.birthday.split("-");
-            var age = 2015 - parseInt(spl[0]);
-            return (<tr>
-                     <td><a href={"legislator/id/" +d["id"]}>{d["first_name"]}</a></td>
-                     <td><a href={"legislator/id/" +d["id"]}>{d["last_name"]}</a></td>
-                     <td>{age}</td>
-                     <td>{d.party}</td>
-                     <td>{d.state}</td>
-                 </tr>)
-        });
-        if(this.state.data.length > 1)
-        {      
-            return (
-                <div className="container">
-                    <div className="table-responsive">
-                        <table className="table table-striped" id="mytable">
-                            <thead>
-                                <tr className="success">
-                                    <td>First Name</td>
-                                    <td>Last Name</td>
-                                    <td>Age</td>
-                                    <td>Party</td>
-                                    <td>State</td>
-                                </tr>   
-                            </thead>
-                            <tbody>
-                                {table}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                )    
-        }
-        else
+ var data = [{
+record_count: 8,
+records: {
+page: [
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About East Asia, the Pacific, and International Cybersecurity Policy Chamber : Senate Jurisdiction : None Subcommittee? : Yes Website Chair Fullname: Cory Gardner Party : Republican",
+external_id: "ef7e22b2d71e8952cbcab23805a8a55b42af5d4a",
+sections: [
+"East Asia, the Pacific, and International Cybersecurity Policy",
+"Chair"
+],
+title: "Politician Hub",
+updated_at: "2015-11-17T23:52:33Z",
+image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/G000562.jpg",
+type: "",
+url: "http://politicianhub.me/committee/id/43",
+popularity: 1,
+published_at: "2015-11-18T00:04:58Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.020442076,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "East Asia, the Pacific, and International <em>Cybersecurity</em> Policy"
+},
+id: "564bbdc18e9c0f5a4e00022d"
+},
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About Cybersecurity Workforce Assessment Act Date Introduced: 2013-08-01 House Status : Pass Senate Status : Pass Current Status: Enacted — Signed by the President Current Status Description: This bill was enacted after being signed by the President on December 18, 2014. Full Text Sponsor Fullname: Patrick Meehan Party : Republican Committees of the Bill Cybersecurity, Infrastructure Protection, and Security Technologies House Committee on Homeland Security Senate Committee on Homeland Security and Governmental Affairs",
+external_id: "d85e37821dbaf89710fe0116ceb98ff841f83b40",
+sections: [
+"Cybersecurity Workforce Assessment Act",
+"Sponsor",
+"Committees of the Bill",
+"Cybersecurity, Infrastructure Protection, and Security Technologies",
+"House Committee on Homeland Security",
+"Senate Committee on Homeland Security and Governmental Affairs"
+],
+title: "Politician Hub",
+updated_at: "2015-11-17T23:54:04Z",
+image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/M001181.jpg",
+type: "",
+url: "http://politicianhub.me/bills/id/76",
+popularity: 1,
+published_at: "2015-11-17T23:54:04Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.017347146,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "<em>Cybersecurity</em> Workforce Assessment Act"
+},
+id: "564bbe1c0cc37f0d3d00021d"
+},
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About National Security Agency and Cybersecurity Chamber : House Jurisdiction : The United States House Permanent Select Committee on Intelligence is charged with the oversight of the United States intelligence community, which includes the intelligence and intelligence related activities of 17 elements of the U.S. Government, and the Military Intelligence Program. Subcommittee? : Yes Website Chair There is no Chairman for this Committee",
+external_id: "5332e66e13d2215676a4074755e9299d738fe99b",
+sections: [
+"National Security Agency and Cybersecurity",
+"Chair",
+"There is no Chairman for this Committee"
+],
+title: "Politician Hub",
+updated_at: "2015-11-18T00:00:36Z",
+image: "",
+type: "",
+url: "http://politicianhub.me/committee/id/139",
+popularity: 1,
+published_at: "2015-11-18T00:06:38Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.016361022,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "National Security Agency and <em>Cybersecurity</em>"
+},
+id: "564bbfa4075523273e00001f"
+},
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About Cybersecurity, Infrastructure Protection, and Security Technologies Chamber : House Jurisdiction : The Committee on Homeland Security was established in 2002 to provide Congressional oversight for the U.S. Department of Homeland Security and better protect the American people against a possible terrorist attack.  Subcommittee? : Yes Website Chair There is no Chairman for this Committee",
+external_id: "65b44d029f6c372a2640c090fed5762eadee1256",
+sections: [
+"Cybersecurity, Infrastructure Protection, and Security Technologies",
+"Chair",
+"There is no Chairman for this Committee"
+],
+title: "Politician Hub",
+updated_at: "2015-11-17T23:57:30Z",
+image: "",
+type: "",
+url: "http://politicianhub.me/committee/id/34",
+popularity: 1,
+published_at: "2015-11-18T00:02:37Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.016358186,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "<em>Cybersecurity</em>, Infrastructure Protection, and Security Technologies"
+},
+id: "564bbeeac75d0743e000069f"
+},
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About Cybersecurity Information Sharing Act of 2015 Date Introduced: 2015-03-17 House Status : Fail Senate Status : Pass Current Status: Passed Senate Current Status Description: This bill passed in the Senate on October 27, 2015 and goes to the House next for consideration. Full Text Sponsor Fullname: Richard Burr Party : Republican Committees of the Bill Senate Select Committee on Intelligence",
+external_id: "1360534e8e85bf8dc040a21d7f1984abe28b4c57",
+sections: [
+"Cybersecurity Information Sharing Act of 2015",
+"Sponsor",
+"Committees of the Bill",
+"Senate Select Committee on Intelligence"
+],
+title: "Politician Hub",
+updated_at: "2015-11-17T23:55:24Z",
+image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/B001135.jpg",
+type: "",
+url: "http://politicianhub.me/bills/id/29",
+popularity: 1,
+published_at: "2015-11-18T00:02:22Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.016356265,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "<em>Cybersecurity</em> Information Sharing Act of 2015"
+},
+id: "564bbe6c8e9c0f3a7f000017"
+},
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About Nuclear Forensics and Attribution Act Date Introduced: 2009-01-27 House Status : Pass Senate Status : Pass Current Status: Enacted — Signed by the President Current Status Description: This bill was enacted after being signed by the President on February 16, 2010. Full Text Sponsor Fullname: Adam Schiff Party : Democrat Committees of the Bill Cybersecurity, Infrastructure Protection, and Security Technologies House Committee on Foreign Affairs House Committee on Homeland Security Senate Committee on Homeland Security and Governmental Affairs",
+external_id: "008a729d36c7df08560242c1f26433ac32fdccaa",
+sections: [
+"Nuclear Forensics and Attribution Act",
+"Sponsor",
+"Committees of the Bill",
+"Cybersecurity, Infrastructure Protection, and Security Technologies",
+"House Committee on Foreign Affairs",
+"House Committee on Homeland Security",
+"Senate Committee on Homeland Security and Governmental Affairs"
+],
+title: "Politician Hub",
+updated_at: "2015-11-17T23:58:49Z",
+image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/S001150.jpg",
+type: "",
+url: "http://politicianhub.me/bills/id/112",
+popularity: 1,
+published_at: "2015-11-17T23:58:49Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.010224618,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "<em>Cybersecurity</em>, Infrastructure Protection, and Security Technologies"
+},
+id: "564bbf39c75d071c80000447"
+},
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About Securing the Cities Act of 2015 Date Introduced: 2015-09-11 House Status : Pass Senate Status : Fail Current Status: Passed House Current Status Description: This bill passed in the House on October 20, 2015 and goes to the Senate next for consideration. Full Text Sponsor Fullname: Daniel Donovan Party : Republican Committees of the Bill Cybersecurity, Infrastructure Protection, and Security Technologies House Committee on Homeland Security Senate Committee on Homeland Security and Governmental Affairs",
+external_id: "5333e18a7134a4416b934fead18b0a11f7700e99",
+sections: [
+"Securing the Cities Act of 2015",
+"Sponsor",
+"Committees of the Bill",
+"Cybersecurity, Infrastructure Protection, and Security Technologies",
+"House Committee on Homeland Security",
+"Senate Committee on Homeland Security and Governmental Affairs"
+],
+title: "Politician Hub",
+updated_at: "2015-11-17T23:54:02Z",
+image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/D000625.jpg",
+type: "",
+url: "http://politicianhub.me/bills/id/234",
+popularity: 1,
+published_at: "2015-11-18T00:01:34Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.010221885,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "<em>Cybersecurity</em>, Infrastructure Protection, and Security Technologies"
+},
+id: "564bbe1a4bb81c6a64000c50"
+},
+{
+body: "Toggle navigation Politician Hub Senate House of Representatives Committees Bills About Protecting and Securing Chemical Facilities from Terrorist Attacks Act of 2014 Date Introduced: 2014-02-06 House Status : Pass Senate Status : Pass Current Status: Enacted — Signed by the President Current Status Description: This bill was enacted after being signed by the President on December 18, 2014. Full Text Sponsor Fullname: Patrick Meehan Party : Republican Committees of the Bill Cybersecurity, Infrastructure Protection, and Security Technologies Environment and the Economy House Committee on Energy and Commerce House Committee on Homeland Security Senate Committee on Homeland Security and Governmental Affairs",
+external_id: "3eed332b661eaf80ed9a1e4527018b5bad2d3129",
+sections: [
+"Protecting and Securing Chemical Facilities from Terrorist Attacks Act of 2014",
+"Sponsor",
+"Committees of the Bill",
+"Cybersecurity, Infrastructure Protection, and Security Technologies",
+"Environment and the Economy",
+"House Committee on Energy and Commerce",
+"House Committee on Homeland Security",
+"Senate Committee on Homeland Security and Governmental Affairs"
+],
+title: "Politician Hub",
+updated_at: "2015-11-17T23:58:18Z",
+image: "https://raw.githubusercontent.com/unitedstates/images/gh-pages/congress/450x550/M001181.jpg",
+type: "",
+url: "http://politicianhub.me/bills/id/266",
+popularity: 1,
+published_at: "2015-11-17T23:58:18Z",
+info: "",
+_index: "crawled",
+_type: "page",
+_score: 0.008179459,
+_version: null,
+_explanation: null,
+sort: null,
+highlight: {
+sections: "<em>Cybersecurity</em>, Infrastructure Protection, and Security Technologies"
+},
+id: "564bbf1ae621f42d210003b1"
+}
+]
+},
+info: {
+page: {
+query: "cyber",
+current_page: 1,
+num_pages: 1,
+per_page: 20,
+total_result_count: 8,
+facets: { }
+}
+},
+errors: { }
+}];
+
+ var Table = React.createClass({
+        getInitialState: function(){
+            return {data: []}
+        },
+        componentDidMount: function(){
+            var self = this;
+            $.get(this.props.source, function(result) {
+              var d = [];
+              d.push(result);
+              if (this.isMounted()) {
+                this.setState({
+                  data: d
+                });
+              }
+            }.bind(this));
+        },
+        componentDidUpdate: function(){
+        },
+        render: function()
         {
-            return (
-                    <img src="../static/img/loadingBill.gif" style={imageStyle}/>
-                )    
+            if(this.state.data.length > 0)
+            {
+                var queryArray = this.props.queries;
+                var data = this.state.data["0"];
+                var recCount = data["record_count"];
+                var info = data["info"];
+                var infopage = info["page"];
+                var records = data["records"];
+                var list = records["page"].map(function(d, index){
+                    var sections = d["sections"];
+                    var highlight = d["highlight"];
+                    var h = (highlight["body"]) ? highlight["body"] : highlight["sections"];
+                    var bodyArray = h.split(" ");
+                    var body = bodyArray.map(function(d, index){
+                        if(d.charAt(0) == '<')
+                            return (<b><i> {d.substring(4,d.length-5)} </i></b>);
+                        else
+                                return d + " ";
+                    });
+                    return (<a href={d["url"]} className="list-group-item">
+                            <h4 className="list-group-item-heading">{sections["0"]}</h4>
+                            <p className="list-group-item-text">{body}</p>
+                          </a>)
+                });
+                return (
+                    <section>
+                        <h4>Showing {recCount} from {infopage["total_result_count"]} results</h4>
+                        <div className="list-group">
+                          {list}
+                        </div>
+                    </section>)                     
+            }
+            else
+            {
+                return (<section></section>)
+            }
         }
-    }
- });
-React.render(<Table query="{{query}}" source="http://politicianhub.me/api/v1/legislators?chamber=House" />, document.getElementById('house'));
+     });
+
+    React.render(<Table source={source} data={data}/>, document.getElementById('searchresults'));
 
 </script>
 {% endblock %}
