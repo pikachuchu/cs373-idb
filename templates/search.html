@@ -13,13 +13,18 @@
  var queries = "{{query}}";
  var queryArray = queries.split(" ");
  var q = "";
+ var q2 = "";
  for (var i = 0; i < queryArray.length; i++) {
-     if(i == 0)
+     if(i == 0){
         q += queryArray[i];
-     else
+        q2 += queryArray[i];
+    }
+     else{
         q += "+OR+" + queryArray[i];
+        q2 += "+" + queryArray[i];
+    }
  };
- var source = "https://api.swiftype.com/api/v1/public/engines/search.json?q=" + q + "&engine_key=8eNhTJLVxxJ7yq815rPc"
+ var source = "https://api.swiftype.com/api/v1/public/engines/search.json?q=" + q + "&engine_key=8eNhTJLVxxJ7yq815rPc" + "&page={{page}}"
 
  var Table = React.createClass({
         getInitialState: function(){
@@ -27,6 +32,7 @@
         },
         componentDidMount: function(){
             var self = this;
+            console.log(this.props.source);
             $.get(this.props.source, function(result) {
               var d = [];
               d.push(result);
@@ -43,7 +49,9 @@
         {
             if(this.state.data.length > 0)
             {
-                var queryArray = this.props.queries;
+                console.log(this.props.queries);
+                var pageSource = '/search?q=' + this.props.queries + '&page=';
+                console.log(pageSource);
                 var data = this.state.data["0"];
                 var recCount = data["record_count"];
                 var info = data["info"];
@@ -71,7 +79,12 @@
                 var tooManyPage = false;
                 for (var i = curpage; i <= numpages; i++) {
                     if(i < curpage + 4 )
-                        pagination.push(<li><a href="#">{i}</a></li>);
+                    {
+                        if(i == curpage)
+                            pagination.push(<li className="active"><a href="#" >{i}</a></li>);
+                        else
+                            pagination.push(<li><a href="#">{i}</a></li>);
+                    }
                     else
                     {
                         if(i == numpages){
@@ -83,20 +96,20 @@
                         tooManyPage = true;
                     }
                 }
-                console.log(pagination.length);
-                var prevPage = (curpage != 1) ?  (<li><a href="#">Prev</a></li>) : (<li></li>);
-                var nextPage = (curpage != numpages) ?  (<li><a href="#">Next</a></li>) : (<li></li>);
+                
                 return (
                     <section>
                         <h4>Showing {recCount} from {infopage["total_result_count"]} results</h4>
                         <div className="list-group">
                           {list}
                         </div>
-                        <ul className="pagination pagination-lg" id="pagination-demo">
-                          {prevPage}
-                          {pagination}
-                          {nextPage}
-                        </ul>
+                        <div className="col-md-12 text-center">
+                            <ul className="pagination pagination-lg" id="pagination-demo">
+                              {prevPage}
+                              {pagination}
+                              {nextPage}
+                            </ul>
+                        </div>
                     </section>)                     
             }
             else
@@ -106,7 +119,7 @@
         }
      });
 
-    React.render(<Table queries={q} source={source}/>, document.getElementById('searchresults'));
+    React.render(<Table queries={q2} source={source}/>, document.getElementById('searchresults'));
 
 </script>
 {% endblock %}

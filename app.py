@@ -57,7 +57,8 @@ def bill(bill_id):
 @app.route('/search',  methods=['GET'])
 def search():
     query = request.args.get('q')
-    return render_template('search.html', query=query)
+    page = request.args.get('page')
+    return render_template('search.html', query=query, page=page)
 
 @app.route('/tests')
 def tests():
