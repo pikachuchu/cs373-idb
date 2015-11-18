@@ -96,7 +96,7 @@
                         if(i == numpages){
                             if(tooManyPage)
                                 pagination.push(<li><a href="#" id="tooManyPage">...</a></li>);
-                            pagination.push(<li><a href="#">{i}</a></li>);
+                            pagination.push(<li><a href={pageSource + "" + (i)}>{i}</a></li>);
                         }
                             
                         tooManyPage = true;
