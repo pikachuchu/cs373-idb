@@ -44,6 +44,7 @@
             }.bind(this));
         },
         componentDidUpdate: function(){
+            
         },
         render: function()
         {
@@ -83,13 +84,13 @@
                         if(i == curpage)
                             pagination.push(<li className="active"><a href="#" >{i}</a></li>);
                         else
-                            pagination.push(<li><a href="#">{i}</a></li>);
+                            pagination.push(<li><a href={pageSource + "" + (i)}>{i}</a></li>);
                     }
                     else
                     {
                         if(i == numpages){
                             if(tooManyPage)
-                                pagination.push(<li><a href="">...</a></li>);
+                                pagination.push(<li><a href="#" id="tooManyPage">...</a></li>);
                             pagination.push(<li><a href="#">{i}</a></li>);
                         }
                             
