@@ -96,7 +96,8 @@
                         tooManyPage = true;
                     }
                 }
-                
+                var prevPage = (curpage != 1) ?  (<li><a href={pageSource + "" + (curpage-1)}>Prev</a></li>) : (<li></li>);
+                var nextPage = (curpage != numpages) ?  (<li><a href={pageSource + "" + (curpage+1)}>Next</a></li>) : (<li></li>);
                 return (
                     <section>
                         <h4>Showing {recCount} from {infopage["total_result_count"]} results</h4>
