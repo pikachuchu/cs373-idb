@@ -20,7 +20,7 @@
         q2 += queryArray[i];
     }
      else{
-        q += "+OR+" + queryArray[i];
+        q += "+AND+" + queryArray[i];
         q2 += "+" + queryArray[i];
     }
  };
@@ -69,8 +69,10 @@
                     var h = (highlight["body"]) ? highlight["body"] : highlight["sections"];
                     var bodyArray = h.split(" ");
                     var body = bodyArray.map(function(d, index){
-                        if(d.charAt(0) == '<')
-                            return (<b><i> {d.substring(4,d.length-5)} </i></b>);
+                        if(d.charAt(0) == '<'){
+                            var str = d.replace(/\W/g, '');
+                            return (<b><i> {str.substring(2,str.length-2)} </i></b>);
+                        }
                         else
                                 return d + " ";
                     });
