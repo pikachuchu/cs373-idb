@@ -6,7 +6,7 @@
 
 {% block body %}
 <div class="fullscreen-bg-bills"></div>
-<h1 align="center">Bills</h1>
+<h1 align="center">Comic Books a Politician Grew up Reading</h1>
 
 <div id="comics"></div>
 
@@ -72,8 +72,8 @@ var Table = React.createClass({
             var dob = Math.floor($("#dropdown").val());
             self.setState({
                 display: self.state.series.filter(function(current_series) {
-                    // condition reversed because startYears never less than 2000s
-                    return parseInt(current_series['startYear']) > parseInt(dob);
+
+                    return parseInt(current_series['startYear']) < (parseInt(dob) + 35);
                 })
             });
         };
@@ -116,7 +116,7 @@ var Table = React.createClass({
 React.render(
     <Table
         source="http://politicianhub.me/api/v1/legislators"
-        series="http://politicianhub.me/marvel" />,
+        series="http://localhost:8000/marvel" />,
     document.getElementById('comics')
 );
 
