@@ -20,7 +20,7 @@
         q2 += queryArray[i];
     }
      else{
-        q += "+AND+" + queryArray[i];
+        q += "+{{searchType}}+" + queryArray[i];
         q2 += "+" + queryArray[i];
     }
  };
@@ -55,9 +55,9 @@
         {
             if(this.state.data.length > 0)
             {
-                console.log(this.props.queries);
-                var pageSource = '/search?q=' + this.props.queries + '&page=';
-                console.log(pageSource);
+                //console.log(this.props.queries);
+                var pageSource = '/search?q=' + this.props.queries + '&searchType={{searchType}}&page=';
+                //console.log(pageSource);
                 var data = this.state.data["0"];
                 var recCount = data["record_count"];
                 var info = data["info"];
