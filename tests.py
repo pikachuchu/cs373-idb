@@ -94,7 +94,7 @@ class tests(TestCase):
         queries = session.query(legislator).filter(legislator.last_name == "TESTATTR")
 
         assert (queries is not None)
-        assert (length(queries) == 2)
+        assert (len(queries) == 2)
 
         party = [];
         for x in queries :
