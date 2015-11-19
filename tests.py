@@ -91,7 +91,7 @@ class tests(TestCase):
         session.add(legislator(last_name = "TESTATTR", party = "Democrat"))
         session.commit()
 
-        queries = session.query(legislator).filter(legislator.last_name == "TESTATTR")
+        queries = session.query(legislator).filter(legislator.last_name == "TESTATTR").all()
 
         assert (queries is not None)
         assert (len(queries) == 2)
