@@ -16,7 +16,7 @@ var Table = React.createClass({
         return {
             data: [],
             series: [],
-			display: []
+            display: []
         }
     },
     componentDidMount: function() {
@@ -49,14 +49,14 @@ var Table = React.createClass({
         });
 
         $.get(this.props.series, function(result) {
-			result = result.sort(comparator);
-			if (self.isMounted()) {
-				self.setState({
-					series: result
-				});
-			}
+            result = result.sort(comparator);
+            if (self.isMounted()) {
+                self.setState({
+                    series: result
+                });
+            }
         });
-        
+
     },
     componentDidUpdate: function(){
         $('#mytable').dataTable({
@@ -65,18 +65,18 @@ var Table = React.createClass({
         });
     },
     render: function(){ 
-		
-		var self = this;
+
+        var self = this;
 
         var select_onclick = function() {
-			var dob = Math.floor($("#dropdown").val());
-			self.setState({
-				display: self.state.series.filter(function(current_series) {
-					// condition reversed because startYears never less than 2000s
-					return parseInt(current_series['startYear']) > parseInt(dob);
-				})
-			});
-		};
+            var dob = Math.floor($("#dropdown").val());
+            self.setState({
+                display: self.state.series.filter(function(current_series) {
+                    // condition reversed because startYears never less than 2000s
+                    return parseInt(current_series['startYear']) > parseInt(dob);
+                })
+            });
+        };
 
         var imageStyle = {
             margin: 'auto',
