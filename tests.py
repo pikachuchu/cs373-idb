@@ -56,6 +56,23 @@ class tests(TestCase):
 
         assert(found)
 
+    # Test that the table legislators is readable and for case sensitivity
+    def test_read_legislator_sensitivity(self):
+
+        session.add(legislator(first_name = "TESTREAD2", party="TEST2"))
+        session.commit()
+
+        query = session.query(legislator).all()
+        found = False
+
+        for x in query:
+            if(x.first_name == "TESTREAD2"):
+                found = True
+            if(x.first_name == "testread2"):
+                found = False
+
+        assert(found)
+
     # Test filtering by an attribute
     def test_read_legislator_attribute(self):
 
@@ -66,6 +83,24 @@ class tests(TestCase):
 
         assert (query is not None)
         assert (query.party == "Republican")
+
+    # Test filtering by an attribute returns multiple unique results
+    def test_read_legislator_attribute_multiple(self):
+
+        session.add(legislator(last_name = "TESTATTR1", party = "Republican"))
+        session.add(legislator(last_name = "TESTATTR1", party = "Democrat"))
+        session.commit()
+
+        queries = session.query(legislator).filter(legislator.last_name == "TESTATTR1").all()
+
+        assert (queries is not None)
+        assert (len(queries) == 2)
+
+        party = [];
+        for x in queries :
+            party.append(x.party)
+
+        assert (party[0] != party[1])
      
     # Test deletion of a row in legislators
     def test_delete_legislators_row(self):
