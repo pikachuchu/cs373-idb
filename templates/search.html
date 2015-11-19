@@ -5,8 +5,7 @@
 
 
 {% block body %}
-<h1 align="center">Search Results for &ldquo;{{query}}&rdquo;</h1>
-<div id = "searchresults" style="max-width:120em; position:relative; margin:auto; margin-top:5em">    
+<div id = "searchresults" style="max-width:120em; position:relative; margin:auto;">    
 </div>
 <script type="text/babel">
 
@@ -15,14 +14,17 @@
  var queryLength = queryArray.length;
  var q = "";
  var q2 = "";
+ var q3 = "";
  for (var i = 0; i < queryArray.length; i++) {
      if(i == 0){
         q += queryArray[i];
         q2 += queryArray[i];
+        q3 += queryArray[i];
     }
      else{
         q += "+{{searchType}}+" + queryArray[i];
         q2 += "+" + queryArray[i];
+        q3 += " {{searchType}} " + queryArray[i];
     }
  };
  var source = "https://api.swiftype.com/api/v1/public/engines/search.json?q=" + q + "&engine_key=8eNhTJLVxxJ7yq815rPc" + "&page={{page}}"
@@ -113,7 +115,13 @@
                 }
                 var prevPage = (curpage != 1) ?  (<li><a href={pageSource + "" + (curpage-1)}>Prev</a></li>) : (<li></li>);
                 var nextPage = (curpage != numpages) ?  (<li><a href={pageSource + "" + (curpage+1)}>Next</a></li>) : (<li></li>);
+                var textStyle = {
+                  textAlign: 'center'
+                };
                 return (
+                    <div id="searchBody">
+                    <h1 align="center" style={textStyle}>Search Results for &ldquo;{this.props.title}&rdquo;</h1>
+                    <hr />
                     <section>
                         {restrictive}
                         <h4>Showing {recCount} from {infopage["total_result_count"]} results</h4>
@@ -127,7 +135,8 @@
                               {nextPage}
                             </ul>
                         </div>
-                    </section>)                     
+                    </section>
+                    </div>)                     
             }
             else
             {
@@ -136,7 +145,7 @@
         }
      });
 
-    React.render(<Table queries={q2} queryLength={queryLength} source={source}/>, document.getElementById('searchresults'));
+    React.render(<Table queries={q2} queryLength={queryLength} source={source} title={q3}/>, document.getElementById('searchresults'));
 
 </script>
 {% endblock %}
