@@ -41,6 +41,34 @@ class tests(TestCase):
 
         self.assertEqual(startSize + 1, endSize)    
 
+    # Test that the table legislators is writable
+    def test_write_legislator_2(self):
+
+        query = session.query(legislator).all()
+        startSize = len(query)
+
+        session.add(legislator(first_name = "WRITETWO", party="TEST"))
+        session.commit()
+        query = session.query(legislator).all()
+
+        endSize = len(query)
+
+        self.assertEqual(startSize + 1, endSize)    
+
+    # Test that the table legislators is writable
+    def test_write_legislator_3(self):
+
+        query = session.query(legislator).all()
+        startSize = len(query)
+
+        session.add(legislator(first_name = "WRITETHREE", party="TEST"))
+        session.commit()
+        query = session.query(legislator).all()
+
+        endSize = len(query)
+
+        self.assertEqual(startSize + 1, endSize)    
+
     # Test that the table legislators is readable
     def test_read_legislator(self):
 
