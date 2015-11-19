@@ -87,11 +87,11 @@ class tests(TestCase):
     # Test filtering by an attribute returns multiple unique results
     def test_read_legislator_attribute_multiple(self):
 
-        session.add(legislator(last_name = "TESTATTR", party = "Republican"))
-        session.add(legislator(last_name = "TESTATTR", party = "Democrat"))
+        session.add(legislator(last_name = "TESTATTR1", party = "Republican"))
+        session.add(legislator(last_name = "TESTATTR1", party = "Democrat"))
         session.commit()
 
-        queries = session.query(legislator).filter(legislator.last_name == "TESTATTR").all()
+        queries = session.query(legislator).filter(legislator.last_name == "TESTATTR1").all()
 
         assert (queries is not None)
         assert (len(queries) == 2)
