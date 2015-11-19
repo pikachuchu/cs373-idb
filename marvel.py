@@ -19,6 +19,6 @@ def condense(e):
     return res
 
 def call_marvel():
-    result = list([get(i) for i in range(0,1500,200)])
+    result = [get(i) for i in range(0,1500,200)]
     return itertools.chain(*result)
 
