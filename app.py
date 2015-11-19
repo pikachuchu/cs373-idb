@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, make_response, abort
+from flask import Flask, render_template, jsonify, make_response, abort, request
 from flask.ext.cors import CORS, cross_origin
 from api import api
 
@@ -93,6 +93,13 @@ def bill(bill_id):
     except Exception as e:
         print(e)
     return render_template('bill.html', bill = bill)
+
+@app.route('/search',  methods=['GET'])
+def search():
+    query = request.args.get('q')
+    page = request.args.get('page')
+    searchType = request.args.get('searchType')
+    return render_template('search.html', query=query, page=page, searchType=searchType)
 
 @app.route('/tests')
 def tests():
