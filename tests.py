@@ -25,7 +25,22 @@ class tests(TestCase):
 
         endSize = len(query)
 
-        self.assertEqual(startSize + 1, endSize)    
+        self.assertEqual(startSize + 1, endSize)  
+
+    # Test that the table legislators can be written multiple queries 
+    def test_write_legislator_multiple(self):
+
+        query = session.query(legislator).all()
+        startSize = len(query)
+
+        session.add(legislator(first_name = "TESTMULTIPLE", party="TEST"))
+        session.add(legislator(first_name = "TESTMULTIPLE", party="TEST"))
+        session.commit()
+        query = session.query(legislator).all()
+
+        endSize = len(query)
+
+        self.assertEqual(startSize + 2, endSize)    
 
     # Test that the table legislators is writable
     def test_write_legislator_1(self):
