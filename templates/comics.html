@@ -5,18 +5,10 @@
 
 
 {% block body %}
-<!-- <img src="../static/img/loading.gif"> -->
-<div class="fullscreen-bg-bills">
-    <!-- <img src="../static/img/loading.gif"> -->
-    <!-- <img src="static/img/senate.jpg"/> -->
-</div>
+<div class="fullscreen-bg-bills"></div>
 <h1 align="center">Bills</h1>
 
-
-
-<div id="comics">
-
-</div>
+<div id="comics"></div>
 
 <script type="text/babel">
 var Table = React.createClass({
@@ -58,17 +50,12 @@ var Table = React.createClass({
         console.log(this.props.series);
 
         $.get(this.props.series, function(result) {
-            var data = result["data"];
-            alert(data["count"]);
-            var series = result["data"]["results"].map(function(key, index) {
-                return {
-                    "startYear": current["startYear"],
-                    "name": current["title"]
-                }
-            });
-
-            console.log(series);
-
+			result = result.sort(comparator);
+			if (this.isMounted()) {
+				this.setState({
+					series: result
+				});
+			}
         }.bind(this));
         
         
@@ -96,6 +83,11 @@ var Table = React.createClass({
             )
         });
 
+        var other_dropdown = this.state.series.map(function(d, index) {
+            return (
+                <option value={d["startYear"]}>{d["title"]}</option>
+            )
+        });
         if(this.state.data.length > 1) {      
             return (
                 <div className="container">
@@ -103,6 +95,9 @@ var Table = React.createClass({
                       {dropdown}
                     </select>
                     <button onClick={select_onclick}>Select</button>
+                    <select>
+                      {other_dropdown}
+                    </select>
                 </div>
             )    
         } else {
@@ -115,7 +110,7 @@ var Table = React.createClass({
 React.render(
     <Table
         source="http://politicianhub.me/api/v1/legislators"
-        series="http://importmarvel.com/api/series" />,
+        series="http://politicianhub.me/marvel" />,
     document.getElementById('comics')
 );
 
