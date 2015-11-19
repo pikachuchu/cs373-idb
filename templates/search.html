@@ -60,7 +60,10 @@
                 var pageSource = '/search?q=' + this.props.queries + '&searchType={{searchType}}&page=';
                 var orSource = '/search?q=' + this.props.queries + '&searchType=OR&page=1';
                 var andSource = '/search?q=' + this.props.queries + '&searchType=AND&page=1';
-                var restrictive = ("{{searchType}}" == 'AND') ? (<a href={orSource}>Did not find what you are looking for? Try our less restrictive search</a>) : (<a href={andSource}>Too Many Results? Try our restrictive search</a>) ;
+                var restrictive = (<a></a>);
+                if(this.props.queryLength > 1){
+                    var restrictive = ("{{searchType}}" == 'AND') ? (<a href={orSource}>Did not find what you are looking for? Try our less restrictive search</a>) : (<a href={andSource}>Too Many Results? Try our restrictive search</a>) ;
+                }
                 //console.log(pageSource);
                 var data = this.state.data["0"];
                 var recCount = data["record_count"];
