@@ -15,7 +15,8 @@ var Table = React.createClass({
     getInitialState: function(){
         return {
             data: [],
-            series: []
+            series: [],
+			display: []
         }
     },
     componentDidMount: function() {
@@ -40,24 +41,21 @@ var Table = React.createClass({
             }
           }).sort(comparator);
 
-          if (this.isMounted()) {
-            this.setState({
+          if (self.isMounted()) {
+            self.setState({
               data: lastGist
             });
           }
-        }.bind(this));
-
-        console.log(this.props.series);
+        });
 
         $.get(this.props.series, function(result) {
 			result = result.sort(comparator);
-			if (this.isMounted()) {
-				this.setState({
+			if (self.isMounted()) {
+				self.setState({
 					series: result
 				});
 			}
-        }.bind(this));
-        
+        });
         
     },
     componentDidUpdate: function(){
@@ -67,15 +65,23 @@ var Table = React.createClass({
         });
     },
     render: function(){ 
+		
+		var self = this;
+
         var select_onclick = function() {
-            var dob = Math.floor($("#dropdown").val());
-            alert(dob);
-        }
+			var dob = Math.floor($("#dropdown").val());
+			self.setState({
+				display: self.state.series.filter(function(current_series) {
+					// condition reversed because startYears never less than 2000s
+					return parseInt(current_series['startYear']) > parseInt(dob);
+				})
+			});
+		};
 
         var imageStyle = {
             margin: 'auto',
             display: 'block'
-        }
+        };
 
         var dropdown = this.state.data.map(function(d, index) {
             return (
@@ -83,9 +89,9 @@ var Table = React.createClass({
             )
         });
 
-        var other_dropdown = this.state.series.map(function(d, index) {
+        var series_list = this.state.display.map(function(d, index) {
             return (
-                <option value={d["startYear"]}>{d["title"]}</option>
+                <li className="list-group-item">{d["title"]}</li>
             )
         });
         if(this.state.data.length > 1) {      
@@ -95,9 +101,9 @@ var Table = React.createClass({
                       {dropdown}
                     </select>
                     <button onClick={select_onclick}>Select</button>
-                    <select>
-                      {other_dropdown}
-                    </select>
+                    <ul className="list-group">
+                      {series_list}
+                    </ul>
                 </div>
             )    
         } else {
@@ -110,7 +116,7 @@ var Table = React.createClass({
 React.render(
     <Table
         source="http://politicianhub.me/api/v1/legislators"
-        series="http://politicianhub.me/marvel" />,
+        series="http://localhost:8000/marvel" />,
     document.getElementById('comics')
 );
 
