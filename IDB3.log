@@ -1,0 +1,1664 @@
+commit a9c95cbcc126d33341b7c35f481b39f6a5cfbf7a
+Merge: b266f46 43dc9d4
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Thu Nov 19 18:26:22 2015 -0600
+
+    Merge pull request #107 from pikachuchu/update-about
+    
+    Update about page
+
+commit 43dc9d4d48f7fcb0bd550dd9aad735315ce8775f
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 20 00:24:39 2015 +0000
+
+    Update about page
+
+commit b266f46f44f01780c66fc2e01519986952cfa57f
+Merge: b7aa8ac 36b561f
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 20 00:16:08 2015 +0000
+
+    Merge branch 'master' of github.com:pikachuchu/cs373-idb
+
+commit b7aa8ac92d3474155ac9a213f9551e78ccb78846
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 20 00:15:51 2015 +0000
+
+    Update server side for react revert
+
+commit 36b561f3a0673576fc7f171439f1bfb7ec8a4721
+Merge: b8abafd 4c2d4b5
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 18:15:01 2015 -0600
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit 4c2d4b5f86260bf6afa014b953d5035348072d71
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 20 00:07:10 2015 +0000
+
+    Revert pages back to React
+
+commit b8abafd7a8b06b90bf4245958035ac8afcb7a932
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 18:05:21 2015 -0600
+
+    removing console.log
+
+commit 62598fb4b51bfe5ec74021c1894eef8ec2b0af08
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 20 00:03:31 2015 +0000
+
+    Update marvel url
+
+commit 52158f73f86a4dcc46b6acbe769ce59d974d85d9
+Merge: c072800 cbd2626
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 20 00:01:51 2015 +0000
+
+    Merge branch 'comics'
+    
+    Conflicts:
+    	app.py
+
+commit cbd2626e2489500783eb956307285fb6e7c0669b
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Thu Nov 19 17:57:10 2015 -0600
+
+    added picture and colors to comic
+
+commit b52a736ae2d0339f8f83fa9c4c108d5438f58972
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Thu Nov 19 17:44:06 2015 -0600
+
+    changed comics page
+
+commit c0728008acb19efd34f03739953b0a9e319eb874
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 17:23:28 2015 -0600
+
+    1 new unit test
+
+commit 218bbb14c1002dafe95999ea60b0f188fd5e1aec
+Merge: 879b11d 566eb40
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 17:13:31 2015 -0600
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit 879b11d5fe07daebad60d70b150b3e3fb2bc4bef
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 17:13:07 2015 -0600
+
+    add or/and in search title
+
+commit 566eb4023a69d45f02e1fc6222cde9ce865cdc87
+Merge: 143e534 a58541a
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Thu Nov 19 17:03:58 2015 -0600
+
+    Merge pull request #106 from pikachuchu/lawrence_tests
+    
+    added 2 more tests
+
+commit 143e53423ffec1a29c012191c914bc80fe067b6b
+Merge: ba24407 477a899
+Author: andreassudihardjo <andreas_sudi@hotmail.com>
+Date:   Thu Nov 19 16:55:47 2015 -0600
+
+    Merge pull request #105 from pikachuchu/andreasUnitTest
+    
+    2 new unit tests
+
+commit ba24407fc59fefd904bb06a72fe1027e2ef7143d
+Merge: 79b132e 0d307e0
+Author: andreassudihardjo <andreas_sudi@hotmail.com>
+Date:   Thu Nov 19 16:52:48 2015 -0600
+
+    Merge pull request #104 from pikachuchu/search
+    
+    Search Bar
+
+commit 477a899363718e9b13831b9bb7b1ff8d7bb85fba
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 16:51:52 2015 -0600
+
+    changed Attribute Name
+
+commit a58541a26ff73e9efa969a9941112232915b4172
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Thu Nov 19 16:33:52 2015 -0600
+
+    added 2 more tests
+
+commit 410636a8d451c7e78ba31da7f239e4ff82ebbcd1
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Thu Nov 19 15:58:06 2015 -0600
+
+    fixed tab spacing
+
+commit 9ec983740f171817b9939d6e5693ed2f8f8bb677
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Thu Nov 19 15:53:21 2015 -0600
+
+    fixed marvel get url to use server instead of localhost
+
+commit 3f760df4f70472e92ed2ba8e055143c0455afa88
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Thu Nov 19 15:52:09 2015 -0600
+
+    updated so that series are displayed as list, also added filter so button actually works
+
+commit a7d35cb360a1f9c9191864699e2e666b3214dbef
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 13:24:26 2015 -0600
+
+    add all() attribute
+
+commit 0ccc264c8db0c6a3156fe73e2cf87348ce237787
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 19 13:18:48 2015 -0600
+
+    fix typo
+
+commit 2baab6eee6dacc25c0a205212de5c75afcb2af71
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Nov 19 04:15:29 2015 -0600
+
+    2 new unit tests
+
+commit 0d307e021f2a4ddab0ab94bbc01e6d2bee475840
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Nov 19 03:58:24 2015 -0600
+
+    only allow switch search for multiple queries
+
+commit 69a9de415310d95d858447dc06ffa5158e4d3020
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Nov 19 03:54:48 2015 -0600
+
+    allow switch between or & and searches
+
+commit 15649da8fb7a24f634c98898816f6dce811fa49e
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Nov 19 03:39:10 2015 -0600
+
+    optional search 'or' or 'and'
+
+commit 5dad85d907ae05019a9c5ba3aec8c503f2db64ab
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Wed Nov 18 23:52:00 2015 -0600
+
+    removed unecessary call to list
+
+commit 3f57b7ad9938d1a9a96c35c2469f2d84c9eb5564
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Wed Nov 18 23:46:17 2015 -0600
+
+    first get 200 series data from marvel api on serverside and pass to frontend
+
+commit 23bdebba6375350c4ab0a060a3ba21fa415e841c
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 18 13:19:50 2015 -0600
+
+    changed to 'and' fix highlight bug
+
+commit 4bc941e798e1d58e18562fceeddecdad9ddd4c54
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 18 12:48:53 2015 -0600
+
+    add style to result table
+
+commit e202d08c4fd7a73c6ec05becf90adb0550a5835d
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 18 12:38:30 2015 -0600
+
+    fix pagination bug
+
+commit 28b53d7f93fe7b936a94dd22f3330656dc3e1972
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 21:36:35 2015 -0600
+
+    preventDefault when clicking on empty link
+
+commit 4db2de5aedef9974a0dee764d60db5207da5abcd
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 21:36:04 2015 -0600
+
+    add links to pagination closes #101
+
+commit 9c694e9f5fc078a1ebd5cab9da4902011ad00c3d
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 21:29:48 2015 -0600
+
+    add links to prev and next buttons
+
+commit 7e56018ad5325f1cb4aac94e7b951c0678da1441
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 21:29:07 2015 -0600
+
+    add parameter for page
+
+commit 9f1a7ce705999debb6c763300ff8924aebd8aa99
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 20:59:57 2015 -0600
+
+    set max number of pages for pagination closes #103
+
+commit 79b132efbc6f2f1b52baacfa53bf25c54b40f29d
+Merge: 91a7709 a8bfe95
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Tue Nov 17 20:34:54 2015 -0600
+
+    Merge pull request #102 from pikachuchu/lawrence_tests
+    
+    Lawrence tests
+
+commit 84492ddfc1d98490e29aa83ad801ce791d6c54da
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 20:33:48 2015 -0600
+
+    dynamic pagination
+
+commit 975b8cfb2c2e3e182ce288c3da87a0ef9781c80b
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 20:24:41 2015 -0600
+
+    initial pagination
+
+commit faf0347013ce40c5b0cae9c75e28e036aed811af
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 20:20:20 2015 -0600
+
+    able to search using multile queries
+
+commit 6883711670b439143b70f2885089aabd5199eab7
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 20:19:29 2015 -0600
+
+    search using swiftype api
+
+commit fa94bfa7a6495e0f1d69e15c813df0fd7b3811af
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 17 20:17:40 2015 -0600
+
+    create search layout using static data closes #97
+
+commit ee0f22ca88bf6eafe4b0ed7f69d49c1a980f5fe1
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Tue Nov 17 19:58:46 2015 -0600
+
+    added stupid unit tests
+
+commit a8bfe95b414bcfca18e09c224d1280bccd8a8e4e
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Tue Nov 17 19:57:59 2015 -0600
+
+    added additional write unit test
+
+commit 2457f8fbacba886457a1411ca158b55762a24511
+Merge: 91a7709 276cad9
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Tue Nov 17 18:45:03 2015 -0600
+
+    Merge branch 'seo' of https://github.com/pikachuchu/cs373-idb
+
+commit 91a77098033a9bfedef0c8a3081818a89da2503a
+Merge: 81f9e58 401485f
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Tue Nov 17 18:28:28 2015 -0600
+
+    Merge pull request #96 from pikachuchu/green_table
+    
+    removed green table header fixes #93
+
+commit 401485f6aa11dd796ffbeba1ddf329939c2eaa70
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Tue Nov 17 18:24:06 2015 -0600
+
+    removed green table header fixes #93
+
+commit 276cad928922231f42458222366c92fa20132103
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 17 23:40:56 2015 +0000
+
+    Fix gender
+
+commit b4f73ea3e1d83e78c3a3c18d8dc2a496a624f161
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Mon Nov 16 18:37:36 2015 +0000
+
+    SEO website
+
+commit 81f9e5885942aee2005e3b24d869646f4afa6ac8
+Merge: 7c56471 19d2a0e
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Mon Nov 16 00:05:08 2015 -0600
+
+    Merge pull request #94 from pikachuchu/catch-db-errors
+    
+    Catch db errors to prevent 500
+
+commit 9d135c2d3a0c38e0816d79cb13dd44d17826587d
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Sun Nov 15 18:12:04 2015 -0600
+
+    stuck on external api removed green color on tables
+
+commit 8375c6438a4907b52a4fea802b31ebf761342c8e
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Sun Nov 15 16:50:12 2015 -0600
+
+    initial search
+
+commit fd4e0228345b25922fe32ba8a12453088830eb8c
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Sun Nov 15 16:47:56 2015 -0600
+
+    added comics integration page and drop down of congress males
+
+commit 7c56471c86ffb4061bd110f1c88e1cb7654d5261
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Sun Nov 15 16:26:03 2015 -0600
+
+    api calls for importMarvel, fixes #92
+
+commit 19d2a0ebaee5bf98a2261169c22f8ab5c34dd1d2
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Sun Nov 15 20:50:12 2015 +0000
+
+    Catch db errors to prevent 500
+
+commit 1cc68cc78d6e206bd27986049770b93563123ee1
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Fri Nov 13 16:45:51 2015 -0600
+
+    Update host in apiary
+
+commit 0667b4424a04511a63a0c4e253447361c07f500b
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 6 00:29:46 2015 +0000
+
+    Add log for IDB2
+
+commit 636a06427e22ed907715b3f5d5aad7da93454f66
+Merge: 0e13a92 61ddac0
+Author: Daniel Coonan <dsc694@utexas.edu>
+Date:   Thu Nov 5 18:28:01 2015 -0600
+
+    Merge pull request #91 from pikachuchu/react-pages
+    
+    React pages
+
+commit 61ddac0ea400e3f6afb5c893434261b42a3e7a55
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Thu Nov 5 18:25:20 2015 -0600
+
+    added loading screen to all main pages
+
+commit 0e13a92f32cb0a30a60fedf5ec389bd760808c9e
+Merge: f47b3d7 9f2b5b5
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Thu Nov 5 18:16:52 2015 -0600
+
+    Merge pull request #90 from pikachuchu/update-about-page
+    
+    Update about page. This closes #62
+
+commit 3adbec45c9deb9b8105c351c991aed618764bc93
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Thu Nov 5 18:15:39 2015 -0600
+
+    adding loading screen
+
+commit 9f2b5b5b65a15050a3e0ae565e106c63a3c732b5
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Fri Nov 6 00:14:51 2015 +0000
+
+    Update about page. This closes #62
+
+commit f47b3d7463bde0230cba3782f5436cad3e4119de
+Merge: b1f4571 8db9301
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Thu Nov 5 23:44:15 2015 +0000
+
+    Merge branch 'master' of github.com:pikachuchu/cs373-idb
+
+commit b1f4571953022f4b9ace4fbe1111b4a13f1e5208
+Author: Lawrence Ying <lawrence.ying@utexas.edu>
+Date:   Thu Nov 5 23:40:04 2015 +0000
+
+    added coverage to test fixes #88
+
+commit 8db9301b4a69310464af7ef55fc08db4e1653c12
+Merge: 48d9518 f689d26
+Author: xhmf <lawrence.ying@utexas.edu>
+Date:   Thu Nov 5 17:43:22 2015 -0600
+
+    Merge pull request #89 from pikachuchu/testcov
+    
+    added coverage to test fixes #88
+
+commit f689d264998166026ab846b9579099d5cdb86642
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Thu Nov 5 23:40:04 2015 +0000
+
+    added coverage to test fixes #88
+
+commit 48d95183c8edbfd88ff36327b4f098b7286c41a2
+Merge: 79050a7 e343633
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Thu Nov 5 17:28:37 2015 -0600
+
+    Merge pull request #86 from pikachuchu/add-get-obj-tests
+    
+    Add tests for get_obj
+
+commit e3436333fab9cbbefd1039a891885b85523c9bcf
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Thu Nov 5 23:17:38 2015 +0000
+
+    Add tests for get_obj
+
+commit 79050a7a8ce5cb2ab6e26d0216123df23f1dbdae
+Merge: 091057e f7e00d5
+Author: andreassudihardjo <andreas_sudi@hotmail.com>
+Date:   Thu Nov 5 12:23:35 2015 -0600
+
+    Merge pull request #85 from pikachuchu/react-pages
+    
+    React pages completed
+
+commit f7e00d5783c2334b680ae6d356b86538d5b14f64
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Nov 5 12:19:22 2015 -0600
+
+    finished dynamic individual bills page which closes #67
+
+commit bf7bb42aca46e86949163f84b989bc304807fc03
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Nov 5 04:29:26 2015 -0600
+
+    initial bills page
+
+commit 0828cdfb465dc4cb0ae5ff590bd0f75a30b1d2d6
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Nov 5 04:21:34 2015 -0600
+
+    react for committee. closes #66
+
+commit 12f4cd3323f54433fdcd1882b02c4ef30660fce8
+Merge: 5a91012 091057e
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Nov 5 03:27:00 2015 -0600
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb into react-pages
+
+commit 091057ef83aa48823240b7391dba6323001eafba
+Merge: 35f754a 5fcccfd
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 20:23:25 2015 -0600
+
+    Merge pull request #84 from pikachuchu/tests
+    
+    Tests
+
+commit 5fcccfd662abc237e2c7c78b19ecd33271cd00e1
+Merge: 0f5ff90 86c80f8
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 20:18:30 2015 -0600
+
+    Merge branch 'tests' of github.com:pikachuchu/cs373-idb into tests
+
+commit 0f5ff90abad2db24e2f0964bcc0aac5bbf6d9d84
+Author: Lawrence Ying <lawrence.ying@utexas.edu>
+Date:   Thu Nov 5 00:35:54 2015 +0000
+
+    added button to run and display unit tests fixes #83
+
+commit 35f754abd2e1aaf1f013a4beaea07c1f8f5d5ff9
+Merge: c9b45b5 34d3eab
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 20:17:11 2015 -0600
+
+    Merge branch 'master' of github.com:pikachuchu/cs373-idb
+
+commit c9b45b533e3a71672ae4dfa9553a5236a621d0f5
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 21:28:22 2015 +0000
+
+    Update make test
+
+commit a263ad55fedc6f199c888d394e8d0f9c66f6f8cb
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 15:24:53 2015 -0600
+
+    Update models doc
+
+commit d24ade272a0d7cd330d829a85e1950b3b5a0cbf9
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 20:05:20 2015 +0000
+
+    Delete copy
+
+commit d366217a183d35d6eb5130ba447238dbf91424b3
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 20:03:06 2015 +0000
+
+    Create db in travis
+
+commit 59ce9bd271c926d8065cb1fe55aa32421002c5bc
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:53:35 2015 +0000
+
+    Update pip install requirements
+
+commit b71cfec7e20382213c1eadac5207e68693508562
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:34:56 2015 +0000
+
+    Add make test to travis.yml
+
+commit cf455c9663ff628201b1c142d1dbfa88b19c325f
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:33:30 2015 +0000
+
+    Add tests for votes and bill_committees
+
+commit 7f66b10ebb2a235e4754c0d0710e5ec54637a146
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:05:11 2015 +0000
+
+    Update database
+
+commit 5bada39ecf6c4be8aeaf4a82f37a296b57da0d6a
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:04:44 2015 +0000
+
+    Get legislator with verbose flag
+
+commit 89cd47104289f7900ff059a412c0adba3e02136c
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 18:37:22 2015 +0000
+
+    Remove duplicate committees
+
+commit 255dc7caca1360f602ae05b117ab5e981455100a
+Author: Lawrence Ying <lawrence.ying@utexas.edu>
+Date:   Wed Nov 4 01:36:56 2015 +0000
+
+    tests passing for test database, fixes #56
+
+commit 86c80f8761465027818cecc9082a4c93f648dc58
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Thu Nov 5 00:35:54 2015 +0000
+
+    added button to run and display unit tests fixes #83
+
+commit 5a910129be4a37bb5aa806b4139c792b796ee9d1
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 16:52:48 2015 -0600
+
+    initial committee file
+
+commit bb633e48b3c7ba0f198bb8526350ab7ca259466d
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 16:41:10 2015 -0600
+
+    add table for votes
+
+commit b1671d470f25a9a231f5b755af13d05101ddc25c
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 16:26:27 2015 -0600
+
+    add link to committees from legislator
+
+commit b129d5c89bc17936d566690341dc42c66b0aaa42
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 16:20:13 2015 -0600
+
+    fix sponsor name for bills
+
+commit 34d3eab46e528ae54345dc837084d438f13cbdd1
+Merge: 4e1d4b4 5a0314f
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 15:29:45 2015 -0600
+
+    Merge pull request #81 from pikachuchu/update-makefile
+    
+    Update make test
+
+commit 5a0314f4412565a75f4198ae76de30de5d6277af
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 21:28:22 2015 +0000
+
+    Update make test
+
+commit 4e1d4b44d48854dea09c93398589371f8d360c80
+Merge: b46c1c2 15d8f49
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 15:27:20 2015 -0600
+
+    Merge pull request #80 from pikachuchu/update-documentation
+    
+    Update models doc
+
+commit 15d8f49a1c9d2474a0389ba7741680e8c7f1fc9a
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 15:24:53 2015 -0600
+
+    Update models doc
+
+commit 966d4738b99919ef81c9e03aae5f20f0018d0b08
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 15:22:37 2015 -0600
+
+    add style to legislator page
+
+commit 2042bcae78f47ce64340bbd848dd918fa50ecebf
+Merge: 4feda90 4b8dcf7
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Nov 4 14:49:48 2015 -0600
+
+    Merge branch 'react-pages' of https://github.com/pikachuchu/cs373-idb into react-pages
+
+commit 4feda90bcda88694bd8eb25f8a7957da9f5c9dca
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Nov 4 14:49:31 2015 -0600
+
+    added chair to committee
+
+commit 4b8dcf732501dc942774d3c91dd86c17d291256c
+Merge: 6fef09c 03944f8
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 14:46:54 2015 -0600
+
+    Merge branch 'react-pages' of https://github.com/pikachuchu/cs373-idb into react-pages
+
+commit 6fef09c10d64448eee3316fb9923a3df3723021e
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 14:46:10 2015 -0600
+
+    set default twitter widget
+
+commit 03944f8ff719cdf0915ff88281c955ad0ae3bbf5
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Nov 4 14:29:13 2015 -0600
+
+    finished bills
+
+commit d4a939ab88cc4732f45e1f76a4ca72373c875b6e
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 14:27:09 2015 -0600
+
+    finished committee react
+
+commit b46c1c28071d430e64cd130eed5c4de09d6f2ab7
+Merge: 9dc2094 13af206
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 14:13:32 2015 -0600
+
+    Merge pull request #74 from pikachuchu/finish-tests
+    
+    Finish tests
+
+commit 13af206483bc16890bf43babc55aaf1abc3eb3cb
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 20:05:20 2015 +0000
+
+    Delete copy
+
+commit d15f754c0be5bac3b12bce9ca38caebd3af9791b
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 20:03:06 2015 +0000
+
+    Create db in travis
+
+commit bd2ab6ba223cadbd6ab3694a59450f55c1e9ecd4
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Nov 4 13:59:50 2015 -0600
+
+    merged
+
+commit 54644b5bd97ab69f323bb7d89655143cdf2de356
+Merge: 7a56a16 0861da0
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Nov 4 13:58:25 2015 -0600
+
+    Merge branch 'react-pages' of https://github.com/pikachuchu/cs373-idb into react-pages
+
+commit 0861da040ad7a1f98f3e90a70f689d979df807f0
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Nov 4 13:57:08 2015 -0600
+
+    dynamic legislator page
+
+commit 4c030c1d2433b3f68fad8c78ecc1217a69ff3c75
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:53:35 2015 +0000
+
+    Update pip install requirements
+
+commit 4252475fe0b2ce9809c8c3903086c98e90cb752b
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:34:56 2015 +0000
+
+    Add make test to travis.yml
+
+commit f6527a29e38f483fa493578145f09b8511bf4465
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:33:30 2015 +0000
+
+    Add tests for votes and bill_committees
+
+commit 9dc2094d05d6151de5662385897e4df30c40e006
+Merge: 91d959b e7ff69f
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Wed Nov 4 13:10:15 2015 -0600
+
+    Merge pull request #72 from pikachuchu/fix-data
+    
+    Fix data
+
+commit e7ff69f1a1c732c3252fd13506d1b3a377719398
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:05:11 2015 +0000
+
+    Update database
+
+commit c1ce71b3a3a9b2b207d920fba27a4656a85c7c82
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 19:04:44 2015 +0000
+
+    Get legislator with verbose flag
+
+commit 7a56a167502284320859d7332e73f11131e5fe58
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Nov 4 13:01:07 2015 -0600
+
+    reactified committee, waiting on updated api to add chairperson data
+
+commit 9746e34de0859ce9fff4e9cdfc55d8b3e36a266c
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 18:37:22 2015 +0000
+
+    Remove duplicate committees
+
+commit f54bdcd53eb05ef20841f5db17837fe813050e20
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 3 22:22:16 2015 -0600
+
+    remove senator1r
+
+commit d59e2ee9f8ecc86b933b185c092f5fe97216c2a3
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 3 22:17:42 2015 -0600
+
+    make bills dynamic but not finished
+
+commit dc5e6eb07c23f2716114b14c766182e8902d3f00
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 3 22:02:00 2015 -0600
+
+    committees is dynamic but not finished
+
+commit 133ae3cb31f8e0550514866fc4ec7713c5ee57e1
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 3 21:12:11 2015 -0600
+
+    dynamic house page finished. Added age which closes #63
+
+commit c3a1046cc7a94a90dad7d8fd1136815941de74d5
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Nov 3 20:58:21 2015 -0600
+
+    dynamic senate page finished
+
+commit e1f598a34b4163a8e5946c3292cd2d9589d45542
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Tue Nov 3 19:43:45 2015 -0600
+
+    added bills to senate page
+
+commit 91d959b98168a5e7d9815f45cb35ca13d3f031a7
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 01:36:56 2015 +0000
+
+    tests passing for test database, fixes #56
+
+commit 8dd6d081bbbee8899fd1769dd0f6f5eabe19f5f9
+Merge: 8a78125 4178600
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Nov 3 19:35:01 2015 -0600
+
+    Merge pull request #61 from pikachuchu/allow-cors
+    
+    Allow CORS
+
+commit 4178600735d20c940e559c553ec797989c5b1ec2
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 01:33:43 2015 +0000
+
+    Allow CORS
+
+commit 1f0bdb581e4f390007f519a8e175fed469e1bbf8
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Tue Nov 3 19:21:31 2015 -0600
+
+    converting individual senator to react
+
+commit 8a78125c537bcdeff25efde5a570b09f46a5f2b6
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Nov 3 19:16:46 2015 -0600
+
+    Add query args to API blueprint
+
+commit 4a512b52e4cb5850d9df0d82bee883e1c09f33cd
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Nov 3 19:02:24 2015 -0600
+
+    Transferring blueprint from apiary.io
+
+commit 655edf33afdd65afdb0b261e53873a4893a81f57
+Merge: 7f91857 1bbdb1d
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Nov 3 18:28:12 2015 -0600
+
+    Merge pull request #60 from pikachuchu/make-api-filterable
+    
+    Make API filterable by its fields. This closes #59
+
+commit 1bbdb1dfe335e372e3d42e29772073f59f4484b8
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Wed Nov 4 00:26:22 2015 +0000
+
+    Make API filterable by its fields. This closes #59
+
+commit 7f91857657fa3946311fd329e1b7889c751c3246
+Author: joe <joe@localhost.localdomain>
+Date:   Tue Nov 3 18:18:15 2015 -0600
+
+    compressed flag video
+
+commit 43bf7771ad00ffba487139348294c86a8a78849d
+Merge: 1b1ffb7 2d0da99
+Author: andreassudihardjo <andreas_sudi@hotmail.com>
+Date:   Wed Nov 4 06:22:27 2015 +0700
+
+    Merge pull request #58 from pikachuchu/react-pages
+    
+    React pages
+
+commit 1b1ffb73672a7a54339ea3d11396f70eb824e333
+Merge: 5b525ba 4a44e8d
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Nov 3 13:39:25 2015 -0600
+
+    Merge pull request #57 from pikachuchu/get-legislator-verbose
+    
+    Get legislator for chair and sponsor if verbose
+
+commit 4a44e8de8f2486b57b9721ae548853668dd6d282
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 3 19:37:17 2015 +0000
+
+    Get legislator for chair and sponsor if verbose
+
+commit 5b525bab0573627fd33e05d126bb0dae13d2d4ad
+Merge: dfeef7b 62d073d
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Mon Nov 2 23:58:36 2015 -0600
+
+    Merge pull request #55 from pikachuchu/add-verbose
+    
+    Get data for foreign keys when verbose=true.
+
+commit 62d073d880908e38d15bceaf5554af005f4ab5ad
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 3 05:56:33 2015 +0000
+
+    Get data for foreign keys when verbose=true.
+    
+    This closes #54
+
+commit dfeef7b81fd1fdf27e7992d63332ae7fc639e447
+Merge: b980829 22c85df
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Mon Nov 2 23:31:38 2015 -0600
+
+    Merge pull request #53 from pikachuchu/database/get-legislators
+    
+    Database/get legislators
+
+commit 22c85df0a6861baf37f63454750bcba457b9485b
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 3 05:29:24 2015 +0000
+
+    Update api to call database. This closes #41
+
+commit 6a4dcab80eed1a8db092d9725f871232d105d9e0
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 3 00:43:36 2015 +0000
+
+    Get bills and committees from database
+
+commit 4a15b3ca4af2e8a15767967b33c3fe27e4fc8f7b
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 3 00:34:04 2015 +0000
+
+    Use dictionary for votes data collection
+
+commit cd3f40ff9e54ffff368bff0480f94a075102a69c
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 3 00:27:22 2015 +0000
+
+    Have unique votes
+
+commit 4b5093e7b542269318349c9bf79b29bc52f461e5
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Tue Nov 3 00:22:42 2015 +0000
+
+    Update json data
+
+commit 29bf87073a1e98e2d90367f2b8b8c3c41cac3789
+Merge: 4af2772 b980829
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Mon Nov 2 23:50:33 2015 +0000
+
+    Merge branch 'master' into database/get-legislators
+
+commit b980829ccb57aa9bf8c41e9fcddc7dcaa68c9e76
+Merge: 859f11d c539d01
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Mon Nov 2 17:50:06 2015 -0600
+
+    Merge pull request #52 from pikachuchu/add-data-to-db
+    
+    finish adding data to db. This closes #39
+
+commit c539d01235c033345f25811a3549a5b1a04f5c10
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Mon Nov 2 23:09:49 2015 +0000
+
+    finish adding data to db. This closes #39
+
+commit 2d0da99067bedcd09b8396c450b40446ddd75e65
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Mon Nov 2 14:40:56 2015 -0600
+
+    converted bills page into react. Remove unnecessary variable in other pages. closes #48. Also finished sorting and pagination which closes #49
+
+commit 5509a9512f9e7ba360b264e0c0652271d5d78211
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Mon Nov 2 12:24:54 2015 -0600
+
+    convert committee page to react. This closes #47
+
+commit b084eb82c92f066fa2b0e8dca557a5f50892e9d5
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Mon Nov 2 05:06:31 2015 -0600
+
+    change senate page into reactJS
+
+commit 027b9f4d3028039f06b26c664cb155a81f8faac0
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Mon Nov 2 04:35:47 2015 -0600
+
+    implement react on senate page using static data. Implement pagination and sort
+
+commit 859f11ddff08776a02aca567940d7ff25545b2a1
+Merge: bea34c0 a163309
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Sun Nov 1 17:08:38 2015 -0600
+
+    Merge pull request #43 from pikachuchu/update-json-data
+    
+    Update json data
+
+commit bea34c0b02160346eb45d52565116f8e672645c8
+Merge: ad64c5a 2000706
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Sun Nov 1 17:08:29 2015 -0600
+
+    Merge pull request #44 from pikachuchu/add-api-endpoints
+    
+    Add api endpoints
+
+commit a163309ffbe3f67e0b0d196efcaf198464ac0811
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Sun Nov 1 23:07:03 2015 +0000
+
+    adding bills and committees with fk = 1
+
+commit 20007061ab74f7ece5415fe80cfe43cdc0e14840
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Nov 1 17:05:31 2015 -0600
+
+    Separate api from app
+
+commit 4af2772b56b3ecd0eb47fb951fe0ec3e059d36d2
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Nov 1 16:58:37 2015 -0600
+
+    Access legislator data from db
+
+commit 495f2d4c0ac53867d6efd8c2de77108dd978bb63
+Merge: d414999 60e5371
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Sun Nov 1 21:24:20 2015 +0000
+
+    Merge branch 'update-json-data' of github.com:pikachuchu/cs373-idb into update-json-data
+
+commit d4149997764aab1b34ca0d864c7e7db67c7e076a
+Author: Chuchu Ma <sarahma88@gmail.com>
+Date:   Sun Nov 1 21:23:54 2015 +0000
+
+    fixed data_loader and models to populate db correctly fixes #42
+
+commit 5523290afc4a23fe52a9c848c85c9aa7c341eebe
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Nov 1 15:15:03 2015 -0600
+
+    Add endpoints returning dummy data
+
+commit 60e5371a7b964f11ec9b86d21b32becf3fcdd4fc
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Nov 1 15:14:05 2015 -0600
+
+    Add bill_committee and votes data. This closes #38
+
+commit 712da1d5a7e6fcd9c462d89c389982a92fa2aa20
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Nov 1 14:20:41 2015 -0600
+
+    Add committee_members data
+
+commit ad64c5a6b443b440dd960afca7e77fcee3ff3ab6
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Sun Nov 1 04:51:35 2015 -0600
+
+    change senate page into react
+
+commit fc423017c58a0c9dff60dd3d6b3af90373f62f04
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sat Oct 31 21:43:47 2015 -0500
+
+    Update bill and committee data
+
+commit 25d65a5f045a947f9dcfdbd83e99bbac8f168174
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sat Oct 31 16:16:12 2015 -0500
+
+    Update UML. Edit url: http://yuml.me/edit/d25b29e1
+
+commit 0a84751f6d9366387c1c8a224e028af054ff47b2
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sat Oct 31 14:50:53 2015 -0500
+
+    Update committee and rep data
+
+commit 9c3c9d85533d2204642da769d8a6103f3e6df558
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 18:22:53 2015 -0500
+
+    Add log
+
+commit 806cee8556babd9c10ecf7c75a19efa4f2226bfb
+Merge: 6e941a7 6a2c7d2
+Author: Lawrence Ying <lawrence.ying@utexas.edu>
+Date:   Thu Oct 22 18:18:19 2015 -0500
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit 6e941a7148c9e54ace0ccd6408b537d70150f82c
+Author: Lawrence Ying <lawrence.ying@utexas.edu>
+Date:   Thu Oct 22 18:18:07 2015 -0500
+
+    change video alt image fixes #37
+
+commit 6a2c7d2884109e4bda1d20667dca7a6fe0bc70f9
+Merge: aadf745 596c7dc
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 18:17:57 2015 -0500
+
+    Merge branch 'master' of github.com:pikachuchu/cs373-idb
+
+commit aadf74524a73bdea1c3aa9c0bd9f922e749e57be
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 18:16:45 2015 -0500
+
+    Update stats on about page. This closes #6
+
+commit 596c7dcb9f163db2fef2f0e2cf3ce55abddb85ab
+Author: Lawrence Ying <lawrence.ying@utexas.edu>
+Date:   Thu Oct 22 18:11:58 2015 -0500
+
+    added splash tagline
+
+commit 955ac3170102633e33816572a51f96dcc9e0e854
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Thu Oct 22 17:52:57 2015 -0500
+
+    make tables responsive fixes #36
+
+commit 85889a37d3d53a67c664fddcf75515850b414893
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Thu Oct 22 17:46:30 2015 -0500
+
+    make political cartoon responsive fixes #35
+
+commit 9bab0b736dbaa370f36cd83b0ed0f734b25b9638
+Merge: f375790 331e792
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Thu Oct 22 17:37:40 2015 -0500
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit f3757902bd88cc8428b5ccf59baf10ced12aec62
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Thu Oct 22 17:37:17 2015 -0500
+
+    added group picture fixed #33
+
+commit 331e7922f7f48cb0167f17fb9592e8ee95044d3a
+Merge: cbb4cb7 38c3c21
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Oct 22 17:35:50 2015 -0500
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit cbb4cb7577aa3df97b8efb96d13b258e5cd1aeb7
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Thu Oct 22 17:35:25 2015 -0500
+
+    link person to committee closes #34
+
+commit 38c3c219d8f1696456a6620bfb3a0bfd853d31e1
+Merge: 5945dd6 1f76ae6
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 17:25:03 2015 -0500
+
+    Merge pull request #32 from pikachuchu/add-committee-column
+    
+    Add subcommittee column
+
+commit 1f76ae62c4727a7ff53c4c4a6dcd49f73e56a1f5
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 17:18:17 2015 -0500
+
+    Add subcommittee column
+
+commit 5945dd62a3c221da8448d6d7f2979759bf277c82
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 09:21:58 2015 -0500
+
+    Fix pictures
+
+commit 4a2e965c4276fe2c7bd57f9d551a7ce5a0c7267e
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 09:16:06 2015 -0500
+
+    Fix title on splash page
+
+commit 5260e72ce2806d98c2c0f6c2d752bcd8a44f644c
+Merge: 80f3d5b 570a345
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 09:10:19 2015 -0500
+
+    Merge pull request #30 from pikachuchu/committee-pages
+    
+    Committee pages
+
+commit 570a3453e43827323dac9b92aa02845bbab57601
+Merge: c988b13 80f3d5b
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Thu Oct 22 09:08:49 2015 -0500
+
+    Merge branch 'master' into committee-pages
+    
+    Closes #26
+
+commit 80f3d5b54e9fc683b74c07b8421a56b5e1c0f39e
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Thu Oct 22 04:00:01 2015 -0500
+
+    added bills pages closes #27
+
+commit 9b701a4d99cfdf649b4a0f0abf2dd2634fb8d1e8
+Author: joe <joe@localhost.localdomain>
+Date:   Wed Oct 21 23:48:34 2015 -0500
+
+    removed unwanted header
+
+commit 0a2c897124b2fcc2090deed22685018f2f334d9b
+Merge: a442bf9 c04bb1e
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Wed Oct 21 21:03:02 2015 -0500
+
+    Merge pull request #29 from pikachuchu/add-documentation
+    
+    Add documentation for models
+
+commit a442bf91a1ed8d81f433c1e066daf88f9febcc70
+Merge: bb88e49 1e225c3
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Wed Oct 21 21:01:47 2015 -0500
+
+    Merge pull request #28 from pikachuchu/update-uml
+    
+    Update UML to correspond to models.
+
+commit c04bb1e8617030ca10ecb9f1e0866d431029792e
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Wed Oct 21 21:01:18 2015 -0500
+
+    Add documentation for models
+
+commit c988b138b6f3b6eaee856410edb155401f87b38a
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Wed Oct 21 20:34:20 2015 -0500
+
+    Add committee pages
+
+commit bb88e49c3749d6413da7affe73e3a82da96a170b
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Wed Oct 21 19:11:06 2015 -0500
+
+    update splash
+
+commit 45ed4255970d00a7bdc62a7cef94c3f1c4f92181
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Oct 21 19:06:11 2015 -0500
+
+    added more background pics
+
+commit 83290c1e782086154a927ae57703414b1e582fa8
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Wed Oct 21 18:59:32 2015 -0500
+
+    added more background images
+
+commit e8d6ec581013174616de4aa110ec11022aa892a9
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Oct 21 18:49:05 2015 -0500
+
+    fixed background pics
+
+commit 960d70fd7d995180745c594a948d533d0dec0805
+Merge: 35662c6 7ebd7c3
+Author: andreassudihardjo <andreas_sudi@hotmail.com>
+Date:   Wed Oct 21 17:49:32 2015 -0500
+
+    Merge pull request #25 from pikachuchu/representative
+    
+    finished with static representatives
+
+commit 7ebd7c3c6aa760266f11f65e745d0b93f2c7b5f6
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Wed Oct 21 17:47:30 2015 -0500
+
+    finished with static representatives
+
+commit 35662c615a83be36708f9d6befcb49153897b1fa
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Wed Oct 21 16:55:13 2015 -0500
+
+    added pictures
+
+commit d4fb88a8090f7b19823c66604439f247ee41ff8c
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Wed Oct 21 16:48:01 2015 -0500
+
+    added links to about page
+
+commit 1e225c310662216d728bf3c4e97be5f2fafcec0f
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Wed Oct 21 16:15:45 2015 -0500
+
+    Update UML to correspond to models.
+    
+    This closes #24. Edit URL: http://yuml.me/edit/7d8b2cd8
+
+commit 8b2862f837da624164eb123a365642e564b08261
+Merge: 367073a e164f82
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 21:29:54 2015 -0500
+
+    Merge branch 'master' of github.com:pikachuchu/cs373-idb
+
+commit 367073a6df637ef145bcb6905558df32ea4ca817
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 21:29:15 2015 -0500
+
+    Use bioguide id to gather rep committee data.
+    
+    This closes #23
+
+commit e164f82bf73bb30af35644a8fc8bd50d4a48d0ab
+Merge: c433e3a 96d7c52
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Oct 20 20:38:06 2015 -0500
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit c433e3a1a82b36afa147afefab1064328c55cb45
+Merge: ae7084c aeab2e8
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Oct 20 20:37:41 2015 -0500
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit 96d7c52937626f7e3909632fa346acd7c4132835
+Merge: aeab2e8 b47ac68
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 20:37:37 2015 -0500
+
+    Merge branch 'add-chairs'
+
+commit ae7084cd053c4ed00f6c9289779cebbf13345feb
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Oct 20 20:37:24 2015 -0500
+
+    added 2 new senator pages
+
+commit b47ac68b3cf1191fe2f3b81800bb9ba3f3ab900a
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 20:37:04 2015 -0500
+
+    Add chairperson to committee data. This fixes #21
+
+commit aeab2e85a37a1a0413168f9ef4b0265c5fa53420
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Tue Oct 20 20:30:31 2015 -0500
+
+    added pictures and cropped resized
+
+commit 4abaf7bf64355307c87f598f63f5212a1de27b09
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 20:26:36 2015 -0500
+
+    Combine name and id into single obj
+
+commit 611acca15408c6a04f740319034aac1efc5234de
+Merge: aabaa70 0b3b3a5
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 20:14:19 2015 -0500
+
+    Merge branch 'add-image-urls'
+
+commit 0b3b3a5e5384dc8ae80210b293f4d9cf1fb3a05e
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 20:12:18 2015 -0500
+
+    Add image urls to rep data. This closes #20
+
+commit aabaa70112c32ade3a5e0da8afbf18c1d7d04bbd
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Oct 20 19:55:38 2015 -0500
+
+    first senator page closes #15
+
+commit 92f2fe4dff3e1c45481b69dced7e0c448b9a8f9a
+Merge: 840c99d 0a7db5d
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Tue Oct 20 19:47:31 2015 -0500
+
+    Merge branch 'master' of github.com:pikachuchu/cs373-idb
+
+commit 840c99dc320e15a9186cc4a6cf1b13c87a326a3f
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Tue Oct 20 19:47:26 2015 -0500
+
+    models update
+
+commit 0a7db5d4ecc00b838fc68d968d77a6d0d8b5fbab
+Merge: cc9399b 538fe1a
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 19:31:58 2015 -0500
+
+    Merge branch 'add-json-data'
+
+commit 538fe1a9ea0d77ad571a14526e016c7b4121d113
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 19:29:14 2015 -0500
+
+    Add data scraping code
+
+commit b4a833d383f5b6c02b7f4e5abaf04aaad349d093
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 19:26:26 2015 -0500
+
+    Add data for bills. This closes #19
+
+commit cc9399b277873c4f348093013aa6d01b19a877a8
+Author: dsc995 <dsc694@utexas.edu>
+Date:   Tue Oct 20 19:25:46 2015 -0500
+
+    added react for table creation
+
+commit 7d93d420d3f8f1b8b20f7df69277314ce509161f
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 19:02:48 2015 -0500
+
+    Add committee data. This closes #18
+
+commit 9dd8f340c624532368eb48b22daf5e9f8755e677
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 19:02:32 2015 -0500
+
+    Update rep data to dictionary
+
+commit c922a1ea7b1c0d248794933ee443c842ef31f94c
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Tue Oct 20 18:32:47 2015 -0500
+
+    synced api and models, fixes #12
+
+commit f3ac7313aa745ecf6ee704887fb749d385ac64e7
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 18:30:59 2015 -0500
+
+    Add scraped json data for representatives
+    
+    This closes #17
+
+commit 3d0ae8fb21e62e64b1999f79914b25dc02bc0440
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 18:30:20 2015 -0500
+
+    update fields in reps
+
+commit ac4f3013914d6be1a079a886ddf102ecaf59317f
+Merge: c26685d 402374d
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Oct 20 18:21:12 2015 -0500
+
+    Merge branch 'master' of https://github.com/pikachuchu/cs373-idb
+
+commit c26685dee2bf86b3543f563e4aa841783c1236e6
+Author: Andreas Sudihardjo <andreas@cs.utexas.edu>
+Date:   Tue Oct 20 18:19:34 2015 -0500
+
+    add table for house
+
+commit 402374de7eebffb43eb841500556f9ed3cd6f81c
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 17:52:43 2015 -0500
+
+    Adding fields to representatives
+
+commit 04dc5405e04a96e60f28c506206672f3c3a54028
+Merge: 26cc244 d6f0a02
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 17:35:23 2015 -0500
+
+    Merge branch 'fix-uml'
+
+commit d6f0a025e35959543b298d419cdaa929ff6ddd67
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 17:33:06 2015 -0500
+
+    Delete unnecessary associations
+    
+    This fixes #14. Edit url: http://yuml.me/edit/99ea6dfd
+
+commit 26cc244536e41a743448387f1c2e4b04f3cde67f
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Tue Oct 20 16:29:06 2015 -0500
+
+    Unit tests created, read, write, delete, and attribute read tests for 3 tables, fixes #7
+
+commit 837d21d861866129a496368584550c982eaa99ca
+Merge: 15157a0 da1fef8
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 10:39:32 2015 -0500
+
+    Merge branch 'fix-uml'
+
+commit 15157a069621b80ae1f59f6142c8a8ccfe2cc089
+Merge: 2f9e6f4 fad2637
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 10:39:13 2015 -0500
+
+    Merge branch 'update-makefile'
+
+commit fad26374b777ffc372b7020fe3441e04406bbbbb
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 10:37:27 2015 -0500
+
+    Ignore model.html and IDB1.log in makefile for now
+
+commit da1fef8638ebb97d1fd9a51a50ebc597d762084f
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 10:35:24 2015 -0500
+
+    Fix multiplicities and associations in UML.
+    
+    Edit URL: http://yuml.me/edit/da95b723
+    This closes #11.
+
+commit 2f9e6f489387d10bffe06c7b14d03ed7bfc05800
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Tue Oct 20 10:24:24 2015 -0500
+
+    Adding responses for committees and bills
+
+commit b3681ef4517af87db110716764e1ef4dd24589c5
+Author: andreas <andreas_sudi@hotmail.com>
+Date:   Tue Oct 20 05:15:43 2015 -0500
+
+    change table in senate and include links. Added blank senator page
+
+commit 7377c0a756f08768c5276395420631655a27dd14
+Author: dscoonan <dsc995@gmail.com>
+Date:   Mon Oct 19 22:49:55 2015 -0500
+
+    initial about page template
+
+commit 973fbd2f08348017c0f9c31f918c2282f8a87229
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Sun Oct 18 16:48:32 2015 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 97f064f115e88734e41f3c4c9df3d8c64006c995
+Merge: 849d467 96ddd52
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Oct 18 16:22:26 2015 -0500
+
+    Merge branch 'add-uml'
+
+commit 849d467f0375d0435d29176b4c0b8c58834dc132
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Oct 18 16:19:14 2015 -0500
+
+    Setup travis ci.
+    
+    This closes #10.
+
+commit 96ddd52556b5f4f4f88309da7dbbeff2be89e98d
+Author: Chuchu Ma <chuchu.ma@utexas.edu>
+Date:   Sun Oct 18 16:11:36 2015 -0500
+
+    Add initial UML diagram for models
+    
+    This closes #3
+
+commit 81761a1366d42528922f9c85f04f723a6207fba4
+Merge: e63240d 7853c4d
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Sat Oct 17 19:15:14 2015 -0500
+
+    Merge branch 'master' of github.com:pikachuchu/cs373-idb
+
+commit 7853c4d2a7a3cc2bc185b75eee773480ee5d2044
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Sat Oct 17 19:10:23 2015 -0500
+
+    added about page
+
+commit e63240d2e50ceb2f4582239674819d675c938ca8
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Sat Oct 17 19:05:30 2015 -0500
+
+    established many to many relationships for reps and committees, fixes #2
+
+commit 32f8c78e27550d79762fd82e7bdc82ee4459b465
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Sat Oct 17 18:53:16 2015 -0500
+
+    added pages for each url
+
+commit edc392d962073b3c0a2441ba725dc2d7a239638a
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Sat Oct 17 18:51:28 2015 -0500
+
+    basic model, look at many to many relationships for rep-committee
+
+commit 6106bbe122dd3ec403425253f9417fc1c6cf577e
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Sat Oct 17 18:35:50 2015 -0500
+
+    made base template
+
+commit bedaee2a34b3f5442d91d6ef0fb37d68368c7a92
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Sat Oct 17 18:20:39 2015 -0500
+
+    changed video
+
+commit 52a2832c6b1dea43fb8062b99e87b9355cb1577d
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Sat Oct 17 17:49:18 2015 -0500
+
+    add fullscreen video
+
+commit ea52dca3a4c74a03f5678ab34ab5d38c108db36d
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Sat Oct 17 17:29:52 2015 -0500
+
+    base flask server
+
+commit f20237c6126671ddd8470d03699c694026ba6d46
+Author: Lawrence Ying <lying343@cs.utexas.edu>
+Date:   Sat Oct 17 17:06:56 2015 -0500
+
+    added base template
+
+commit ed0075d424cdc507b8315db8459fc3770248c313
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Sat Oct 17 17:02:51 2015 -0500
+
+    basic files commit, still need to fill them out though, fixes #2
+
+commit d05913833d83dccaeaf9f335a94cbd92f8a6ddeb
+Author: Brian Chenault <brian.chenault@utexas.edu>
+Date:   Sat Oct 17 16:55:52 2015 -0500
+
+    SQL model template, first upload
+
+commit e9ec0ef9d3a79d2bfdd49c709ce82f1c01deba12
+Author: Chuchu <chuchu.ma@utexas.edu>
+Date:   Mon Oct 12 11:46:01 2015 -0500
+
+    Initial commit
