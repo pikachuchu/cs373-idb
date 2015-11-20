@@ -1,9 +1,11 @@
-from flask import Flask, render_template, jsonify, make_response, abort, request
+from flask import Flask, render_template, jsonify, make_response, abort, request, Response
 from flask.ext.cors import CORS, cross_origin
 from api import api
 
 import subprocess
 import database as db
+import json
+from marvel import call_marvel
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -45,6 +47,17 @@ def committees():
 @cross_origin()
 def bills():
     return render_template('bills.html')
+
+@app.route('/comics')
+@cross_origin()
+def comics():
+    return render_template('comics.html')
+
+@app.route('/marvel')
+@cross_origin()
+def marvel():
+    data = list(call_marvel())
+    return Response(json.dumps(data), mimetype='application/json')
 
 @app.route('/about')
 @cross_origin()
