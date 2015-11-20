@@ -35,7 +35,7 @@
         },
         componentDidMount: function(){
             var self = this;
-            console.log(this.props.source);
+            //console.log(this.props.source);
             $.get(this.props.source, function(result) {
               var d = [];
               d.push(result);
@@ -58,7 +58,6 @@
         {
             if(this.state.data.length > 0)
             {
-                //console.log(this.props.queries);
                 var pageSource = '/search?q=' + this.props.queries + '&searchType={{searchType}}&page=';
                 var orSource = '/search?q=' + this.props.queries + '&searchType=OR&page=1';
                 var andSource = '/search?q=' + this.props.queries + '&searchType=AND&page=1';
@@ -66,7 +65,6 @@
                 if(this.props.queryLength > 1){
                     var restrictive = ("{{searchType}}" == 'AND') ? (<a href={orSource}>Did not find what you are looking for? Try our less restrictive search</a>) : (<a href={andSource}>Too Many Results? Try our restrictive search</a>) ;
                 }
-                //console.log(pageSource);
                 var data = this.state.data["0"];
                 var recCount = data["record_count"];
                 var info = data["info"];
