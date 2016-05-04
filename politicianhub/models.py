@@ -1,53 +1,54 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import *
+from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
 
-Base = declarative_base()
+
+db = SQLAlchemy()
 
 """
 Association between legislators and committees.
 """
-class committee_member(Base):
+class committee_member(db.Model):
     __tablename__ = 'committee_members'
-    legislator_id = Column(Integer, primary_key=True)
-    committee_id = Column(Integer, primary_key=True)
+    legislator_id = db.Column(db.Integer, primary_key=True)
+    committee_id = db.Column(db.Integer, primary_key=True)
 
 """
 Association between bills and committees.
 """
-class bill_committee(Base):
+class bill_committee(db.Model):
     __tablename__ = 'bill_committees'
-    bill_id = Column(Integer, primary_key=True)
-    committee_id = Column(Integer, primary_key=True)
+    bill_id = db.Column(db.Integer, primary_key=True)
+    committee_id = db.Column(db.Integer, primary_key=True)
 
 """
 Association between legislators and bills.
 """
-class vote(Base):
+class vote(db.Model):
     __tablename__ = 'votes'
-    legislator_id = Column(Integer, primary_key=True)
-    bill_id = Column(Integer, primary_key=True)
-    result = Column(String(80))
+    legislator_id = db.Column(db.Integer, primary_key=True)
+    bill_id = db.Column(db.Integer, primary_key=True)
+    result = db.Column(db.String(80))
 
 """
 Model for legislators.
 This model is used for both senators and members of the House of Representatives.
 There is a many-to-many relationship with committees.
 """
-class legislator(Base):
+class legislator(db.Model):
     __tablename__ = 'legislators'
-    id = Column(Integer, primary_key=True)
-    first_name = Column(String(80))
-    last_name = Column(String(80))
-    chamber = Column(String(80))
-    gender = Column(String(80))
-    birthday = Column(String(80))
-    party = Column(String(80))
-    state = Column(String(80))
-    twitter = Column(String(80))
-    website = Column(String(80))
-    bio_guide = Column(String(80))
-    contact_form = Column(String(2048))
-    image = Column(String(2048))
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(80))
+    last_name = db.Column(db.String(80))
+    chamber = db.Column(db.String(80))
+    gender = db.Column(db.String(80))
+    birthday = db.Column(db.String(80))
+    party = db.Column(db.String(80))
+    state = db.Column(db.String(80))
+    twitter = db.Column(db.String(80))
+    website = db.Column(db.String(80))
+    bio_guide = db.Column(db.String(80))
+    contact_form = db.Column(db.String(2048))
+    image = db.Column(db.String(2048))
 
     def get_obj(row):
         return {
@@ -70,16 +71,16 @@ class legislator(Base):
 Model for Congressional committees.
 There is a one-to-one relationship with representatives (the committee chair).
 """
-class committee(Base):
+class committee(db.Model):
     __tablename__ = 'committees'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(256))
-    chamber = Column(String(80))
-    website = Column(String(80))
-    jurisdiction = Column(Text)
-    is_subcommittee = Column(Boolean)
-    committee_id = Column(String(80))
-    fk_chair = Column(Integer, nullable=True)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(256))
+    chamber = db.Column(db.String(80))
+    website = db.Column(db.String(80))
+    jurisdiction = db.Column(db.Text)
+    is_subcommittee = db.Column(db.Boolean)
+    committee_id = db.Column(db.String(80))
+    fk_chair = db.Column(db.Integer, nullable=True)
 
     def get_obj(row):
         return {
@@ -98,20 +99,20 @@ Model for recent bills.
 There is a one-to-one relationship with representatives (the sponsor).
 There is a many-to-many relationship with committees.
 """
-class bill(Base):
+class bill(db.Model):
     __tablename__ = 'bills'
-    id = Column(Integer, primary_key=True)
-    name = Column(Text)
-    bill_id = Column(String(80))
-    bill_type = Column(String(80))
-    date_intro = Column(String(80))
-    house_status = Column(String(80))
-    senate_status = Column(String(80))
-    link = Column(String(2048))
-    current_status_label = Column(Text)
-    current_status_description = Column(Text)
-    current_status = Column(String(80))
-    fk_sponsor = Column(Integer, nullable=True)
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+    bill_id = db.Column(db.String(80))
+    bill_type = db.Column(db.String(80))
+    date_intro = db.Column(db.String(80))
+    house_status = db.Column(db.String(80))
+    senate_status = db.Column(db.String(80))
+    link = db.Column(db.String(2048))
+    current_status_label = db.Column(db.Text)
+    current_status_description = db.Column(db.Text)
+    current_status = db.Column(db.String(80))
+    fk_sponsor = db.Column(db.Integer, nullable=True)
 
     def get_obj(row):
         return {
@@ -129,6 +130,15 @@ class bill(Base):
             'sponsor': row.fk_sponsor
         }
 
+def _create_database():
+    from data_loader import populate_db
+    app = Flask(__name__)
+    app.config.from_pyfile('../config.py')
+    db.init_app(app)
+    with app.app_context():
+        db.create_all()
+        print('All tables created')
+        populate_db(db.session)
+
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://phub:@localhost/phub?charset=utf8')
-    Base.metadata.create_all(engine)
+    _create_database()

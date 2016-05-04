@@ -34,4 +34,9 @@ clean:
 
 test:
 	coverage run --branch tests.py
-	coverage report --include=models.py
+	coverage report --include=app/models.py
+
+populate:
+	python politicianhub/models.py
+mysql:
+	mysql --host=173.194.239.21 --user=testing --password

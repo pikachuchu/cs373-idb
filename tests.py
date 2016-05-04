@@ -9,7 +9,7 @@ from sqlalchemy import Column, ForeignKey, Integer, String, Text, Float, LargeBi
 import threading
 from flask import Flask, render_template, url_for, g, request, session, redirect, abort, flash
 
-from models import *
+from politicianhub.models import legislator, bill, committee, committee_member, bill_committee, vote
 
 class tests(TestCase):
   
