@@ -11,7 +11,7 @@ def add_committee_members(row, obj, verbose):
 
 def add_votes(row, obj, verbose):
     obj['votes'] = []
-    for r in session.query(vote).filter(vote.legislator_id == row.id):
+    for r in vote.query.filter(vote.legislator_id == row.id):
         if verbose:
             obj['votes'].append({
                 'bill': get_bill_by_id(r.bill_id, verbose),
@@ -30,7 +30,7 @@ def add_bill_committees(row, obj, verbose):
             obj['committees'].append(get_committee_by_id(r.committee_id, verbose))
         else:
             obj['committees'].append(r.committee_id)
-    
+
 """
 Get all legislators from the database
 """

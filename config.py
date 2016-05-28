@@ -43,3 +43,10 @@ SQLALCHEMY_DATABASE_URI = \
 # panel. If self-hosting on compute engine, replace the values below.
 MONGO_URI = \
     'mongodb://user:password@host:27017/database'
+
+# Disabled since it requires extra memory
+# http://flask-sqlalchemy.pocoo.org/2.1/config/
+SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+# For CORS
+CORS_HEADERS = 'Content-Type'

@@ -1,8 +1,10 @@
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 
-
 db = SQLAlchemy()
+
+def init_app(app):
+    db.init_app(app)
 
 """
 Association between legislators and committees.

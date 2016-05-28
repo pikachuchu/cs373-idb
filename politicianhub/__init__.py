@@ -1,18 +1,25 @@
 from flask import Flask, render_template, jsonify, make_response, abort, request, Response
 from flask.ext.cors import CORS, cross_origin
-from api import api
 
 import subprocess
 import database as db
 import json
 from marvel import call_marvel
 
-def create_app():
+def create_app(config):
     app = Flask(__name__)
-    app.config['CORS_HEADERS'] = 'Content-Type'
+    app.config.from_object(config)
 
+    # Setup data model
+    from . import models
+    with app.app_context():
+        models.init_app(app)
+
+    # Register routes for api
+    from .api import api
     app.register_blueprint(api, url_prefix='/api/v1')
 
+    # Routes
     @app.route('/')
     @cross_origin()
     def index():

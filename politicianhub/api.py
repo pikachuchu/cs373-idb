@@ -50,10 +50,7 @@ def get_legislators():
     for v in request.args:
         if v in legislator_fields:
             args[v] = request.args.get(v)
-    try:
-        legislators = db.get_legislators(args, verbose == 'true')
-    except Exception as e:
-        print(e) 
+    legislators = db.get_legislators(args, verbose == 'true')
     return jsonify({'legislators': legislators})
 
 """
@@ -67,11 +64,7 @@ def get_committees():
     for v in request.args:
         if v in committee_fields:
             args[v] = request.args.get(v)
-    try:
-        committees = db.get_committees(args, verbose == 'true')
-    except Exception as e:
-        print(e) 
-
+    committees = db.get_committees(args, verbose == 'true')
     return jsonify({'committees': committees})
 
 """
@@ -85,10 +78,7 @@ def get_bills():
     for v in request.args:
         if v in bill_fields:
             args[v] = request.args.get(v)
-    try:
-        bills = db.get_bills(args, verbose == 'true')
-    except Exception as e:
-        print(e) 
+    bills = db.get_bills(args, verbose == 'true')
 
     return jsonify({'bills': bills})
 
@@ -99,10 +89,7 @@ GET a legislator by id
 @cross_origin()
 def get_legislator(legislator_id):
     verbose = request.args.get('verbose')
-    try:
-        legislator = db.get_legislator_by_id(legislator_id, verbose == 'true')
-    except Exception as e:
-        print(e) 
+    legislator = db.get_legislator_by_id(legislator_id, verbose == 'true')
     if not legislator:
         abort(404)
     return jsonify(legislator)
@@ -114,10 +101,7 @@ GET a committee by id
 @cross_origin()
 def get_committee(committee_id):
     verbose = request.args.get('verbose')
-    try:
-        committee = db.get_committee_by_id(committee_id, verbose == 'true')
-    except Exception as e:
-        print(e)
+    committee = db.get_committee_by_id(committee_id, verbose == 'true')
     if not committee:
         abort(404)
     return jsonify(committee)
@@ -130,10 +114,7 @@ GET a bill by id
 @cross_origin()
 def get_bill(bill_id):
     verbose = request.args.get('verbose')
-    try:
-        bill = db.get_bill_by_id(bill_id, verbose == 'true')
-    except Exception as e:
-        print(e)
+    bill = db.get_bill_by_id(bill_id, verbose == 'true')
     if not bill:
         abort(404)
     return jsonify(bill)
