@@ -156,7 +156,7 @@
         }
      });
 
-    React.render(<Table data={data} source={"http://politicianhub.me/api/v1/bills/{{bill_id}}?verbose=true"}/>, document.getElementById('billReact'));
+    React.render(<Table data={data} source={"/api/v1/bills/{{bill_id}}?verbose=true"}/>, document.getElementById('billReact'));
 
 </script>
 {% endblock %}

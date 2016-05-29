@@ -122,7 +122,7 @@
 	    }
 	 });
 
-	React.render(<Table source={"http://politicianhub.me/api/v1/legislators/{{legislator_id}}?verbose=true"}/>, document.getElementById('senate1'));
+	React.render(<Table source={"/api/v1/legislators/{{legislator_id}}?verbose=true"}/>, document.getElementById('senate1'));
 
 </script>
 {% endblock %}
