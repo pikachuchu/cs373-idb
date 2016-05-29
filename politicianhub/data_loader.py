@@ -1,4 +1,3 @@
-"""
 import json
 from models import legislator, bill, committee, committee_member, vote, bill_committee
 
@@ -107,5 +106,3 @@ def populate_db(session):
         session.merge(curr)
     session.commit()
     print('association table data added to database')
-
-"""

@@ -1,4 +1,4 @@
-from models import committee_member, bill_committee, vote, legislator, committee, bill
+from politicianhub.models import committee_member, bill_committee, vote, legislator, committee, bill
 
 #committee_member, bill_committee, vote, legislator, committee, bill
 def add_committee_members(row, obj, verbose):

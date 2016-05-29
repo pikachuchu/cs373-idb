@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, make_response, abort, request
 from flask.ext.cors import CORS, cross_origin
-import database as db
+import politicianhub.database as db
 
 # RESTful API
 

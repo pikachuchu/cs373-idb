@@ -2,9 +2,8 @@ from flask import Flask, render_template, jsonify, make_response, abort, request
 from flask.ext.cors import CORS, cross_origin
 
 import subprocess
-import database as db
 import json
-from marvel import call_marvel
+from .marvel import call_marvel
 
 def create_app(config):
     app = Flask(__name__)
