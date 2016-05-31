@@ -1,165 +1,94 @@
-from unittest import main, TestCase
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker 
+import unittest
+from politicianhub.models import *
+from flask.ext.testing import TestCase
 
-from flask import *
-from flask import request
-from sqlalchemy import Column, ForeignKey, Integer, String, Text, Float, LargeBinary, Boolean
+class Tests(TestCase):
 
-import threading
-from flask import Flask, render_template, url_for, g, request, session, redirect, abort, flash
+    def create_app(self):
+        app = Flask(__name__)
+        app.config['TESTING'] = True
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+        db.init_app(app)
+        return app
 
-from politicianhub.models import legislator, bill, committee, committee_member, bill_committee, vote
+    def setUp(self):
+        db.create_all()
 
-class tests(TestCase):
-  
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+
     # Test that the table legislators is writable
     def test_write_legislator(self):
+        person = legislator(first_name = "TESTWRITE", party="TEST")
+        db.session.add(person)
+        db.session.commit()
+        assert(person in db.session)
 
-        query = session.query(legislator).all()
-        startSize = len(query)
-
-        session.add(legislator(first_name = "TESTWRITE", party="TEST"))
-        session.commit()
-        query = session.query(legislator).all()
-
-        endSize = len(query)
-
-        self.assertEqual(startSize + 1, endSize)  
-
-    # Test that the table legislators can be written multiple queries 
+    # Test that the table legislators can be written multiple queries
     def test_write_legislator_multiple(self):
+        person1 = legislator(first_name = "TESTMULTIPLE1", party="TEST")
+        person2 = legislator(first_name = "TESTMULTIPLE2", party="TEST")
+        db.session.add(person1)
+        db.session.add(person2)
+        db.session.commit()
 
-        query = session.query(legislator).all()
-        startSize = len(query)
+        assert(person1 in db.session)
+        assert(person2 in db.session)
 
-        session.add(legislator(first_name = "TESTMULTIPLE", party="TEST"))
-        session.add(legislator(first_name = "TESTMULTIPLE", party="TEST"))
-        session.commit()
-        query = session.query(legislator).all()
-
-        endSize = len(query)
-
-        self.assertEqual(startSize + 2, endSize)    
-
-    # Test that the table legislators is writable
-    def test_write_legislator_1(self):
-
-        query = session.query(legislator).all()
-        startSize = len(query)
-
-        session.add(legislator(first_name = "OTHERWRITE", party="TEST"))
-        session.commit()
-        query = session.query(legislator).all()
-
-        endSize = len(query)
-
-        self.assertEqual(startSize + 1, endSize)    
-
-    # Test that the table legislators is writable
-    def test_write_legislator_2(self):
-
-        query = session.query(legislator).all()
-        startSize = len(query)
-
-        session.add(legislator(first_name = "WRITETWO", party="TEST"))
-        session.commit()
-        query = session.query(legislator).all()
-
-        endSize = len(query)
-
-        self.assertEqual(startSize + 1, endSize)    
-
-    # Test that the table legislators is writable
-    def test_write_legislator_3(self):
-
-        query = session.query(legislator).all()
-        startSize = len(query)
-
-        session.add(legislator(first_name = "WRITETHREE", party="TEST"))
-        session.commit()
-        query = session.query(legislator).all()
-
-        endSize = len(query)
-
-        self.assertEqual(startSize + 1, endSize)    
-
-    # Test that the table legislators is readable
+    # Test that the table legislators is readable and case sensitive
     def test_read_legislator(self):
+        db.session.add(legislator(first_name = "TESTREAD", party="TEST"))
+        db.session.commit()
 
-        session.add(legislator(first_name = "TESTREAD", party="TEST"))
-        session.commit()
-
-        query = session.query(legislator).all()
-        found = False
-
-        for x in query:
-            if(x.first_name == "TESTREAD"):
-                found = True
-
-        assert(found)
-
-    # Test that the table legislators is readable and for case sensitivity
-    def test_read_legislator_sensitivity(self):
-
-        session.add(legislator(first_name = "TESTREAD2", party="TEST2"))
-        session.commit()
-
-        query = session.query(legislator).all()
-        found = False
-
-        for x in query:
-            if(x.first_name == "TESTREAD2"):
-                found = True
-            if(x.first_name == "testread2"):
-                found = False
-
-        assert(found)
+        # query returns None if not found
+        query1 = legislator.query.filter_by(first_name = "TESTREAD").first()
+        query2 = legislator.query.filter_by(first_name = "testread").first()
+        assert(query1 is not None)
+        assert(query2 is None)
 
     # Test filtering by an attribute
     def test_read_legislator_attribute(self):
+        db.session.add(legislator(last_name = "TESTATTR", party = "Republican"))
+        db.session.commit()
 
-        session.add(legislator(last_name = "TESTATTR", party = "Republican"))
-        session.commit()
-
-        query = session.query(legislator).filter(legislator.last_name == "TESTATTR").first()
+        query = legislator.query.filter_by(last_name = "TESTATTR").first()
 
         assert (query is not None)
         assert (query.party == "Republican")
 
     # Test filtering by an attribute returns multiple unique results
     def test_read_legislator_attribute_multiple(self):
+        db.session.add(legislator(last_name = "TESTATTR1", party = "Republican"))
+        db.session.add(legislator(last_name = "TESTATTR1", party = "Democrat"))
+        db.session.commit()
 
-        session.add(legislator(last_name = "TESTATTR1", party = "Republican"))
-        session.add(legislator(last_name = "TESTATTR1", party = "Democrat"))
-        session.commit()
-
-        queries = session.query(legislator).filter(legislator.last_name == "TESTATTR1").all()
+        queries = legislator.query.filter_by(last_name = "TESTATTR1").all()
 
         assert (queries is not None)
         assert (len(queries) == 2)
 
         party = [];
-        for x in queries :
+        for x in queries:
             party.append(x.party)
 
         assert (party[0] != party[1])
-     
+
     # Test deletion of a row in legislators
     def test_delete_legislators_row(self):
-        
-        session.add(legislator(last_name = "delete"))
-        session.commit()
+        db.session.add(legislator(last_name = "delete"))
+        db.session.commit()
 
-        query = session.query(legislator).filter(legislator.last_name == "delete").first()
+        query = legislator.query.filter_by(last_name = "delete").first()
 
-        assert(query != None)
+        assert(query is not None)
 
-        session.delete(query);
-        session.commit()
+        db.session.delete(query);
+        db.session.commit()
 
-        toRemove = session.query(legislator).filter(legislator.last_name == "delete").first()
-        assert(toRemove == None)
+        toRemove = legislator.query.filter_by(last_name = "delete").first()
+        assert(toRemove is None)
 
     def test_legislator_get_obj(self):
         row = legislator(
@@ -197,59 +126,48 @@ class tests(TestCase):
 
     # Test that the table committees is writable
     def test_write_committees(self):
-
-        query = session.query(committee).all()
-        startSize = len(query)
-
-        session.add(committee(name = "TEST"))
-        res = session.query(committee).all()
-        session.commit()
-
-        query = session.query(committee).all()
-        endSize = len(query)
-
-        self.assertEqual(startSize + 1, endSize)    
+        test_committee = committee(name = "TEST")
+        db.session.add(test_committee)
+        db.session.commit()
+        assert(test_committee in db.session)
 
     # Test that the table committees is readable
     def test_read_committees(self):
+        db.session.add(committee(name = "Ways and Means"))
+        db.session.commit()
 
-        session.add(committee(name = "Ways and Means"))
-        session.commit()
-
-        query = session.query(committee).all()
+        query = committee.query.all()
         found = False
 
         for x in query:
-            if(x.name == "Ways and Means"):
+            if x.name == "Ways and Means":
                 found = True
 
         assert(found)
 
     # Test filtering an attribute in committees
     def test_read_committee_attribute(self):
+        db.session.add(committee(name = "AttrTest", chamber = "House"))
+        db.session.commit()
 
-        session.add(committee(name = "AttrTest", chamber = "House"))
-        session.commit()
-
-        query = session.query(committee).filter(committee.name == "AttrTest").first()
+        query = committee.query.filter_by(name = "AttrTest").first()
 
         assert (query is not None)
         assert (query.chamber == "House")
-        
+
     # Test deletion of a row in committees
     def test_delete_committee_row(self):
+        db.session.add(committee(name = "delete"))
+        db.session.commit()
 
-        session.add(committee(name = "delete"))
-        session.commit()
+        query = committee.query.filter_by(name = "delete").first()
 
-        query = session.query(committee).filter(committee.name == "delete").first()
+        assert(query is not None)
 
-        assert(query != None)
+        db.session.delete(query);
+        db.session.commit()
 
-        session.delete(query);
-        session.commit()
-
-        toRemove = session.query(committee).filter(committee.name == "delete").first()
+        toRemove = committee.query.filter_by(name = "delete").first()
         assert(toRemove == None)
 
     def test_committee_get_obj(self):
@@ -277,23 +195,23 @@ class tests(TestCase):
 
     # Test that the table votes is writable
     def test_write_votes(self):
-        query = session.query(vote).all()
+        query = db.session.query(vote).all()
         startSize = len(query)
 
-        session.add(vote(legislator_id = 1, bill_id = 2))
-        res = session.query(vote).all()
+        db.session.add(vote(legislator_id = 1, bill_id = 2))
+        res = db.session.query(vote).all()
         endSize = len(res)
 
         self.assertEqual(startSize + 1, endSize)
-        query = session.query(vote).filter(vote.legislator_id == 1).first()
-        session.delete(query)
+        query = db.session.query(vote).filter(vote.legislator_id == 1).first()
+        db.session.delete(query)
 
     # Test that the table votes is readable
     def test_read_votes(self):
-        session.add(vote(legislator_id = 3, bill_id = 4))
-        session.commit()
+        db.session.add(vote(legislator_id = 3, bill_id = 4))
+        db.session.commit()
 
-        query = session.query(vote).all()
+        query = db.session.query(vote).all()
         found = False
 
         for x in query:
@@ -301,43 +219,43 @@ class tests(TestCase):
                 found = True
 
         assert(found)
-        query = session.query(vote).filter(vote.legislator_id == 3).first()
-        session.delete(query)
+        query = db.session.query(vote).filter(vote.legislator_id == 3).first()
+        db.session.delete(query)
  
     # Test delete row for the table votes
     def test_delete_votes_row(self):
-        session.add(vote(legislator_id = 5, bill_id = 6))
-        session.commit()
+        db.session.add(vote(legislator_id = 5, bill_id = 6))
+        db.session.commit()
 
-        query = session.query(vote).filter(vote.legislator_id == 5).first()
+        query = db.session.query(vote).filter(vote.legislator_id == 5).first()
 
         assert(query != None)
 
-        session.delete(query);
-        session.commit()
+        db.session.delete(query);
+        db.session.commit()
 
-        toRemove = session.query(vote).filter(vote.legislator_id == 5).first()
+        toRemove = db.session.query(vote).filter(vote.legislator_id == 5).first()
         assert(toRemove == None)
 
     # Test that the table bill_committees is writable
     def test_write_bill_committees(self):
-        query = session.query(bill_committee).all()
+        query = db.session.query(bill_committee).all()
         startSize = len(query)
 
-        session.add(bill_committee(bill_id = 7, committee_id = 5))
-        res = session.query(bill_committee).all()
+        db.session.add(bill_committee(bill_id = 7, committee_id = 5))
+        res = db.session.query(bill_committee).all()
         endSize = len(res)
 
         self.assertEqual(startSize + 1, endSize)
-        query = session.query(bill_committee).filter(bill_committee.bill_id == 7).first()
-        session.delete(query)
+        query = db.session.query(bill_committee).filter(bill_committee.bill_id == 7).first()
+        db.session.delete(query)
 
     # Test that the table committee_members is readable
     def test_read_bill_committees(self):
-        session.add(bill_committee(bill_id = 8, committee_id = 9))
-        session.commit()
+        db.session.add(bill_committee(bill_id = 8, committee_id = 9))
+        db.session.commit()
 
-        query = session.query(bill_committee).all()
+        query = db.session.query(bill_committee).all()
         found = False
 
         for x in query:
@@ -345,47 +263,47 @@ class tests(TestCase):
                 found = True
 
         assert(found)
-        query = session.query(bill_committee).filter(bill_committee.bill_id == 8).first()
-        session.delete(query)
+        query = db.session.query(bill_committee).filter(bill_committee.bill_id == 8).first()
+        db.session.delete(query)
  
     # Test delete row for the table bill_committees
     def test_delete_bill_committees_row(self):
-        session.add(bill_committee(bill_id = 9, committee_id = 10))
-        session.commit()
+        db.session.add(bill_committee(bill_id = 9, committee_id = 10))
+        db.session.commit()
 
-        query = session.query(bill_committee).filter(bill_committee.bill_id == 9).first()
+        query = db.session.query(bill_committee).filter(bill_committee.bill_id == 9).first()
 
         assert(query != None)
 
-        session.delete(query);
-        session.commit()
+        db.session.delete(query);
+        db.session.commit()
 
-        toRemove = session.query(bill_committee).filter(bill_committee.bill_id == 9).first()
+        toRemove = db.session.query(bill_committee).filter(bill_committee.bill_id == 9).first()
         assert(toRemove == None)
 
     # Test that the table committee_members is writable
     def test_write_committee_members(self):
-        query = session.query(committee_member).all()
+        query = db.session.query(committee_member).all()
         startSize = len(query)
 
-        session.add(committee_member(legislator_id = 8, committee_id = 8))
-        res = session.query(committee_member).all()
-        session.commit()
+        db.session.add(committee_member(legislator_id = 8, committee_id = 8))
+        res = db.session.query(committee_member).all()
+        db.session.commit()
 
-        query = session.query(committee_member).all()
+        query = db.session.query(committee_member).all()
         endSize = len(query)
 
         self.assertEqual(startSize + 1, endSize)
-        query = session.query(committee_member).filter(committee_member.legislator_id == 8).first()
-        session.delete(query)
+        query = db.session.query(committee_member).filter(committee_member.legislator_id == 8).first()
+        db.session.delete(query)
 
     # Test that the table committee_members is readable
     def test_read_commmittee_members(self):
 
-        session.add(committee_member(legislator_id = 9, committee_id = 9))
-        session.commit()
+        db.session.add(committee_member(legislator_id = 9, committee_id = 9))
+        db.session.commit()
 
-        query = session.query(committee_member).all()
+        query = db.session.query(committee_member).all()
         found = False
 
         for x in query:
@@ -393,35 +311,35 @@ class tests(TestCase):
                 found = True
 
         assert(found)
-        query = session.query(committee_member).filter(committee_member.legislator_id == 9).first()
-        session.delete(query)
+        query = db.session.query(committee_member).filter(committee_member.legislator_id == 9).first()
+        db.session.delete(query)
    
     # Test delete row for the table committee_members
     def test_delete_committee_members_row(self):
-        session.add(committee_member(legislator_id = 10, committee_id = 10))
-        session.commit()
+        db.session.add(committee_member(legislator_id = 10, committee_id = 10))
+        db.session.commit()
 
-        query = session.query(committee_member).filter(committee_member.legislator_id == 10).first()
+        query = db.session.query(committee_member).filter(committee_member.legislator_id == 10).first()
 
         assert(query != None)
 
-        session.delete(query);
-        session.commit()
+        db.session.delete(query);
+        db.session.commit()
 
-        toRemove = session.query(committee_member).filter(committee_member.legislator_id == 10).first()
+        toRemove = db.session.query(committee_member).filter(committee_member.legislator_id == 10).first()
         assert(toRemove == None)
 
     # Test that the table bills is writable
     def test_write_bills(self):
 
-        query = session.query(bill).all()
+        query = db.session.query(bill).all()
         startSize = len(query)
 
-        session.add(bill(name = "Test"))
-        res = session.query(bill).all()
-        session.commit()
+        db.session.add(bill(name = "Test"))
+        res = db.session.query(bill).all()
+        db.session.commit()
 
-        query = session.query(bill).all()
+        query = db.session.query(bill).all()
         endSize = len(query)
 
         self.assertEqual(startSize + 1, endSize)    
@@ -429,10 +347,10 @@ class tests(TestCase):
     # Test that the table bills is readable
     def test_read_bill(self):
 
-        session.add(bill(name = "Test"))
-        session.commit()
+        db.session.add(bill(name = "Test"))
+        db.session.commit()
 
-        query = session.query(bill).all()
+        query = db.session.query(bill).all()
         found = False
 
         for x in query:
@@ -443,10 +361,10 @@ class tests(TestCase):
 
     def test_read_bill2(self):
 
-        session.add(bill(name = "Test2"))
-        session.commit()
+        db.session.add(bill(name = "Test2"))
+        db.session.commit()
 
-        query = session.query(bill).all()
+        query = db.session.query(bill).all()
         found = False
 
         for x in query:
@@ -458,52 +376,52 @@ class tests(TestCase):
     # Test filtering on an attribute in the table bills
     def test_read_bill_attribute(self):
 
-        session.add(bill(name = "AttrTest", house_status = "Passed"))
-        session.commit()
+        db.session.add(bill(name = "AttrTest", house_status = "Passed"))
+        db.session.commit()
 
-        query = session.query(bill).filter_by(name = "AttrTest").first()
+        query = db.session.query(bill).filter_by(name = "AttrTest").first()
        
         assert (query is not None)
         assert (query.house_status == "Passed")
 
     def test_read_bill_attribute2(self):
 
-        session.add(bill(name = "AttrTest2", house_status = "Failed"))
-        session.commit()
+        db.session.add(bill(name = "AttrTest2", house_status = "Failed"))
+        db.session.commit()
 
-        query = session.query(bill).filter_by(name = "AttrTest2").first()
+        query = db.session.query(bill).filter_by(name = "AttrTest2").first()
        
         assert (query is not None)
         assert (query.house_status == "Failed")
         
     # Test deletion of a row in bills
     def test_delete_bill_row(self):
-        session.add(bill(name = "delete"))
-        session.commit()
+        db.session.add(bill(name = "delete"))
+        db.session.commit()
 
-        query = session.query(bill).filter(bill.name == "delete").first()
+        query = db.session.query(bill).filter(bill.name == "delete").first()
 
         assert(query != None)
 
-        session.delete(query);
-        session.commit()
+        db.session.delete(query);
+        db.session.commit()
 
-        toRemove = session.query(bill).filter(bill.name == "delete").first()
+        toRemove = db.session.query(bill).filter(bill.name == "delete").first()
         assert(toRemove == None)
 
     # Test deletion of a row in bills
     def test_delete_bill_row2(self):
-        session.add(bill(name = "delete2"))
-        session.commit()
+        db.session.add(bill(name = "delete2"))
+        db.session.commit()
 
-        query = session.query(bill).filter(bill.name == "delete2").first()
+        query = db.session.query(bill).filter(bill.name == "delete2").first()
 
         assert(query != None)
 
-        session.delete(query);
-        session.commit()
+        db.session.delete(query);
+        db.session.commit()
 
-        toRemove = session.query(bill).filter(bill.name == "delete2").first()
+        toRemove = db.session.query(bill).filter(bill.name == "delete2").first()
         assert(toRemove == None)
 
     def test_bill_get_obj(self):
@@ -537,11 +455,6 @@ class tests(TestCase):
             'sponsor': 4
         }
         assert(bill.get_obj(row) == result)
-    
+
 if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://travis:@localhost/test?charset=utf8')
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    Base.metadata.drop_all(engine)
-    Base.metadata.create_all(engine)
-    main()
+    unittest.main()

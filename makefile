@@ -1,12 +1,14 @@
-FILES :=                     \
-    .gitignore               \
-    makefile                 \
-    apiary.apib              \
-    IDB1.log                 \
-    models.py                \
-    model.html               \
-    tests.py                 \
-    UML.pdf
+FILES :=                                          \
+    .gitignore                                    \
+    makefile                                      \
+    class_requirements/apiary.apib                \
+    class_requirements/IDB1.log                   \
+    class_requirements/IDB2.log                   \
+    class_requirements/IDB3.log                   \
+    politicianhub/models.py                       \
+    class_requirements/model.html                 \
+    tests.py                                      \
+    class_requirements/UML.pdf
 
 check:
 	@not_found=0;                                 \
@@ -32,11 +34,15 @@ clean:
 	rm -f  *.pyc
 	rm -rf __pycache__
 
-test:
+coverage:
 	coverage run --branch tests.py
 	coverage report --include=app/models.py
 
+test:
+	python tests.py
+
 populate:
 	python politicianhub/models.py
+
 mysql:
 	mysql --host=173.194.239.21 --user=testing --password
