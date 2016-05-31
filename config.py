@@ -38,12 +38,6 @@ PROJECT_ID = 'politicianhub-1300'
 SQLALCHEMY_DATABASE_URI = \
     'mysql+pymysql://testing:123@173.194.239.21/library'
 
-# Mongo configuration
-# If using mongolab, the connection URI is available from the mongolab control
-# panel. If self-hosting on compute engine, replace the values below.
-MONGO_URI = \
-    'mongodb://user:password@host:27017/database'
-
 # Disabled since it requires extra memory
 # http://flask-sqlalchemy.pocoo.org/2.1/config/
 SQLALCHEMY_TRACK_MODIFICATIONS = False

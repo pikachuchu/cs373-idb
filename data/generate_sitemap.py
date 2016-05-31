@@ -1,4 +1,4 @@
-sitemap = open("sitemap.xml", "w")
+sitemap = open("politicianhub/templates/sitemap.xml", "w")
 for i in range(1, 550):
     url = "http://politicianhub.me/legislator/id/" + str(i)
     sitemap.write("\n<url>\n  <loc>" + url + "</loc>\n</url>")
