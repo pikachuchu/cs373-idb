@@ -92,7 +92,7 @@ def create_app(config):
 
     @app.route('/tests')
     def tests():
-        p = subprocess.Popen(["make", "test"],
+        p = subprocess.Popen(["make", "coverage"],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
                 stdin=subprocess.PIPE)

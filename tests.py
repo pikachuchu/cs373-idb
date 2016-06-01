@@ -1,4 +1,5 @@
 import unittest
+import os
 from politicianhub.models import *
 from flask.ext.testing import TestCase
 
@@ -7,7 +8,16 @@ class Tests(TestCase):
     def create_app(self):
         app = Flask(__name__)
         app.config['TESTING'] = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://travis:@localhost/test'
+
+        # See https://docs.travis-ci.com/user/environment-variables/#Default-Environment-Variables
+        if os.environ.get('TRAVIS') == 'true':
+            # Test DB configuration for Travis CI
+            app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://travis:@localhost/test'
+        else:
+            # Test DB configuration for deployed website
+            # Use sqlite for faster testing
+            app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         db.init_app(app)
         return app
@@ -37,16 +47,18 @@ class Tests(TestCase):
         assert(person1 in db.session)
         assert(person2 in db.session)
 
-    # Test that the table legislators is readable and case insensitive
+    # Test that the table legislators is readable and case insensitive for mysql
     def test_read_legislator(self):
         db.session.add(legislator(first_name = "TESTREAD", party="TEST"))
         db.session.commit()
 
         # query returns None if not found
         query1 = legislator.query.filter_by(first_name = "TESTREAD").first()
-        query2 = legislator.query.filter_by(first_name = "testread").first()
         assert(query1 is not None)
-        assert(query2 is not None)
+
+        if os.environ.get('TRAVIS') == 'true':
+            query2 = legislator.query.filter_by(first_name = "testread").first()
+            assert(query2 is not None)
 
     # Test filtering by an attribute
     def test_read_legislator_attribute(self):
