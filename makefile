@@ -36,7 +36,7 @@ clean:
 
 coverage:
 	coverage run --branch tests.py
-	coverage report --include=app/models.py
+	coverage report --include=politicianhub/models.py
 
 test:
 	python tests.py

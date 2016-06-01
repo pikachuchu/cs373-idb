@@ -11,3 +11,4 @@ requests==2.10.0
 flask-cors==2.1.2
 tomorrow==0.2.4
 Flask-Testing==0.4.2
+coverage==4.1

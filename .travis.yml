@@ -19,10 +19,9 @@ before_script:
     - uname -a
     - printenv
     - pip list
-    - mysql -e 'create database test'
 
 script:
     - date
     - ls -al
     - make check
-    - make test
+    - make coverage
