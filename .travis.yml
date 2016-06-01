@@ -14,6 +14,8 @@ install:
     - pip install --upgrade pip
     - pip --version
     - pip install -r requirements.txt
+    - mysql -e 'create database test'
+
 
 before_script:
     - uname -a

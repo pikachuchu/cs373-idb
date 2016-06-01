@@ -7,7 +7,7 @@ class Tests(TestCase):
     def create_app(self):
         app = Flask(__name__)
         app.config['TESTING'] = True
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://travis:@localhost/test'
         app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
         db.init_app(app)
         return app
