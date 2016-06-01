@@ -37,7 +37,7 @@ class Tests(TestCase):
         assert(person1 in db.session)
         assert(person2 in db.session)
 
-    # Test that the table legislators is readable and case sensitive
+    # Test that the table legislators is readable and case insensitive
     def test_read_legislator(self):
         db.session.add(legislator(first_name = "TESTREAD", party="TEST"))
         db.session.commit()
@@ -46,7 +46,7 @@ class Tests(TestCase):
         query1 = legislator.query.filter_by(first_name = "TESTREAD").first()
         query2 = legislator.query.filter_by(first_name = "testread").first()
         assert(query1 is not None)
-        assert(query2 is None)
+        assert(query2 is not None)
 
     # Test filtering by an attribute
     def test_read_legislator_attribute(self):
